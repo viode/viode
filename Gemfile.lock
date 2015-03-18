@@ -40,6 +40,7 @@ GEM
     autoprefixer-rails (5.1.7)
       execjs
       json
+    bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -64,6 +65,13 @@ GEM
     coffee-script-source (1.9.1)
     columnize (0.9.0)
     debug_inspector (0.0.2)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
@@ -129,6 +137,7 @@ GEM
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    orm_adapter (0.5.0)
     pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -170,6 +179,8 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -231,6 +242,8 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -240,6 +253,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.3)
   coffee-rails (~> 4.1.0)
+  devise
   factory_girl_rails
   faker
   guard-livereload
