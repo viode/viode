@@ -1,0 +1,12 @@
+h1 Recent Questions
+
+- @questions.each do |question|
+  p = question.title
+  p = question.category.name
+  p = pluralize question.answers.size, 'answer'
+
+  p
+    =' question.user.email
+    ' asked
+    =' distance_of_time_in_words_to_now question.created_at
+    | ago

@@ -4,4 +4,6 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
 
   validates :title, :category_id, presence: true
+
+  scope :recent, -> { order('created_at DESC') }
 end
