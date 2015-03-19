@@ -1,6 +1,6 @@
 include FactoryGirl::Syntax::Methods
 
-create :confirmed_user, email: 'user@example.com'
+create :confirmed_user, email: 'user@example.com', username: 'admin'
 
 5.times do
   create :confirmed_user

@@ -11,6 +11,7 @@ nav.navbar.navbar-default
     .collapse.navbar-collapse#navbar-collapse
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
+          li = link_to current_user.username, '#'
           li = link_to 'Sign out', destroy_user_session_path, method: :delete
         - else
           li = link_to 'Sign in', new_user_session_path
