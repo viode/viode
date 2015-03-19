@@ -9,6 +9,9 @@ nav.navbar.navbar-default
       = link_to 'Viode', root_path, class: 'navbar-brand'
 
     .collapse.navbar-collapse#navbar-collapse
+      ul.nav.navbar-nav
+        li class=('active' if controller_name == 'questions' && action_name == 'index')
+          = link_to 'Questions', questions_path
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li = link_to current_user.username, '#'
