@@ -53,13 +53,13 @@ RSpec.describe QuestionsController, type: :controller do
     end
 
     context "when signed in" do
-      it "creates question and redirects to questions page" do
+      it "creates question and redirects to question page" do
         sign_in user
 
         expect {
           post :create, question: attributes_for(:question, category_id: category.id)
         }.to change(Question, :count).by(1)
-        expect(response).to redirect_to(questions_path)
+        expect(response).to redirect_to(Question.last)
       end
     end
   end

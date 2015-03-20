@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.new(question_params)
 
     if @question.save
-      redirect_to questions_path
+      redirect_to @question
     else
       render :new
     end
