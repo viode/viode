@@ -1,16 +1,34 @@
-h1 Recent Questions
+.row
+  .col-md-2
+    = link_to 'Ask question', new_question_path, class: 'btn btn-primary btn-block'
+    h4 Categories
 
-- if user_signed_in?
-  = form_for Question.new do |f|
-    = render partial: 'form', locals: { f: f }
+  .col-md-10
+    - @questions.each_with_index do |question, i|
+      - unless i.zero?
+        hr
+      .row
+        .col-md-6
+          - if i.zero?
+            h5 Question [ category ]
 
-- @questions.each do |question|
-  p = link_to question.title, question
-  p = question.category.name
-  p = pluralize question.answers.size, 'answer'
-
-  p
-    =' question.user.username
-    ' asked
-    =' distance_of_time_in_words_to_now question.created_at
-    | ago
+          =' link_to question.title, question
+          ' [
+          =' link_to question.category.name, '#'
+          | ]
+        .col-md-2
+          - if i.zero?
+            h5 Author
+          = link_to question.user.username, question.user
+        .col-md-1
+          - if i.zero?
+            h5 Answers
+          = question.answers.size
+        .col-md-1
+          - if i.zero?
+            h5 Views
+          = question.views.size
+        .col-md-2
+          - if i.zero?
+            h5 Time
+          = time_tag_for question

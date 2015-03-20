@@ -1,0 +1,4 @@
+- flash.each do |type, message|
+  .alert.alert-dismissible class=(type == 'alert' ? 'alert-warning' : 'alert-info')
+    button.close data-dismiss="alert" title="Close" &times;
+    strong = message

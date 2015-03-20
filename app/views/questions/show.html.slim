@@ -1,15 +1,26 @@
-h1 = link_to @question.title, @question
-p = @question.category.name
-p = pluralize @question.answers.size, 'answer'
+.row
+  .col-md-8
+    h3
+      =' @question.title
+      small = link_to @question.category.name, '#'
 
-p
-  =' @question.user.username
-  ' asked
-  =' distance_of_time_in_words_to_now @question.created_at
-  | ago
+    ul.list-inline
+      li
+        ' Answers:
+        =' @question.answers.size
+      li
+        ' Views:
+        = @question.views
+      li
+        =' link_to @question.user.username, @question.user
+        ' asked
+        = time_tag_for @question
 
-= render partial: 'answers/answer', collection: @question.answers
+    h4 Answers
+    = render partial: 'answers/answer', collection: @question.answers
 
-- if user_signed_in?
-  = form_for [@question, @question.answers.new] do |f|
-    = render partial: 'answers/form', locals: { f: f }
+    - if user_signed_in?
+      = form_for [@question, @question.answers.new] do |f|
+        = render partial: 'answers/form', locals: { f: f }
+  .col-md-4
+    h4 Related questions

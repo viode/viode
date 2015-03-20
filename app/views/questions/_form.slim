@@ -1,4 +1,13 @@
-p = f.text_field :title, placeholder: 'Ask question'
-p = f.text_area :body
-p = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { prompt: true }
-p = f.submit 'Ask'
+.form-group
+  = f.label :title
+  = f.text_field :title, class: 'form-control'
+
+.form-group
+  = f.label :body, 'Description (optional)'
+  = f.text_area :body, rows: 5, class: 'form-control'
+
+.form-group
+  = f.label :category_id, 'Category'
+  = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { prompt: true }, class: 'form-control'
+
+= f.submit 'Add question', class: 'btn btn-primary'

@@ -15,11 +15,7 @@ html
     = render 'shared/header'
 
     .container
-      - if notice
-        p.notice = notice
-      - if alert
-        p.alert = alert
-
+      = render 'shared/flash_messages'
       == yield
 
     = javascript_include_tag 'application'

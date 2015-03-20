@@ -1,2 +1,5 @@
-p = f.text_area :body, placeholder: 'your answer'
-p = f.submit 'Answer'
+.form-group
+  = f.label :body, 'Your Answer'
+  = f.text_area :body, rows: 5, class: 'form-control'
+
+= f.submit 'Add', class: 'btn btn-primary'

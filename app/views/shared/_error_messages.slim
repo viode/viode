@@ -1,5 +1,8 @@
 - if target.errors.any?
-  h4 Errors:
-  ul
-    - target.errors.full_messages.each do |message|
-      li = message
+  .panel.panel-danger
+    .panel-heading
+      h3.panel-title Errors
+    .panel-body
+      ul
+        - target.errors.full_messages.each do |message|
+          li = message
