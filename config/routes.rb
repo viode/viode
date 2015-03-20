@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-  resources :questions, only: [:index, :show, :new, :create]
+  resources :questions, only: [:index, :show, :new, :create] do
+    resources :answers, only: [:new, :create]
+  end
 
   root 'home#index'
 end

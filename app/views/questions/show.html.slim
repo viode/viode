@@ -7,3 +7,7 @@ p
   ' asked
   =' distance_of_time_in_words_to_now @question.created_at
   | ago
+
+- if user_signed_in?
+  = form_for [@question, @question.answers.new] do |f|
+    = render partial: 'answers/form', locals: { f: f }
