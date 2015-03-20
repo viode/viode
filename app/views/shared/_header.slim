@@ -14,7 +14,8 @@ nav.navbar.navbar-default
           = link_to 'Questions', questions_path
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
-          li = link_to current_user.username, '#'
+          li class=('active' if current_page?(current_user))
+            = link_to current_user.username, current_user
           li = link_to 'Sign out', destroy_user_session_path, method: :delete
         - else
           li = link_to 'Sign in', new_user_session_path
