@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     resources :answers, only: [:new, :create]
   end
 
-  root 'home#index'
+  root 'questions#index'
 end
