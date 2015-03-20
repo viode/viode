@@ -5,12 +5,12 @@ h1 Recent Questions
     = render partial: 'form', locals: { f: f }
 
 - @questions.each do |question|
-  p = question.title
+  p = link_to question.title, question
   p = question.category.name
   p = pluralize question.answers.size, 'answer'
 
   p
-    =' question.user.email
+    =' question.user.username
     ' asked
     =' distance_of_time_in_words_to_now question.created_at
     | ago

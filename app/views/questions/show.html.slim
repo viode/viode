@@ -1,0 +1,9 @@
+h1 = link_to @question.title, @question
+p = @question.category.name
+p = pluralize @question.answers.size, 'answer'
+
+p
+  =' @question.user.username
+  ' asked
+  =' distance_of_time_in_words_to_now @question.created_at
+  | ago

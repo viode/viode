@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post  'register' => 'devise/registrations#create', as: :user_registration
   end
 
-  resources :questions, only: [:index, :new, :create]
+  resources :questions, only: [:index, :show, :new, :create]
 
   root 'home#index'
 end
