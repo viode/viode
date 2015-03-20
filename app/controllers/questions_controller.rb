@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @questions = Question.includes(:category, :user).recent.limit(20)
+    @questions = Question.includes(:category, :user).recent.page(params[:page]).per(20)
   end
 
   def show
