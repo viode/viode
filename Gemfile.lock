@@ -117,6 +117,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.2)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     listen (2.9.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -259,6 +262,7 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   jquery-rails
+  kaminari
   pg
   pry-byebug
   pry-rails

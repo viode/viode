@@ -5,6 +5,7 @@ gem 'rails', '4.2.0'
 gem 'pg'
 
 gem 'devise'
+gem 'kaminari'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.3'
 
