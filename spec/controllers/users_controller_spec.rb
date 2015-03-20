@@ -38,10 +38,10 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "POST #update" do
+  describe "PATCH #update" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :update, id: user.id, user: attributes_for(:user, email: 'edited@mail.example.net')
+        patch :update, id: user.id, user: attributes_for(:user, email: 'edited@mail.example.net')
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -51,7 +51,7 @@ RSpec.describe UsersController, type: :controller do
 
       context "when current user" do
         it "updates user settings and redirects to user page" do
-          post :update, id: user.id, user: attributes_for(:user, email: 'edited@mail.example.net')
+          patch :update, id: user.id, user: attributes_for(:user, email: 'edited@mail.example.net')
           expect(user.reload.unconfirmed_email).to eq('edited@mail.example.net')
           expect(response).to redirect_to(user)
         end
@@ -59,7 +59,7 @@ RSpec.describe UsersController, type: :controller do
 
       context "when other user" do
         it "does not update user settings and redirects to root path" do
-          post :update, id: other_user.id, user: attributes_for(:user, email: 'edited@mail.example.net')
+          patch :update, id: other_user.id, user: attributes_for(:user, email: 'edited@mail.example.net')
           expect(other_user.reload.unconfirmed_email).to_not eq('edited@mail.example.net')
           expect(response).to redirect_to(root_path)
         end
