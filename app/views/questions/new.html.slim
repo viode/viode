@@ -1,0 +1,8 @@
+- if @question.errors.any?
+  h4 Errors:
+  ul
+    - @question.errors.full_messages.each do |message|
+      li = message
+
+= form_for @question do |f|
+  = render partial: 'questions/form', locals: { f: f }

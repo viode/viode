@@ -1,5 +1,9 @@
 h1 Recent Questions
 
+- if user_signed_in?
+  = form_for Question.new do |f|
+    = render partial: 'form', locals: { f: f }
+
 - @questions.each do |question|
   p = question.title
   p = question.category.name

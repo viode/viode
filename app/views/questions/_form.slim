@@ -1,0 +1,4 @@
+p = f.text_field :title, placeholder: 'Ask question'
+p = f.text_area :body
+p = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { prompt: true }
+p = f.submit 'Ask'
