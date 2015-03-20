@@ -14,7 +14,7 @@
 
           =' link_to question.title, question
           ' [
-          =' link_to question.category.name, '#'
+          =' link_to question.category.name, question.category
           | ]
         .col-md-2
           - if i.zero?

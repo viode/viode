@@ -2,7 +2,7 @@
   .col-md-8
     h3
       =' @question.title
-      small = link_to @question.category.name, '#'
+      small = link_to @question.category.name, @question.category
 
     ul.list-inline
       li
