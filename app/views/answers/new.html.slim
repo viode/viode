@@ -1,8 +1,4 @@
-- if @answer.errors.any?
-  h4 Errors:
-  ul
-    - @answer.errors.full_messages.each do |message|
-      li = message
+= render 'shared/error_messages', target: @answer
 
 = form_for [@answer.question, @answer] do |f|
   = render partial: 'answers/form', locals: { f: f }
