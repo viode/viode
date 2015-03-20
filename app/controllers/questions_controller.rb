@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find params[:id]
+    Question.where(id: @question.id).update_all('views=views+1')
   end
 
   def new

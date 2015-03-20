@@ -17,6 +17,13 @@ RSpec.describe QuestionsController, type: :controller do
       get :show, id: question.id
       expect(response).to be_success
     end
+
+    it "updates views count" do
+      views_before = question.views
+
+      get :show, id: question.id
+      expect(question.reload.views).to eq(views_before + 1)
+    end
   end
 
   describe "GET #new" do
