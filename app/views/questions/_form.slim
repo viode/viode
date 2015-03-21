@@ -10,4 +10,8 @@
   = f.label :category_id, 'Category'
   = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { prompt: true }, class: 'form-control'
 
+.form-group
+  = f.label :tag_list, 'Labels'
+  = f.text_field :tag_list, class: 'form-control'
+
 = f.submit 'Add question', class: 'btn btn-primary'

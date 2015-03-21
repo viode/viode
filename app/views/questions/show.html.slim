@@ -3,6 +3,11 @@
     h3
       =' @question.title
       small = link_to @question.category.name, @question.category
+    p
+      ' [
+      - @question.tag_list.each do |label|
+        =' link_to label, '#'
+      | ]
 
     ul.list-inline
       li

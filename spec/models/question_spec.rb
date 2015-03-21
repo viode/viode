@@ -12,6 +12,16 @@ RSpec.describe Question, type: :model do
   describe "validations" do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:category_id) }
+
+    it "validates amount_of_labels" do
+      question  = Question.create(tag_list: nil)
+      question2 = Question.create(tag_list: '1,2,3,4,5,10')
+
+      expect(question.errors[:labels].size).to eq(1)
+      expect(question.errors[:labels]).to include('Please set labels (from 1 to 5)')
+      expect(question2.errors[:labels].size).to eq(1)
+      expect(question2.errors[:labels]).to include('Please set labels (from 1 to 5)')
+    end
   end
 
   describe "recent scope" do

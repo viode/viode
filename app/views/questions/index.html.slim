@@ -10,11 +10,12 @@
       .row
         .col-md-6
           - if i.zero?
-            h5 Question [ category ]
+            h5 Question [ labels ]
 
           =' link_to question.title, question
           ' [
-          =' link_to question.category.name, question.category
+          - question.tag_list.each do |label|
+            =' link_to label, '#'
           | ]
         .col-md-2
           - if i.zero?
