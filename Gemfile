@@ -8,6 +8,7 @@ gem 'devise'
 gem 'kaminari'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'font-awesome-sass', '~> 4.3.0'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'sass-rails', '~> 5.0'

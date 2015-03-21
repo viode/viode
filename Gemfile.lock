@@ -89,6 +89,8 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.8)
+    font-awesome-sass (4.3.2.1)
+      sass (~> 3.2)
     formatador (0.2.5)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
@@ -262,6 +264,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  font-awesome-sass (~> 4.3.0)
   guard-livereload
   guard-rspec
   jquery-rails
