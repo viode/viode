@@ -1,7 +1,16 @@
 .row
   .col-md-2
     = link_to 'Ask question', new_question_path, class: 'btn btn-primary btn-block'
+
     h4 Categories
+    ul.list-unstyled
+      - @categories.each do |category|
+        li = link_to category.name, category
+
+    h4 Labels
+    ul.list-unstyled
+      - @labels.each do |label|
+        li = link_to label, '#'
 
   .col-md-10
     - @questions.each_with_index do |question, i|
