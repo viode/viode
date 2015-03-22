@@ -32,6 +32,9 @@ group :development, :test do
 
   gem 'pry-rails'
   gem 'pry-byebug'
+
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 gem 'shoulda-matchers', group: :test
