@@ -1,5 +1,7 @@
 include FactoryGirl::Syntax::Methods
 
+AvatarUploader.enable_processing = false
+
 unless User.exists?(username: 'admin')
   create :confirmed_user, email: 'user@example.com', username: 'admin'
 end
