@@ -1,26 +1,27 @@
-nav.navbar.navbar-default
-  .container
-    .navbar-header
-      button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar-collapse"
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      = link_to 'Viode', root_path, class: 'navbar-brand'
+header
+  nav.navbar.navbar-default
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar-collapse"
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        = link_to 'Viode', root_path, class: 'navbar-brand'
 
-    .collapse.navbar-collapse#navbar-collapse
-      ul.nav.navbar-nav
-        li class=('active' if controller_name == 'questions' && action_name == 'index')
-          = link_to 'Questions', questions_path
-        li class=('active' if controller_name == 'categories' && action_name == 'index')
-          = link_to 'Categories', categories_path
-        li = link_to 'Users', '#'
-        li class=('active' if controller_name == 'questions' && action_name == 'new')
-          = link_to 'ASK', new_question_path
-      ul.nav.navbar-nav.navbar-right
-        - if user_signed_in?
-          li class=('active' if current_page?(current_user))
-            = link_to current_user.username, current_user
-          li = link_to 'Sign out', destroy_user_session_path, method: :delete
-        - else
-          li = link_to 'Sign in', new_user_session_path
+      .collapse.navbar-collapse#navbar-collapse
+        ul.nav.navbar-nav
+          li class=('active' if controller_name == 'questions' && action_name == 'index')
+            = link_to 'Questions', questions_path
+          li class=('active' if controller_name == 'categories' && action_name == 'index')
+            = link_to 'Categories', categories_path
+          li = link_to 'Users', '#'
+          li class=('active' if controller_name == 'questions' && action_name == 'new')
+            = link_to 'ASK', new_question_path
+        ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            li class=('active' if current_page?(current_user))
+              = link_to current_user.username, current_user
+            li = link_to 'Sign out', destroy_user_session_path, method: :delete
+          - else
+            li = link_to 'Sign in', new_user_session_path

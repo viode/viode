@@ -1,6 +1,7 @@
 @import 'font-awesome-sprockets'
 @import 'font-awesome'
 
+$footer-height: 70px
 $brand-color: #AC92EC
 $brand-color-dark: #967ADC
 
@@ -49,8 +50,22 @@ $input-border-focus: $brand-color
   border-bottom: 1px solid #E6E9ED
   border-radius: 3px
 
+html
+  position: relative
+  min-height: 100%
+
 body
+  margin-bottom: $footer-height + 20px
   font-family: 'Open Sans', sans-serif
+
+footer
+  position: absolute
+  bottom: 0
+  width: 100%
+  height: $footer-height
+  background-color: #E6E9ED
+  color: #AAB2BD
+  padding-top: 25px
 
 .alert
   .close
