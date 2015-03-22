@@ -7,6 +7,8 @@ gem 'pg'
 gem 'devise'
 gem 'kaminari'
 gem 'slim-rails'
+gem 'carrierwave'
+gem 'mini_magick', require: false
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'acts-as-taggable-on', '~> 3.4'
