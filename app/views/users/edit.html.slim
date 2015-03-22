@@ -2,11 +2,19 @@
   .col-md-6
     = form_for @user do |f|
       .form-group
+        = f.label :fullname, 'Name'
+        = f.text_field :fullname, class: 'form-control'
+
+      .form-group
         = f.label :email
         = f.email_field :email, class: 'form-control'
 
       .form-group
         = f.label :password
         = f.password_field :password, class: 'form-control'
+
+      .form-group
+        = f.label :bio
+        = f.text_area :bio, rows: 3, class: 'form-control'
 
       = f.submit 'Save', class: 'btn btn-primary'
