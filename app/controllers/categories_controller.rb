@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find params[:id]
+    @category  = Category.find params[:id]
+    @questions = @category.questions.includes(:user).recent.page(params[:page]).per(20)
   end
 end

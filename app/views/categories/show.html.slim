@@ -1,3 +1,28 @@
-h2
-  ' Category
-  = link_to @category.name, @category
+.row
+  .col-md-12
+    h2
+      ' Recent questions in
+      = link_to @category.name, @category
+
+    .question-list
+      - @questions.each do |question|
+        .row.question-summary
+          .col-md-8
+            h4.title = link_to question.title, question
+            ul.tag-list
+              - question.tag_list.each do |label|
+                li = link_to label, '#', class: 'tag'
+          .col-md-1.counter
+            span.number = question.answers.size
+            br
+            span.word = 'answer'.pluralize question.answers.size
+          .col-md-1.counter
+            span.number = question.views
+            br
+            span.word = 'view'.pluralize question.views
+          .col-md-2.details
+            span.author = link_to question.user.username, question.user
+            br
+            span.time = time_tag_for question
+
+    = paginate @questions
