@@ -15,7 +15,7 @@ guard 'livereload' do
   watch(%r{(app|vendor)(/assets/\w+/(.+)\.(sass))}) { |m| "/assets/#{m[3]}.css" }
 end
 
-guard :rspec, cmd: "bundle exec rspec" do
+guard :rspec, cmd: "spring rspec" do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
