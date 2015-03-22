@@ -12,7 +12,8 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav
         li class=('active' if controller_name == 'questions' && action_name == 'index')
           = link_to 'Questions', questions_path
-        li = link_to 'Categories', '#'
+        li class=('active' if controller_name == 'categories' && action_name == 'index')
+          = link_to 'Categories', categories_path
         li = link_to 'Users', '#'
         li class=('active' if controller_name == 'questions' && action_name == 'new')
           = link_to 'ASK', new_question_path
