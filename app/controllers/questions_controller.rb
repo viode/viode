@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @categories = Category.all
+    @categories = Category.limit(5)
     @labels = ActsAsTaggableOn::Tag.most_used
     @questions = Question.includes(:category, :user).recent.page(params[:page]).per(20)
   end
