@@ -2,45 +2,39 @@
   .col-md-2
     = link_to 'Ask question', new_question_path, class: 'btn btn-primary btn-block'
 
-    h4 Categories
-    ul.list-unstyled
-      - @categories.each do |category|
-        li = link_to category.name, category
+    .categories-list
+      h3.title Categories
+      ul.list-unstyled
+        - @categories.each do |category|
+          li = link_to category.name, category
+      = link_to 'All categories', '#', class: 'more'
 
-    h4 Labels
-    ul.list-unstyled
-      - @labels.each do |label|
-        li = link_to label, '#'
+    .labels-list
+      h3.title Labels
+      ul.tag-list
+        - @labels.each do |label|
+          li = link_to label, '#', class: 'tag'
 
   .col-md-10
-    - @questions.each_with_index do |question, i|
-      - unless i.zero?
-        hr
-      .row
-        .col-md-6
-          - if i.zero?
-            h5 Question [ labels ]
-
-          =' link_to question.title, question
-          ' [
-          - question.tag_list.each do |label|
-            =' link_to label, '#'
-          | ]
-        .col-md-2
-          - if i.zero?
-            h5 Author
-          = link_to question.user.username, question.user
-        .col-md-1
-          - if i.zero?
-            h5 Answers
-          = question.answers.size
-        .col-md-1
-          - if i.zero?
-            h5 Views
-          = question.views.size
-        .col-md-2
-          - if i.zero?
-            h5 Time
-          = time_tag_for question
+    .question-list
+      - @questions.each do |question|
+        .row.question-summary
+          .col-md-8
+            h4.title = link_to question.title, question
+            ul.tag-list
+              - question.tag_list.each do |label|
+                li = link_to label, '#', class: 'tag'
+          .col-md-1.counter
+            span.number = question.answers.size
+            br
+            span.word = 'answer'.pluralize question.answers.size
+          .col-md-1.counter
+            span.number = question.views
+            br
+            span.word = 'view'.pluralize question.views
+          .col-md-2.details
+            span.author = link_to question.user.username, question.user
+            br
+            span.time = time_tag_for question
 
     = paginate @questions

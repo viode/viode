@@ -12,6 +12,10 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav
         li class=('active' if controller_name == 'questions' && action_name == 'index')
           = link_to 'Questions', questions_path
+        li = link_to 'Categories', '#'
+        li = link_to 'Users', '#'
+        li class=('active' if controller_name == 'questions' && action_name == 'new')
+          = link_to 'ASK', new_question_path
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li class=('active' if current_page?(current_user))

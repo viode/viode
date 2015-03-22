@@ -1,2 +1,5 @@
-= answer.body
-hr
+.answer
+  .details
+    span.author> = link_to answer.user.username, answer.user
+    span.time = time_tag_for answer
+  p = answer.body

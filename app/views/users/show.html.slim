@@ -1,4 +1,21 @@
-h1 = @user.username
+.row.user-profile
+  .col-md-8
+    h1.username = @user.username
 
-- if @user == current_user
-  = link_to 'edit', edit_user_path(@user)
+    .row
+      .col-md-2
+        = link_to '#', class: 'counter' do
+          p
+            | answers
+            br
+            span.number = @user.answers.size
+      .col-md-2
+        = link_to '#', class: 'counter' do
+          p
+            | questions
+            br
+            span.number = @user.questions.size
+
+  .col-md-4
+    - if @user == current_user
+      = link_to 'edit', edit_user_path(@user), class: 'btn btn-primary'

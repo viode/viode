@@ -12,6 +12,7 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
   # Rails Assets Pipeline
   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+  watch(%r{(app|vendor)(/assets/\w+/(.+)\.(sass))}) { |m| "/assets/#{m[3]}.css" }
 end
 
 guard :rspec, cmd: "bundle exec rspec" do

@@ -1,8 +1,12 @@
-= form_for @user do |f|
-  p = f.label :email
-  p = f.email_field :email
+.row
+  .col-md-6
+    = form_for @user do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control'
 
-  p = f.label :password
-  p = f.password_field :password
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
 
-  = f.submit 'Save'
+      = f.submit 'Save', class: 'btn btn-primary'

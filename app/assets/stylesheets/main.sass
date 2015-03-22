@@ -1,5 +1,171 @@
 @import 'font-awesome-sprockets'
 @import 'font-awesome'
+
+$brand-color: #AC92EC
+$brand-color-dark: #967ADC
+
+$brand-primary: $brand-color
+$link-hover-color: $brand-color-dark
+$link-hover-decoration: none
+$body-bg: #F5F7FA
+$text-color: #434A54
+
+// Alerts
+$alert-link-font-weight: 300
+$alert-info-bg: #4FC0E9
+$alert-info-border: #3BAFDA
+$alert-warning-bg: #FFCE54
+$alert-warning-border: #F6BB42
+$alert-info-text: #fff
+$alert-warning-text: #fff
+$close-color: #fff
+
+// Panels
+$panel-danger-text: #fff
+$panel-danger-border: #DA4453
+$panel-danger-heading-bg: #ED5565
+
+// Navbar
+$navbar-default-bg: $brand-color
+$navbar-default-link-color: #fff
+$navbar-default-link-hover-color: #fff
+$navbar-default-link-active-color: #fff
+$navbar-default-brand-hover-color: #F5F7FA
+
+// Forms
+$input-border-focus: $brand-color
+
 // TODO: import only necessary styles
 @import 'bootstrap-sprockets'
 @import 'bootstrap'
+
+@mixin unstyled-list
+  list-style: none
+  padding-left: 0
+
+@mixin box
+  background-color: #fff
+  border-top: 3px solid $brand-color-dark
+  border-bottom: 1px solid #E6E9ED
+  border-radius: 3px
+
+body
+  font-family: 'Open Sans', sans-serif
+
+.alert
+  .close
+    opacity: 1
+    padding: 0px 5px
+    background-color: rgba(0, 0, 0, 0.2)
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    border-radius: 3px
+    text-shadow: none
+    &:hover, &:focus
+      opacity: 1
+
+.col-center
+  float: none
+  margin: 0 auto
+
+.auth
+  @include box
+  label
+    padding-left: 0
+  .checkbox
+    margin-left: 20px
+  .title
+    text-align: center
+    font-weight: 300
+
+.user-profile
+  .username
+    margin-top: 0
+  .counter
+    text-align: center
+    .number
+      font-weight: bold
+
+.question-list
+  background-color: #fff
+  padding: 0 15px
+  border: 3px solid #E6E9ED
+  border-radius: 3px
+  .question-summary
+    padding: 10px 0
+    border-top: 1px solid #E6E9ED
+    .title
+      margin-top: 0
+    .counter
+      text-align: center
+      padding-top: 10px
+      .number
+        font-weight: bold
+    &:first-child
+      border: none
+    &:nth-of-type(even)
+      background-color: #F5F7FA
+      .title
+        a
+          color: #656D78
+
+.question
+  @include box
+  padding: 0 10px 5px 10px
+  .title
+    margin-top: 10px
+
+.question, .question-summary
+  .tag-list
+    @include unstyled-list
+    li
+      display: inline-block
+  .details
+    .author
+      font-weight: bold
+    .time
+      color: #AAB2BD
+
+.answer
+  @include box
+  padding: 10px 10px 5px 10px
+  margin-top: 20px
+  .details
+    margin-bottom: 5px
+    .author
+      font-weight: bold
+    .time
+      color: #AAB2BD
+
+.categories-list
+  @include box
+  padding: 0 10px 10px 10px
+  margin-top: 20px
+  .title
+    margin: 10px 0
+    font-weight: 300
+    color: #AAB2BD
+  .more
+    font-weight: bold
+
+.labels-list
+  @include box
+  padding: 0 10px
+  margin-top: 20px
+  .title
+    margin: 10px 0 15px 0
+    font-weight: 300
+    color: #AAB2BD
+  .tag-list
+    @include unstyled-list
+    li
+      margin-bottom: 12px
+
+.tag
+  padding: 4px 8px
+  background-color: $brand-color
+  color: #fff
+  border-radius: 3px
+  &:hover, &:focus
+    color: #fff
+    background-color: $brand-color-dark
+    text-decoration: none
