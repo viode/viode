@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/twitter/activerecord-reputation-system.git
+  revision: fd174179d3b4e43efa0165126a9ec5252605c840
+  specs:
+    activerecord-reputation-system (3.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -262,6 +268,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-reputation-system!
   acts-as-taggable-on (~> 3.4)
   better_errors
   binding_of_caller
