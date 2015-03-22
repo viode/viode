@@ -4,16 +4,18 @@
 
     .categories-list
       h3.title Categories
-      ul.list-unstyled
-        - @categories.each do |category|
-          li = link_to category.name, category
-      = link_to 'All categories', categories_path, class: 'more'
+      .box
+        ul.list-unstyled
+          - @categories.each do |category|
+            li = link_to category.name, category
+        = link_to 'All categories', categories_path, class: 'more'
 
     .labels-list
       h3.title Labels
-      ul.tag-list
-        - @labels.each do |label|
-          li = link_to label, '#', class: 'tag'
+      .box
+        ul.tag-list
+          - @labels.each do |label|
+            li = link_to label, '#', class: 'tag'
 
   .col-md-10
     .question-list
