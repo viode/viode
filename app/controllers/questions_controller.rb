@@ -29,6 +29,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :category_id, :tag_list)
+    params.require(:question).permit(:title, :body, :category_id, :tag_list)
   end
 end
