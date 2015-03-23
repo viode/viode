@@ -36,7 +36,7 @@
             span.word = 'view'.pluralize question.views
           .col-md-2.details
             - if question.anonymous?
-              span.author> Anonymous
+              span.author Anonymous
             - else
               span.author = link_to question.user.username, question.user
             br
