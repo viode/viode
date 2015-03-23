@@ -10,7 +10,7 @@ end
 36.times { create :category }
 
 Category.first(3).each do |category|
-  rand(2..5).times { create :question, user: User.all.sample, category: category }
+  rand(2..5).times { create :question, user: User.all.sample, category: category, created_at: Faker::Date.backward(20) }
 end
 
 Question.all.each do |question|
