@@ -2,4 +2,8 @@
   = f.label :body, 'Your Answer'
   = f.text_area :body, rows: 5, class: 'form-control'
 
+.checkbox
+  = f.check_box :anonymous
+  = f.label :anonymous, 'Make anonymous'
+
 = f.submit 'Add', class: 'btn btn-primary'
