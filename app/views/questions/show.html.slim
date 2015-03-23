@@ -14,7 +14,10 @@
           ' Views:
           = @question.views
         li
-          span.author> = link_to @question.user.username, @question.user
+          - if @question.anonymous?
+            span.author> Anonymous
+          - else
+            span.author> = link_to @question.user.username, @question.user
           span.time = time_tag_for @question
 
       p = @question.body

@@ -7,5 +7,10 @@ FactoryGirl.define do
     views      { rand(0..20) }
     tag_list   { Faker::Lorem.words.join(',') }
     created_at { Faker::Date.backward(20) }
+    anonymous false
+
+    factory :anonymous_question do
+      anonymous true
+    end
   end
 end

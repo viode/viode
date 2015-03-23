@@ -35,7 +35,10 @@
             br
             span.word = 'view'.pluralize question.views
           .col-md-2.details
-            span.author = link_to question.user.username, question.user
+            - if question.anonymous?
+              span.author> Anonymous
+            - else
+              span.author = link_to question.user.username, question.user
             br
             span.time = time_tag_for question
 
