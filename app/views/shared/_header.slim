@@ -16,9 +16,9 @@ header
           li class=('active' if controller_name == 'categories' && action_name == 'index')
             = link_to 'Categories', categories_path
           li = link_to 'Users', '#'
-          li class=('active' if controller_name == 'questions' && action_name == 'new')
-            = link_to 'ASK', new_question_path
         ul.nav.navbar-nav.navbar-right
+          li class=('active' if controller_name == 'questions' && action_name == 'new')
+            = link_to 'Ask question', new_question_path
           - if user_signed_in?
             li.dropdown
               = link_to current_user.username, current_user, class: 'dropdown-toggle', data: { toggle: 'dropdown' }
