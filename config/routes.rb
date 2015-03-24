@@ -8,6 +8,13 @@ Rails.application.routes.draw do
     post  'register' => 'devise/registrations#create', as: :user_registration
   end
 
+  get '/settings', to: redirect('/settings/account')
+  namespace :settings do
+    resource :account, only: [:show, :update]
+    resource :profile, only: [:show, :update]
+    resource :password, only: [:show, :update]
+  end
+
   resources :categories, only: [:index, :show]
   resources :users, only: [:show, :edit, :update]
   resources :questions, only: [:index, :show, :new, :create] do

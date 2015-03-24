@@ -1,5 +1,5 @@
 - flash.each do |type, message|
-  .alert.alert-dismissible class=(type == 'alert' ? 'alert-warning' : 'alert-info')
+  .alert.alert-dismissible class=flash_class(type)
     button.close data-dismiss="alert" title="Close" &times;
     - if type == 'alert'
       span.fa.fa-exclamation-circle.fa-lg>

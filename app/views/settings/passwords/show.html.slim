@@ -1,0 +1,20 @@
+.row
+  .col-md-6
+    = render 'shared/error_messages', target: current_user
+
+    = form_for current_user, url: settings_password_path do |f|
+      .form-group
+        = f.label :current_password
+        = f.password_field :current_password, class: 'form-control'
+
+      .form-group
+        = f.label :password
+        = f.password_field :password, autocomplete: 'off', class: 'form-control'
+
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
+
+      = f.submit 'Save', class: 'btn btn-primary'
+  .col-md-3.col-md-offset-3
+    = render 'shared/settings_sidebar'

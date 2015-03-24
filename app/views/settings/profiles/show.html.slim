@@ -1,0 +1,30 @@
+.row
+  .col-md-6
+    = render 'shared/error_messages', target: current_user
+
+    = form_for current_user, url: settings_profile_path do |f|
+      .row
+        .col-md-3
+          p = image_tag current_user.avatar.url, size: '80', title: 'avatar'
+
+        .col-md-9
+          .form-group
+            - if current_user.avatar.present?
+                =' f.label :remove_avatar
+                = f.check_box :remove_avatar
+                p.help-block Remove current avatar to upload a new one.
+            - else
+                = f.label :avatar
+                = f.file_field :avatar
+
+      .form-group
+        = f.label :fullname, 'Name'
+        = f.text_field :fullname, class: 'form-control'
+
+      .form-group
+        = f.label :bio
+        = f.text_area :bio, rows: 3, class: 'form-control'
+
+      = f.submit 'Save', class: 'btn btn-primary'
+  .col-md-3.col-md-offset-3
+    = render 'shared/settings_sidebar'

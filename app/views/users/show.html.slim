@@ -26,4 +26,4 @@
 
   .col-md-4
     - if @user == current_user
-      = link_to 'edit', edit_user_path(@user), class: 'btn btn-primary'
+      = link_to 'edit', settings_profile_path, class: 'btn btn-primary'

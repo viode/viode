@@ -1,0 +1,21 @@
+.row
+  .col-md-6
+    = render 'shared/error_messages', target: current_user
+
+    = form_for current_user, url: settings_account_path do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control'
+
+        - if current_user.unconfirmed_email
+          p.help-block
+            ' Please confirm email:
+            = current_user.unconfirmed_email
+
+      .form-group
+        = f.label :current_password
+        = f.password_field :current_password, class: 'form-control'
+
+      = f.submit 'Save', class: 'btn btn-primary'
+  .col-md-3.col-md-offset-3
+    = render 'shared/settings_sidebar'
