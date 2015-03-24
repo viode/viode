@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show]
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show]
   resources :questions, only: [:index, :show, :new, :create] do
     resources :answers, only: [:new, :create]
   end
