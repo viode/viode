@@ -30,4 +30,12 @@ module AnswersHelper
       end
     end
   end
+
+  def answer_author(answer)
+    if answer.anonymous?
+      'Anonymous'
+    else
+      link_to answer.author.username, answer.author
+    end
+  end
 end

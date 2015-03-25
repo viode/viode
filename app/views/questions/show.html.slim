@@ -17,10 +17,7 @@
               span.fa.fa-arrow-down.fa-lg
         .col-md-10
           .details
-            - if @question.anonymous?
-              span.author> Anonymous
-            - else
-              span.author> = link_to @question.author.username, @question.author
+            span.author> = question_author(@question)
             span.time = time_tag_for @question
           = simple_format @question.body
 
