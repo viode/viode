@@ -1,8 +1,15 @@
-.answer
-  .details
-    - if answer.anonymous?
-      span.author> Anonymous
-    - else
-      span.author> = link_to answer.user.username, answer.user
-    span.time = time_tag_for answer
-  p = answer.body
+.answer data-answer-id=answer.id
+  .row
+    .col-md-2.votes
+      .count.js-answer-votes = answer.votes
+      .vote-buttons
+        =' link_to_answer_upvote(answer)
+        = link_to_answer_downvote(answer)
+    .col-md-10
+      .details
+        - if answer.anonymous?
+          span.author> Anonymous
+        - else
+          span.author> = link_to answer.user.username, answer.user
+        span.time = time_tag_for answer
+      = simple_format answer.body

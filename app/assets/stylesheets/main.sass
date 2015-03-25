@@ -107,6 +107,27 @@ footer
     .number
       font-weight: bold
 
+.votes
+  .count
+    padding: 12px
+    text-align: center
+    color: #fff
+    background-color: $brand-color
+    font-weight: bold
+    font-size: 24px
+    border-radius: 3px
+  .vote-buttons
+    margin-top: 12px
+    a
+      padding: 8px 12px
+      border: 1px solid $brand-color
+      border-radius: 3px
+      color: $brand-color
+      background-color: #fff
+      &.active
+        color: #fff
+        background-color: $brand-color
+
 .question-list
   background-color: #fff
   padding: 0 15px
@@ -135,6 +156,11 @@ footer
   padding: 0 10px 5px 10px
   .title
     margin-top: 10px
+  .separator
+    border-top: 1px solid #CCD1D9
+    margin: 5px 0
+  .content
+    min-height: 102px
 
 .question, .question-summary
   .tag-list
@@ -151,6 +177,7 @@ footer
   +box
   padding: 10px 10px 5px 10px
   margin-top: 20px
+  min-height: 120px
   .details
     margin-bottom: 5px
     .author

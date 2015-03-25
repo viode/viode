@@ -5,30 +5,39 @@
       ul.tag-list
         - @question.tag_list.each do |label|
           li = link_to label, '#', class: 'tag'
+      .separator
 
-      ul.list-inline.details
-        li
-          ' Answers:
-          =' @question.answers.size
-        li
-          ' Views:
-          = @question.views
-        li
-          - if @question.anonymous?
-            span.author> Anonymous
-          - else
-            span.author> = link_to @question.user.username, @question.user
-          span.time = time_tag_for @question
-
-      p = @question.body
+      .row.content
+        .col-md-2.votes
+          .count 0
+          .vote-buttons
+            =' link_to '#', class: 'active' do
+              span.fa.fa-arrow-up.fa-lg
+            = link_to '#' do
+              span.fa.fa-arrow-down.fa-lg
+        .col-md-10
+          .details
+            - if @question.anonymous?
+              span.author> Anonymous
+            - else
+              span.author> = link_to @question.user.username, @question.user
+            span.time = time_tag_for @question
+          = simple_format @question.body
 
     h4 Answers
     = render partial: 'answers/answer', collection: @question.answers
 
     - if user_signed_in?
-      = form_for [@question, @question.answers.new] do |f|
+      = form_for [@question, Answer.new] do |f|
         = render partial: 'answers/form', locals: { f: f }
 
     h4 = link_to @question.category.name, @question.category
   .col-md-4
+    ul.list-inline
+      li
+        ' Answers:
+        =' @question.answers.size
+      li
+        ' Views:
+        = @question.views
     h4 Related questions
