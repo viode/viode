@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   def index
     @categories = Category.limit(5)
     @labels = ActsAsTaggableOn::Tag.most_used
-    @questions = Question.includes(:category, :user).recent.page(params[:page]).per(20)
+    @questions = Question.includes(:author, :category).recent.page(params[:page]).per(20)
   end
 
   def show

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe QuestionsController, type: :controller do
   let(:user)     { create :confirmed_user }
   let(:category) { create :category }
-  let(:question) { create :question, user: user }
+  let(:question) { create :question, author: user }
 
   describe "GET #index" do
     it "returns http success" do

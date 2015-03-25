@@ -20,7 +20,7 @@
             - if @question.anonymous?
               span.author> Anonymous
             - else
-              span.author> = link_to @question.user.username, @question.user
+              span.author> = link_to @question.author.username, @question.author
             span.time = time_tag_for @question
           = simple_format @question.body
 

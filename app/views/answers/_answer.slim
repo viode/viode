@@ -10,6 +10,6 @@
         - if answer.anonymous?
           span.author> Anonymous
         - else
-          span.author> = link_to answer.user.username, answer.user
+          span.author> = link_to answer.author.username, answer.author
         span.time = time_tag_for answer
       = simple_format answer.body

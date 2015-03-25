@@ -4,7 +4,7 @@ RSpec.describe Question, type: :model do
   let(:user) { create :confirmed_user }
 
   describe "relations" do
-    it { should belong_to(:user) }
+    it { should belong_to(:author).class_name('User') }
     it { should belong_to(:category) }
     it { should have_many(:answers).dependent(:destroy) }
   end
@@ -26,8 +26,8 @@ RSpec.describe Question, type: :model do
 
   describe "recent scope" do
     it "orders by created_at date in descending order" do
-      q1 = create :question, user: user, created_at: 1.day.ago
-      q2 = create :question, user: user
+      q1 = create :question, author: user, created_at: 1.day.ago
+      q2 = create :question, author: user
 
       expect(Question.recent).to eq([q2, q1])
     end

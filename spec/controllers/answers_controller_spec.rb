@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
   let(:user)     { create :confirmed_user }
-  let(:question) { create :question, user: user }
-  let(:answer)   { create :answer, question: question, user: user }
+  let(:question) { create :question, author: user }
+  let(:answer)   { create :answer, question: question, author: user }
 
   describe "GET #new" do
     context "when not signed in" do
