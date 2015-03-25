@@ -1,6 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :user
-  belongs_to :question
+  belongs_to :question, counter_cache: true
 
   has_reputation :upvotes, source: :user
   has_reputation :downvotes, source: :user
