@@ -1,6 +1,6 @@
 .row
   .col-md-8
-    .question
+    .question data-question-id=@question.id
       h3.title = @question.title
       ul.tag-list
         - @question.tag_list.each do |label|
@@ -9,12 +9,10 @@
 
       .row.content
         .col-md-2.votes
-          .count 0
+          .count.js-question-votes = @question.votes
           .vote-buttons
-            => link_to '#', class: 'active' do
-              span.fa.fa-arrow-up.fa-lg
-            = link_to '#' do
-              span.fa.fa-arrow-down.fa-lg
+            => link_to_question_upvote(@question)
+            = link_to_question_downvote(@question)
         .col-md-10
           .details
             span.avatar> = author_avatar(@question)

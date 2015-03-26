@@ -43,7 +43,6 @@ RSpec.describe AnswersController, type: :controller do
     end
   end
 
-
   describe "POST #upvote" do
     context "when not signed in" do
       it "redirects to sign in page" do

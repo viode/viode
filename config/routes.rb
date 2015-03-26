@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :users, only: [:show]
   resources :questions, only: [:index, :show, :new, :create] do
+    member do
+      post :upvote
+      post :downvote
+    end
     resources :answers, only: [:new, :create]
   end
   resources :answers, only: [] do

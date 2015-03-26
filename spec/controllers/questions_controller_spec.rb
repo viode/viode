@@ -63,4 +63,54 @@ RSpec.describe QuestionsController, type: :controller do
       end
     end
   end
+
+  describe "POST #upvote" do
+    context "when not signed in" do
+      it "redirects to sign in page" do
+        post :upvote, id: question.id
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "when signed in" do
+      before { sign_in user }
+
+      it "updates answer reputation for upvotes and redirects to answer question" do
+        expect {
+          post :upvote, id: question.id
+        }.to change { question.reputation_for(:upvotes) }.by(1)
+        expect(response).to redirect_to(question)
+      end
+
+      it "returns http success for remote request" do
+        xhr :post, :upvote, id: question.id
+        expect(response).to be_success
+      end
+    end
+  end
+
+  describe "POST #downvote" do
+    context "when not signed in" do
+      it "redirects to sign in page" do
+        post :downvote, id: question.id
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "when signed in" do
+      before { sign_in user }
+
+      it "updates answer reputation for downvotes and redirects to answer question" do
+        expect {
+          post :downvote, id: question.id
+        }.to change { question.reputation_for(:downvotes) }.by(-1)
+        expect(response).to redirect_to(question)
+      end
+
+      it "returns http success for remote request" do
+        xhr :post, :downvote, id: question.id
+        expect(response).to be_success
+      end
+    end
+  end
 end

@@ -5,10 +5,18 @@ class Question < ActiveRecord::Base
   belongs_to :category
   has_many :answers, dependent: :destroy
 
+  has_reputation :upvotes, source: :user
+  has_reputation :downvotes, source: :user
+  has_reputation :votes, source: [{ reputation: :upvotes }, { reputation: :downvotes }]
+
   validates :title, :category_id, presence: true
   validate :amount_of_labels
 
   scope :recent, -> { order('created_at DESC') }
+
+  def votes
+    reputation_for(:votes).to_i
+  end
 
   private
 

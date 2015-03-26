@@ -1,0 +1,8 @@
+var $question = $('div[data-question-id=<%= @question.id %>]'),
+    $questionVotes = $question.find('.js-question-votes'),
+    $questionUpvoteLink = $question.find('.js-question-upvote-link'),
+    $questionDownvoteLink = $question.find('.js-question-downvote-link');
+
+$questionVotes.text('<%= @question.votes %>');
+$questionUpvoteLink.replaceWith('<%= escape_javascript(link_to_question_upvote @question) %>');
+$questionDownvoteLink.replaceWith('<%= escape_javascript(link_to_question_downvote @question) %>');

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
-  let(:user) { create :confirmed_user }
+  let(:user)     { create :confirmed_user }
+  let(:question) { create :question, author: user }
 
   describe "relations" do
     it { should belong_to(:author).class_name('User') }
@@ -30,6 +31,36 @@ RSpec.describe Question, type: :model do
       q2 = create :question, author: user
 
       expect(Question.recent).to eq([q2, q1])
+    end
+  end
+
+  describe "has_reputation" do
+    it "has reputation upvotes" do
+      expect(question.reputation_for(:upvotes)).to eq(0)
+    end
+
+    it "has reputation downvotes" do
+      expect(question.reputation_for(:downvotes)).to eq(0)
+    end
+
+    it "has reputation votes" do
+      expect(question.reputation_for(:votes)).to eq(0)
+    end
+
+    it "changes reputation for upvotes" do
+      question.add_evaluation :upvotes, 1, user
+      expect(question.reputation_for(:upvotes)).to eq(1)
+    end
+
+    it "changes reputation for downvotes" do
+      question.add_evaluation :downvotes, -1, user
+      expect(question.reputation_for(:downvotes)).to eq(-1)
+    end
+
+    it "changes reputation for votes" do
+      question.add_evaluation :upvotes, 5, user
+      question.add_evaluation :downvotes, -2, user
+      expect(question.reputation_for(:votes)).to eq(3)
     end
   end
 end
