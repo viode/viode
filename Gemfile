@@ -37,4 +37,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
 end
 
-gem 'shoulda-matchers', group: :test
+group :test do
+  gem 'capybara'
+  gem 'shoulda-matchers'
+end
