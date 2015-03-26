@@ -8,6 +8,13 @@ Rails.application.routes.draw do
     post  'register' => 'devise/registrations#create', as: :user_registration
   end
 
+  concern :votable do
+    member do
+      post :upvote
+      post :downvote
+    end
+  end
+
   get '/settings', to: redirect('/settings/account')
   namespace :settings do
     resource :account, only: [:show, :update]
@@ -17,19 +24,10 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :users, only: [:show]
-  resources :questions, only: [:index, :show, :new, :create] do
-    member do
-      post :upvote
-      post :downvote
-    end
+  resources :questions, only: [:index, :show, :new, :create], concerns: :votable do
     resources :answers, only: [:new, :create]
   end
-  resources :answers, only: [] do
-    member do
-      post :upvote
-      post :downvote
-    end
-  end
+  resources :answers, only: [], concerns: :votable
 
   root 'questions#index'
 end

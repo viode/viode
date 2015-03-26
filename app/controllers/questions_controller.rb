@@ -27,13 +27,7 @@ class QuestionsController < ApplicationController
   end
 
   def upvote
-    # TODO: refactor to a custom method
-    if @question.has_evaluation?(:upvotes, current_user)
-      @question.delete_evaluation(:upvotes, current_user)
-    else
-      @question.delete_evaluation(:downvotes, current_user)
-      @question.add_evaluation(:upvotes, 1, current_user)
-    end
+    @question.upvote_by current_user
 
     respond_to do |format|
       format.html { redirect_to @question }
@@ -42,13 +36,7 @@ class QuestionsController < ApplicationController
   end
 
   def downvote
-    # TODO: refactor to a custom method
-    if @question.has_evaluation?(:downvotes, current_user)
-      @question.delete_evaluation(:downvotes, current_user)
-    else
-      @question.delete_evaluation(:upvotes, current_user)
-      @question.add_evaluation(:downvotes, -1, current_user)
-    end
+    @question.downvote_by current_user
 
     respond_to do |format|
       format.html { redirect_to @question }
