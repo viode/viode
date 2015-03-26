@@ -26,8 +26,6 @@
     - if user_signed_in?
       = form_for [@question, Answer.new] do |f|
         = render partial: 'answers/form', locals: { f: f }
-
-    h4 = link_to @question.category.name, @question.category
   .col-md-4
     ul.list-inline
       li
@@ -36,4 +34,15 @@
       li
         ' Views:
         = @question.views
+
     h4 Related questions
+    ul.list-unstyled
+      - @related_questions.each do |question|
+        li = link_to question.title, question
+
+    h4
+      ' More from
+      = link_to @question.category.name, @question.category
+    ul.list-unstyled
+      - @category_questions.each do |question|
+        li = link_to question.title, question

@@ -9,6 +9,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @category_questions = @question.category.questions.limit(5)
+    @related_questions = Question.related_to(@question).limit(5)
     Question.where(id: @question.id).update_all('views=views+1')
   end
 
