@@ -20,7 +20,7 @@
           '
           em
             | (
-            =' @minimum_password_length
+            => @minimum_password_length
             | characters minimum)
 
         = f.password_field :password, autocomplete: 'off', class: 'form-control'

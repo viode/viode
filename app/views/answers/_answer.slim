@@ -3,7 +3,7 @@
     .col-md-2.votes
       .count.js-answer-votes = answer.votes
       .vote-buttons
-        =' link_to_answer_upvote(answer)
+        => link_to_answer_upvote(answer)
         = link_to_answer_downvote(answer)
     .col-md-10
       .details

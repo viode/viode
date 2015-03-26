@@ -10,7 +10,7 @@
         .col-md-9
           .form-group
             - if current_user.avatar.present?
-              =' f.label :remove_avatar
+              => f.label :remove_avatar
               = f.check_box :remove_avatar
               p.help-block Remove current avatar to upload a new one.
             - else

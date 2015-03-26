@@ -11,7 +11,7 @@
         .col-md-2.votes
           .count 0
           .vote-buttons
-            =' link_to '#', class: 'active' do
+            => link_to '#', class: 'active' do
               span.fa.fa-arrow-up.fa-lg
             = link_to '#' do
               span.fa.fa-arrow-down.fa-lg
@@ -34,7 +34,7 @@
     ul.list-inline
       li
         ' Answers:
-        =' @question.answers_count
+        => @question.answers_count
       li
         ' Views:
         = @question.views
