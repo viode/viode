@@ -7,6 +7,7 @@
         = link_to_answer_downvote(answer)
     .col-md-10
       .details
+        span.avatar> = author_avatar(answer)
         span.author> = answer_author(answer)
         span.time = time_tag_for answer
       = simple_format answer.body

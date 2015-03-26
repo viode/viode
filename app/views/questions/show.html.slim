@@ -17,6 +17,7 @@
               span.fa.fa-arrow-down.fa-lg
         .col-md-10
           .details
+            span.avatar> = author_avatar(@question)
             span.author> = question_author(@question)
             span.time = time_tag_for @question
           = simple_format @question.body
@@ -33,7 +34,7 @@
     ul.list-inline
       li
         ' Answers:
-        =' @question.answers.size
+        =' @question.answers_count
       li
         ' Views:
         = @question.views

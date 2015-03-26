@@ -1,6 +1,9 @@
-.row
+.row.category
+  h3.title Categories
+
   - @categories.each_slice(12) do |categories|
     .col-md-4
-      ul.list-unstyled
-        - categories.each do |category|
-          li = link_to category.name, category
+      .box
+        ul.list-unstyled
+          - categories.each do |category|
+            li = link_to category.name, category

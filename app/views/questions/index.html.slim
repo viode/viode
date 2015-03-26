@@ -35,6 +35,7 @@
             br
             span.word = 'view'.pluralize question.views
           .col-md-2.details
+            span.avatar> = author_avatar(question)
             span.author = question_author(question)
             br
             span.time = time_tag_for question

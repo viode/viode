@@ -16,7 +16,7 @@
   = f.text_field :tag_list, class: 'form-control'
 
 .checkbox
-  = f.check_box :anonymous
+  = f.check_box :anonymous, class: 'no-offset'
   = f.label :anonymous, 'Make anonymous'
 
 = f.submit 'Add question', class: 'btn btn-primary'

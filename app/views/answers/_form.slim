@@ -3,7 +3,7 @@
   = f.text_area :body, rows: 5, class: 'form-control'
 
 .checkbox
-  = f.check_box :anonymous
+  = f.check_box :anonymous, class: 'no-offset'
   = f.label :anonymous, 'Make anonymous'
 
 = f.submit 'Add', class: 'btn btn-primary'

@@ -1,6 +1,6 @@
 .row.user-profile
   .col-md-3
-    = image_tag @user.avatar.url, size: '250', title: 'avatar'
+    = image_tag @user.avatar.url, size: '250', alt: @user.username
     p
       ' User since
       = @user.created_at.strftime '%d.%m.%y'
