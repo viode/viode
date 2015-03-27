@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: [:show, :upvote, :downvote]
 
   def index
-    @categories = Category.limit(5)
+    @top_categories = Category.popular.limit(5)
     @labels = ActsAsTaggableOn::Tag.most_used
     @questions = Question.includes(:author, :category).recent.page(params[:page]).per(20)
   end
