@@ -9,7 +9,7 @@
 
 .form-group
   = f.label :category_id, 'Category'
-  = f.select :category_id, Category.all.map {|c| [c.name, c.id] }, { prompt: true }, class: 'form-control'
+  = f.select :category_id, Category.order(:name).map {|c| [c.name, c.id] }, { prompt: true }, class: 'form-control'
 
 .form-group
   = f.label :tag_list, 'Labels'
