@@ -12,6 +12,10 @@ class Question < ActiveRecord::Base
 
   scope :recent, -> { order('created_at DESC') }
 
+  def increment_views
+    Question.where(id: id).update_all('views=views+1')
+  end
+
   private
 
   def self.related_to(question)

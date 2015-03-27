@@ -34,6 +34,14 @@ RSpec.describe Question, type: :model do
     end
   end
 
+  describe "#increment_views" do
+    it "increments question views" do
+      views = question.views
+      question.increment_views
+      expect(question.reload.views).to eq(views+1)
+    end
+  end
+
   describe "has_reputation" do
     it "has reputation upvotes" do
       expect(question.reputation_for(:upvotes)).to eq(0)
