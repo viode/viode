@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
 
+  validates :bio, length: { maximum: 400 }
+  validates :fullname, length: { in: 2..90 }, allow_blank: true
+  validates :username, length: { in: 3..20 },
+            format: { with: /\A\w+\z/, message: 'can contain only letters, numbers and underscore' }
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   private
