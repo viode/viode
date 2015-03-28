@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
             format: { with: /\A\w+\z/, message: 'can contain only letters, numbers and underscore' }
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
+  def to_param
+    username
+  end
+
   private
 
   def self.find_for_database_authentication(warden_conditions)

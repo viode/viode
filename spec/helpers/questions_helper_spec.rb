@@ -86,7 +86,7 @@ RSpec.describe QuestionsHelper, type: :helper do
 
     context "when not anonymous" do
       it "returns link to author" do
-        expected = "<a href=\"/users/#{user.id}\">#{user.username}</a>"
+        expected = "<a href=\"/users/#{user.username}\">#{user.username}</a>"
         expect(helper.question_author(question)).to eq(expected)
       end
     end

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show]
-  resources :users, only: [:show]
+  resources :users, only: [:show], param: :username
   resources :questions, only: [:index, :show, :new, :create], concerns: :votable do
     resources :answers, only: [:new, :create]
   end
