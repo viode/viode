@@ -2,6 +2,7 @@ class Question < ActiveRecord::Base
   include Votable
 
   acts_as_taggable
+  acts_as_url :title, url_attribute: :permalink
 
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
