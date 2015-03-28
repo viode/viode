@@ -6,6 +6,7 @@ gem 'pg'
 
 gem 'devise'
 gem 'kaminari'
+gem 'stringex'
 gem 'slim-rails'
 gem 'carrierwave'
 gem 'mini_magick', require: false
