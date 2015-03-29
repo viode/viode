@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   get '/ask', to: redirect('/questions/new')
-  get '/q/:id', to: redirect('/questions/%{id}')
+  get '/q/:id', to: redirect('/questions/%{id}'), as: :question_short
   get '/settings', to: redirect('/settings/profile')
 
   namespace :settings do
