@@ -1,0 +1,19 @@
+.row.question-summary
+  .col-md-8
+    h4.title = link_to question.title, question
+    ul.tag-list
+      - question.tag_list.each do |label|
+        li = link_to label, tag_path(label), class: 'tag'
+  .col-md-1.counter
+    span.number = question.answers.size
+    br
+    span.word = 'answer'.pluralize question.answers_count
+  .col-md-1.counter
+    span.number = question.views
+    br
+    span.word = 'view'.pluralize question.views
+  .col-md-2.details
+    span.avatar> = author_avatar(question)
+    span.author = question_author(question)
+    br
+    span.time = time_tag_for question

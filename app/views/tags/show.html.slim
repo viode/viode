@@ -5,24 +5,6 @@
       = link_to @tag.name, tag_path(@tag.name)
 
     .question-list
-      - @questions.each do |question|
-        .row.question-summary
-          .col-md-8
-            h4.title = link_to question.title, question
-            ul.tag-list
-              - question.tag_list.each do |label|
-                li = link_to label, '#', class: 'tag'
-          .col-md-1.counter
-            span.number = question.answers.size
-            br
-            span.word = 'answer'.pluralize question.answers.size
-          .col-md-1.counter
-            span.number = question.views
-            br
-            span.word = 'view'.pluralize question.views
-          .col-md-2.details
-            span.author = link_to question.author.username, question.author
-            br
-            span.time = time_tag_for question
+      = render partial: 'questions/question', collection: @questions
 
     = paginate @questions
