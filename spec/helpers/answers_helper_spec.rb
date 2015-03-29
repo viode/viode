@@ -21,21 +21,19 @@ RSpec.describe AnswersHelper, type: :helper do
       end
 
       context "when user not upvoted answer" do
-        it "returns link to upvote answer with 'upvote' class" do
-          expect(helper.link_to_answer_upvote(answer)).to eq(
-            "<a class=\" js-answer-upvote-link\" data-disable-with=\"&lt;span class=&quot;fa fa-spinner fa-pulse fa-lg&quot;&gt;&lt;/span&gt;\" " \
-            "data-remote=\"true\" rel=\"nofollow\" data-method=\"post\" href=\"/answers/777/upvote\"><span class=\"fa fa-arrow-up fa-lg\"></span></a>"
-          )
+        it "returns link to upvote answer without 'active' class" do
+          upvote_link = helper.link_to_answer_upvote(answer)
+          expect(upvote_link).to start_with('<a class=" js-answer-upvote-link" data-disable-with=')
+          expect(upvote_link).to end_with('<span class="fa fa-arrow-up fa-lg"></span></a>')
         end
       end
 
       context "when user upvoted answer" do
-        it "returns link to upvote answer with 'upvoted' class" do
+        it "returns link to upvote answer with 'active' class" do
           answer.add_evaluation :upvotes, 1, user
-          expect(helper.link_to_answer_upvote(answer)).to eq(
-            "<a class=\"active js-answer-upvote-link\" data-disable-with=\"&lt;span class=&quot;fa fa-spinner fa-pulse fa-lg&quot;&gt;&lt;/span&gt;\" " \
-            "data-remote=\"true\" rel=\"nofollow\" data-method=\"post\" href=\"/answers/777/upvote\"><span class=\"fa fa-arrow-up fa-lg\"></span></a>"
-          )
+          upvote_link = helper.link_to_answer_upvote(answer)
+          expect(upvote_link).to start_with('<a class="active js-answer-upvote-link" data-disable-with=')
+          expect(upvote_link).to end_with('<span class="fa fa-arrow-up fa-lg"></span></a>')
         end
       end
     end
@@ -57,21 +55,19 @@ RSpec.describe AnswersHelper, type: :helper do
       end
 
       context "when user not downvoted answer" do
-        it "returns link to downvote answer with 'downvote' class" do
-          expect(helper.link_to_answer_downvote(answer)).to eq(
-            "<a class=\" js-answer-downvote-link\" data-disable-with=\"&lt;span class=&quot;fa fa-spinner fa-pulse fa-lg&quot;&gt;&lt;/span&gt;\" " \
-            "data-remote=\"true\" rel=\"nofollow\" data-method=\"post\" href=\"/answers/777/downvote\"><span class=\"fa fa-arrow-down fa-lg\"></span></a>"
-          )
+        it "returns link to downvote answer without 'active' class" do
+          downvote_link = helper.link_to_answer_downvote(answer)
+          expect(downvote_link).to start_with('<a class=" js-answer-downvote-link" data-disable-with=')
+          expect(downvote_link).to end_with('<span class="fa fa-arrow-down fa-lg"></span></a>')
         end
       end
 
       context "when user downvoted answer" do
-        it "returns link to downvote answer with 'downvoted' class" do
+        it "returns link to downvote answer with 'active' class" do
           answer.add_evaluation :downvotes, -1, user
-          expect(helper.link_to_answer_downvote(answer)).to eq(
-            "<a class=\"active js-answer-downvote-link\" data-disable-with=\"&lt;span class=&quot;fa fa-spinner fa-pulse fa-lg&quot;&gt;&lt;/span&gt;\" " \
-            "data-remote=\"true\" rel=\"nofollow\" data-method=\"post\" href=\"/answers/777/downvote\"><span class=\"fa fa-arrow-down fa-lg\"></span></a>"
-          )
+          downvote_link = helper.link_to_answer_downvote(answer)
+          expect(downvote_link).to start_with('<a class="active js-answer-downvote-link" data-disable-with=')
+          expect(downvote_link).to end_with('<span class="fa fa-arrow-down fa-lg"></span></a>')
         end
       end
     end
