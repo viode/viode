@@ -1,4 +1,4 @@
-.answer data-answer-id=answer.id
+.answer id=answer.id data-answer-id=answer.id
   .row
     .col-md-2.votes
       .count.js-answer-votes = answer.votes
@@ -6,8 +6,11 @@
         => link_to_answer_upvote(answer)
         = link_to_answer_downvote(answer)
     .col-md-10
-      .details
-        span.avatar> = author_avatar(answer)
-        span.author> = answer_author(answer)
-        span.time = time_tag_for answer
+      .clearfix
+        .details.pull-left
+          span.avatar> = author_avatar(answer)
+          span.author> = answer_author(answer)
+          span.time = time_tag_for answer
+        .pull-right
+          = link_to '#', "##{answer.id}", title: 'permalink'
       = simple_format answer.body
