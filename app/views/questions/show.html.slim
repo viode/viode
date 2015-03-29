@@ -4,7 +4,7 @@
       h3.title = @question.title
       ul.tag-list
         - @question.tag_list.each do |label|
-          li = link_to label, '#', class: 'tag'
+          li = link_to label, tag_path(label), class: 'tag'
       .separator
 
       .row.content

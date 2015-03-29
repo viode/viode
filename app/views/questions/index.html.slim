@@ -15,7 +15,7 @@
       .box
         ul.tag-list
           - @labels.each do |label|
-            li = link_to label, '#', class: 'tag'
+            li = link_to label.name, tag_path(label.name), class: 'tag'
 
   .col-md-10
     .question-list
@@ -25,7 +25,7 @@
             h4.title = link_to question.title, question
             ul.tag-list
               - question.tag_list.each do |label|
-                li = link_to label, '#', class: 'tag'
+                li = link_to label, tag_path(label), class: 'tag'
           .col-md-1.counter
             span.number = question.answers.size
             br
