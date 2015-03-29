@@ -13,9 +13,27 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe "GET #show" do
-    it "returns http success" do
-      get :show, id: question.id
-      expect(response).to be_success
+    context "when id and permalink present" do
+      it "returns http success" do
+        get :show, id: question.id, permalink: question.permalink
+        expect(response).to be_success
+      end
+    end
+
+    context "when permalink not present" do
+      it "redirects with status 301" do
+        get :show, id: question.id
+        expect(response).to redirect_to(question)
+        expect(response.status).to eq(301)
+      end
+    end
+
+    context "when permalink not valid" do
+      it "redirects with status 301" do
+        get :show, id: question.id, permalink: 'test'
+        expect(response).to redirect_to(question)
+        expect(response.status).to eq(301)
+      end
     end
 
     it "updates views count" do

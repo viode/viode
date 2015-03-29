@@ -24,10 +24,12 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :users, only: [:show], param: :username
-  resources :questions, only: [:index, :show, :new, :create], concerns: :votable do
+  resources :questions, only: [:index, :new, :create], concerns: :votable do
     resources :answers, only: [:new, :create]
   end
   resources :answers, only: [], concerns: :votable
+
+  get '/questions/*id(/:permalink)', to: 'questions#show', as: :question
 
   root 'questions#index'
 end

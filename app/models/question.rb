@@ -14,6 +14,10 @@ class Question < ActiveRecord::Base
 
   scope :recent, -> { order('created_at DESC') }
 
+  def to_param
+    "#{id}/#{permalink}"
+  end
+
   def increment_views
     Question.where(id: id).update_all('views=views+1')
   end

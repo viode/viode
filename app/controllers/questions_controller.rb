@@ -9,6 +9,10 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    if params[:permalink].blank? || params[:permalink] != @question.permalink
+      redirect_to(@question, status: 301)
+    end
+
     @category_questions = @question.category.questions.limit(5)
     @related_questions = Question.related_to(@question).limit(5)
     @question.increment_views
