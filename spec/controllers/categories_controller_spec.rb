@@ -12,7 +12,7 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: category.id
+      get :show, permalink: category.permalink
       expect(response).to be_success
     end
   end

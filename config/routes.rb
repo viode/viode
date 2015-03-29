@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resource :password, only: [:show, :update]
   end
 
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:index, :show], param: :permalink
   resources :users, only: [:show], param: :username
   resources :questions, only: [:index, :new, :create], concerns: :votable do
     resources :answers, only: [:new, :create]

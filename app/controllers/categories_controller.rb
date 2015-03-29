@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category  = Category.find params[:id]
+    @category  = Category.find_by_permalink! params[:permalink]
     @questions = @category.questions.includes(:answers, :author).recent.page(params[:page]).per(20)
   end
 end
