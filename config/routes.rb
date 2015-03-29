@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'questions#index'
+
   devise_for :users, skip: [:sessions, :registrations]
   devise_scope :user do
     get     'login'  => 'devise/sessions#new',     as: :new_user_session
@@ -15,7 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/settings', to: redirect('/settings/account')
+  get '/ask', to: redirect('/questions/new')
+  get '/q/:id', to: redirect('/questions/%{id}')
+  get '/settings', to: redirect('/settings/profile')
+
   namespace :settings do
     resource :account, only: [:show, :update]
     resource :profile, only: [:show, :update]
@@ -30,6 +35,4 @@ Rails.application.routes.draw do
   resources :answers, only: [], concerns: :votable
 
   get '/questions/*id(/:permalink)', to: 'questions#show', as: :question
-
-  root 'questions#index'
 end
