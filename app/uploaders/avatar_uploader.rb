@@ -17,6 +17,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   process :strip_data
+  process resize_to_fill: [250, 250]
 
   version :thumb do
     process resize_to_fill: [80, 80]
