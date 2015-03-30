@@ -7,7 +7,7 @@ header
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        = link_to 'Viode', root_path, class: 'navbar-brand'
+        = link_to Rails.application.secrets.site_name, root_path, class: 'navbar-brand'
 
       .collapse.navbar-collapse#navbar-collapse
         ul.nav.navbar-nav
