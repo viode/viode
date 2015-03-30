@@ -5,7 +5,8 @@
     = form_for current_user, url: settings_profile_path do |f|
       .row
         .col-md-3
-          p = image_tag current_user.avatar.url, size: '80', title: 'avatar'
+          - if current_user.avatar.present?
+            p = image_tag current_user.avatar.url, size: '80', title: 'avatar'
 
         .col-md-9
           .form-group
