@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :answer do
-    association :author, factory: :user
+    author
     question
     body { Faker::Lorem.paragraph(5) }
     anonymous false

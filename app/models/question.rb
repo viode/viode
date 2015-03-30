@@ -4,11 +4,11 @@ class Question < ActiveRecord::Base
   acts_as_taggable
   acts_as_url :title, url_attribute: :permalink
 
-  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :author, class_name: 'User'
   belongs_to :category
   has_many :answers, dependent: :destroy
 
-  validates :title, :category_id, :user_id, presence: true
+  validates :title, :category_id, :author_id, presence: true
   validates :title, length: { in: 10..140 }
   validate :amount_of_labels
 

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :question do
-    association :author, factory: :user
+    author
     category
     title     { Faker::Lorem.sentence.tr('.', '?') }
     body      { Faker::Lorem.paragraph(2) }

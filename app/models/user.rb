@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  has_many :questions, dependent: :destroy
-  has_many :answers, dependent: :destroy
+  has_many :answers, foreign_key: :author_id, dependent: :destroy
+  has_many :questions, foreign_key: :author_id, dependent: :destroy
 
   validates :bio, length: { maximum: 400 }
   validates :fullname, length: { in: 2..90 }, allow_blank: true
