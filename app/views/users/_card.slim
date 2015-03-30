@@ -1,6 +1,6 @@
-= image_tag @user.avatar.url, size: '250', alt: @user.username
+p = image_tag @user.avatar.url, height: '250', alt: @user.username, class: 'img-thumbnail'
+- if @user == current_user
+  p = link_to 'edit', settings_profile_path, class: 'btn btn-primary btn-block'
 p
   ' User since
   = @user.created_at.strftime '%d.%m.%y'
-- if @user == current_user
-  p = link_to 'edit', settings_profile_path, class: 'btn btn-primary'

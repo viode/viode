@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   has_many :answers, foreign_key: :author_id, dependent: :destroy
   has_many :questions, foreign_key: :author_id, dependent: :destroy
 
-  has_reputation :points, source: [{ reputation: :answer_points }, { reputation: :question_points }]
   has_reputation :answer_points, source: { reputation: :votes, of: :answers }
   has_reputation :question_points, source: { reputation: :votes, of: :questions }
+  has_reputation :points, source: [{ reputation: :answer_points }, { reputation: :question_points }]
 
   validates :bio, length: { maximum: 400 }
   validates :fullname, length: { in: 2..90 }, allow_blank: true

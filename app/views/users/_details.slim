@@ -1,21 +1,24 @@
-h1.username = @user.username
-p = @user.fullname
-p = @user.bio
-
 .row
-  .col-md-2.counter
-    p
-      | Points
-      br
-      span.number = @user.reputation_for(:points).to_i
-  .col-md-2
-    = link_to questions_user_path(@user), class: 'counter' do
+  .col-md-6
+    h1.username
+      => @user.username
+      small.name = @user.fullname
+    p.bio = @user.bio
+
+  .col-md-2.stats class=('active' if action_name == 'show')
+    = link_to @user do
+      p
+        | Points
+        br
+        span.number = @user.reputation_for(:points).to_i
+  .col-md-2.stats class=('active' if action_name == 'questions')
+    = link_to questions_user_path(@user) do
       p
         | Questions
         br
         span.number = @user.questions.size
-  .col-md-2
-    = link_to answers_user_path(@user), class: 'counter' do
+  .col-md-2.stats class=('active' if action_name == 'answers')
+    = link_to answers_user_path(@user) do
       p
         | Answers
         br

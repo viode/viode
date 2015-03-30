@@ -1,10 +1,14 @@
 .row
   .col-md-12
-    h2
-      ' Recent questions in
-      = link_to @category.name, @category
+    - if @questions.empty?
+      h2 = link_to @category.name, @category
+      p No questions in this category.
+    - else
+      h2
+        ' Recent questions in
+        = link_to @category.name, @category
 
-    .question-list
-      = render partial: 'questions/question', collection: @questions
+      .question-list
+        = render partial: 'questions/question', collection: @questions
 
-    = paginate @questions
+      = paginate @questions

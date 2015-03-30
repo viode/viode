@@ -4,3 +4,11 @@
 
   .col-md-9
     = render 'details'
+
+    ul.list-inline
+      li
+        ' Answer points:
+        = @user.reputation_for(:answer_points).to_i
+      li
+        ' Question points:
+        = @user.reputation_for(:question_points).to_i

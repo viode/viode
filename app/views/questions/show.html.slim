@@ -20,33 +20,43 @@
             span.time = time_tag_for @question
           = simple_format @question.body
 
-    h4 Answers
-    = render partial: 'answers/answer', collection: @question.answers
+    .question-answers
+      h4.title
+        | Answers (
+        = @question.answers_count
+        | )
+      = render partial: 'answers/answer', collection: @question.answers
 
     - if user_signed_in?
-      = form_for [@question, Answer.new] do |f|
-        = render partial: 'answers/form', locals: { f: f }
-  .col-md-4
-    p
-      label for="question-shortlink" Short link:
-      input.form-control#question-shortlink type="text" value=question_short_url(@question.id) readonly="readonly"
+      .answer-form
+        = form_for [@question, Answer.new] do |f|
+          = render partial: 'answers/form', locals: { f: f }
 
-    ul.list-inline
-      li
-        ' Answers:
-        => @question.answers_count
-      li
-        ' Views:
-        = @question.views
+  .col-md-4.question-sidebar
+    .box
+      p
+        label for="question-shortlink" Short link:
+        input.form-control#question-shortlink type="text" value=question_short_url(@question.id) readonly="readonly"
 
-    h4 Related questions
-    ul.list-unstyled
-      - @related_questions.each do |question|
-        li = link_to question.title, question
+      ul.list-inline
+        li
+          ' Answers:
+          = @question.answers_count
+        li
+          ' Views:
+          = @question.views
 
-    h4
+    - if @related_questions.any?
+      h3.title Related questions
+      .box
+        ul.list-unstyled
+          - @related_questions.each do |question|
+            li = link_to question.title, question
+
+    h3.title
       ' More from
       = link_to @question.category.name, @question.category
-    ul.list-unstyled
-      - @category_questions.each do |question|
-        li = link_to question.title, question
+    .box
+      ul.list-unstyled
+        - @category_questions.each do |question|
+          li = link_to question.title, question

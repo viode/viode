@@ -32,12 +32,17 @@ $panel-danger-text: #fff
 $panel-danger-border: #DA4453
 $panel-danger-heading-bg: #ED5565
 
+// Thumbnails
+$thumbnail-bg: #fff
+$thumbnail-border: $brand-color
+$thumbnail-border-radius: 3px
+
 // Navbar
 $navbar-default-bg: $brand-color
 $navbar-default-link-color: #fff
 $navbar-default-link-hover-color: #fff
 $navbar-default-link-active-color: #fff
-$navbar-default-brand-hover-color: #F5F7FA
+$navbar-default-brand-hover-color: #fff
 
 // Forms
 $input-border-focus: $brand-color
@@ -113,12 +118,27 @@ footer
   margin-top: 10px
 
 .user-profile
+  +box
+  padding: 10px 0
   .username
     margin-top: 0
-  .counter
+  .name, .bio
+    color: #AAB2BD
+  .stats
+    color: #AAB2BD
     text-align: center
+    margin-bottom: 10px
+    border-right: 1px solid #CCD1D9
+    &:last-child
+      border: none
+    &:hover, &.active
+      border-bottom: 3px solid $brand-color
     .number
       font-weight: bold
+      color: #434A54
+      font-size: 16px
+    a
+      color: #AAB2BD
 
 .votes
   .count
@@ -203,6 +223,7 @@ footer
   .box
     +box
     padding: 10px
+    margin-bottom: 10px
   .title
     margin-top: 0
     margin-left: 15px
@@ -231,6 +252,25 @@ footer
     margin: 10px 0
     font-weight: 300
     color: #AAB2BD
+
+.question-sidebar
+  .box
+    +box
+    padding: 10px 10px 0 10px
+  .title
+    margin: 10px 0
+    font-weight: 300
+    color: #AAB2BD
+
+.question-answers
+  .title
+    margin: 10px 0
+    font-weight: 300
+    color: #AAB2BD
+    margin: 10px 0 -10px 0
+
+.answer-form
+  margin-top: 20px
 
 .tag
   padding: 4px 8px
