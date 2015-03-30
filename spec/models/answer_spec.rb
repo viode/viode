@@ -16,6 +16,15 @@ RSpec.describe Answer, type: :model do
     it { should validate_length_of(:body).is_at_least(2) }
   end
 
+  describe "recent scope" do
+    it "orders by created_at date in descending order" do
+      a1 = create :answer, author: user, created_at: 1.day.ago
+      a2 = create :answer, author: user
+
+      expect(Answer.recent).to eq([a2, a1])
+    end
+  end
+
   describe "#votes" do
     it "returns total votes" do
       answer.add_evaluation :votes, 5, user

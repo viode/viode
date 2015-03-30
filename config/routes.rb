@@ -29,7 +29,12 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:show], param: :name
   resources :categories, only: [:index, :show], param: :permalink
-  resources :users, only: [:show], param: :username
+  resources :users, only: [:show], param: :username do
+    member do
+      get :answers
+      get :questions
+    end
+  end
   resources :questions, only: [:index, :new, :create], concerns: :votable do
     resources :answers, only: [:new, :create]
   end

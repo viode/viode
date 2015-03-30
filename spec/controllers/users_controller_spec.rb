@@ -9,4 +9,18 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "GET #answers" do
+    it "returns http success" do
+      get :answers, username: user.username
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #questions" do
+    it "returns http success" do
+      get :questions, username: user.username
+      expect(response).to have_http_status(:success)
+    end
+  end
 end

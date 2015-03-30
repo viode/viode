@@ -9,4 +9,6 @@ class Answer < ActiveRecord::Base
 
   validates :body, :question_id, :author_id, presence: true
   validates :body, length: { minimum: 2 }
+
+  scope :recent, -> { order('created_at DESC') }
 end

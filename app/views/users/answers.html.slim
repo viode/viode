@@ -1,0 +1,22 @@
+.row.user-profile
+  .col-md-3
+    = render 'card'
+
+  .col-md-9
+    = render 'details'
+
+    .question-list
+      - @answers.each do |answer|
+        .row.question-summary
+          .col-md-9
+            h4.title = link_to "Re: #{answer.question.title}", answer.question
+            ul.tag-list
+              - answer.question.tag_list.each do |label|
+                li = link_to label, tag_path(label), class: 'tag'
+          .col-md-3.details
+            span.avatar> = author_avatar(answer)
+            span.author = question_author(answer)
+            br
+            span.time = time_tag_for answer
+
+    = paginate @answers

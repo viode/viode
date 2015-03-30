@@ -1,0 +1,11 @@
+.row.user-profile
+  .col-md-3
+    = render 'card'
+
+  .col-md-9
+    = render 'details'
+
+    .question-list
+      = render partial: 'questions/question', collection: @questions
+
+    = paginate @questions

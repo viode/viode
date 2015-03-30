@@ -1,34 +1,6 @@
 .row.user-profile
   .col-md-3
-    = image_tag @user.avatar.url, size: '250', alt: @user.username
-    p
-      ' User since
-      = @user.created_at.strftime '%d.%m.%y'
+    = render 'card'
 
-  .col-md-5
-    h1.username = @user.username
-    p = @user.fullname
-    p = @user.bio
-
-    .row
-      .col-md-2.counter
-        p
-          | Points
-          br
-          span.number = @user.reputation_for(:points).to_i
-      .col-md-2
-        = link_to '#', class: 'counter' do
-          p
-            | Answers
-            br
-            span.number = @user.answers.size
-      .col-md-2
-        = link_to '#', class: 'counter' do
-          p
-            | Questions
-            br
-            span.number = @user.questions.size
-
-  .col-md-4
-    - if @user == current_user
-      = link_to 'edit', settings_profile_path, class: 'btn btn-primary'
+  .col-md-9
+    = render 'details'
