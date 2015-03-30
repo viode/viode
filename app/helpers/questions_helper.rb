@@ -1,7 +1,7 @@
 module QuestionsHelper
   def link_to_question_upvote(question)
     if user_signed_in?
-      klass = question.evaluation_by(:votes, current_user) == 1 ? 'active' : ''
+      klass = question.upvoted_by?(current_user) ? 'active' : ''
 
       link_to upvote_question_path(question), method: :post, remote: true,
           class: "#{klass} js-question-upvote-link",
@@ -17,7 +17,7 @@ module QuestionsHelper
 
   def link_to_question_downvote(question)
     if user_signed_in?
-      klass = question.evaluation_by(:votes, current_user) == -1 ? 'active' : ''
+      klass = question.downvoted_by?(current_user) ? 'active' : ''
 
       link_to downvote_question_path(question), method: :post, remote: true,
           class: "#{klass} js-question-downvote-link",

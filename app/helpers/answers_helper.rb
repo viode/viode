@@ -1,7 +1,7 @@
 module AnswersHelper
   def link_to_answer_upvote(answer)
     if user_signed_in?
-      klass = answer.evaluation_by(:votes, current_user) == 1 ? 'active' : ''
+      klass = answer.upvoted_by?(current_user) ? 'active' : ''
 
       link_to upvote_answer_path(answer), method: :post, remote: true,
           class: "#{klass} js-answer-upvote-link",
@@ -17,7 +17,7 @@ module AnswersHelper
 
   def link_to_answer_downvote(answer)
     if user_signed_in?
-      klass = answer.evaluation_by(:votes, current_user) == -1 ? 'active' : ''
+      klass = answer.downvoted_by?(current_user) ? 'active' : ''
 
       link_to downvote_answer_path(answer), method: :post, remote: true,
           class: "#{klass} js-answer-downvote-link",

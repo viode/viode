@@ -31,9 +31,27 @@ RSpec.describe Answer, type: :model do
     end
   end
 
+  describe "#upvoted_by?" do
+    it "checks if answer upvoted by user" do
+      expect(answer.upvoted_by?(user)).to be false
+
+      answer.add_evaluation :votes, Votable::UPVOTE_VALUE, user
+      expect(answer.upvoted_by?(user)).to be true
+    end
+  end
+
   describe "#downvote_by" do
     it "changes votes count negatively" do
       expect { answer.downvote_by(user) }.to change { answer.votes }.from(0).to(-1)
+    end
+  end
+
+  describe "#downvoted_by?" do
+    it "checks if answer downvoted by user" do
+      expect(answer.downvoted_by?(user)).to be false
+
+      answer.add_evaluation :votes, Votable::DOWNVOTE_VALUE, user
+      expect(answer.downvoted_by?(user)).to be true
     end
   end
 end
