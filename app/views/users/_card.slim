@@ -1,4 +1,4 @@
-p = image_tag @user.avatar.url, height: '250', alt: @user.username, class: 'img-thumbnail'
+p = image_tag @user.avatar.url, alt: @user.username, class: 'img-thumbnail avatar'
 - if @user == current_user
   p = link_to 'edit', settings_profile_path, class: 'btn btn-primary btn-block'
 p
