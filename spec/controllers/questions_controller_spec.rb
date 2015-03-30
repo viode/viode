@@ -93,10 +93,10 @@ RSpec.describe QuestionsController, type: :controller do
     context "when signed in" do
       before { sign_in user }
 
-      it "updates answer reputation for upvotes and redirects to answer question" do
+      it "upvotes question and redirects to question" do
         expect {
           post :upvote, id: question.id
-        }.to change { question.reputation_for(:upvotes) }.by(1)
+        }.to change { question.reputation_for(:votes) }.by(1)
         expect(response).to redirect_to(question)
       end
 
@@ -118,10 +118,10 @@ RSpec.describe QuestionsController, type: :controller do
     context "when signed in" do
       before { sign_in user }
 
-      it "updates answer reputation for downvotes and redirects to answer question" do
+      it "downvotes question and redirects to question" do
         expect {
           post :downvote, id: question.id
-        }.to change { question.reputation_for(:downvotes) }.by(-1)
+        }.to change { question.reputation_for(:votes) }.by(-1)
         expect(response).to redirect_to(question)
       end
 

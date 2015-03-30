@@ -44,33 +44,24 @@ RSpec.describe Question, type: :model do
     end
   end
 
-  describe "has_reputation" do
-    it "has reputation upvotes" do
-      expect(question.reputation_for(:upvotes)).to eq(0)
-    end
+  describe "#votes" do
+    it "returns total votes" do
+      question.add_evaluation :votes, 5, user
 
-    it "has reputation downvotes" do
-      expect(question.reputation_for(:downvotes)).to eq(0)
+      expect(question.votes).to eql(5)
+      expect(question.reputation_for(:votes)).to eql(5.0)
     end
+  end
 
-    it "has reputation votes" do
-      expect(question.reputation_for(:votes)).to eq(0)
+  describe "#upvote_by" do
+    it "changes votes count positively" do
+      expect { question.upvote_by(user) }.to change { question.votes }.from(0).to(1)
     end
+  end
 
-    it "changes reputation for upvotes" do
-      question.add_evaluation :upvotes, 1, user
-      expect(question.reputation_for(:upvotes)).to eq(1)
-    end
-
-    it "changes reputation for downvotes" do
-      question.add_evaluation :downvotes, -1, user
-      expect(question.reputation_for(:downvotes)).to eq(-1)
-    end
-
-    it "changes reputation for votes" do
-      question.add_evaluation :upvotes, 5, user
-      question.add_evaluation :downvotes, -2, user
-      expect(question.reputation_for(:votes)).to eq(3)
+  describe "#downvote_by" do
+    it "changes votes count negatively" do
+      expect { question.downvote_by(user) }.to change { question.votes }.from(0).to(-1)
     end
   end
 end

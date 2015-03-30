@@ -16,33 +16,24 @@ RSpec.describe Answer, type: :model do
     it { should validate_length_of(:body).is_at_least(2) }
   end
 
-  describe "has_reputation" do
-    it "has reputation upvotes" do
-      expect(answer.reputation_for(:upvotes)).to eq(0)
-    end
+  describe "#votes" do
+    it "returns total votes" do
+      answer.add_evaluation :votes, 5, user
 
-    it "has reputation downvotes" do
-      expect(answer.reputation_for(:downvotes)).to eq(0)
+      expect(answer.votes).to eql(5)
+      expect(answer.reputation_for(:votes)).to eql(5.0)
     end
+  end
 
-    it "has reputation votes" do
-      expect(answer.reputation_for(:votes)).to eq(0)
+  describe "#upvote_by" do
+    it "changes votes count positively" do
+      expect { answer.upvote_by(user) }.to change { answer.votes }.from(0).to(1)
     end
+  end
 
-    it "changes reputation for upvotes" do
-      answer.add_evaluation :upvotes, 1, user
-      expect(answer.reputation_for(:upvotes)).to eq(1)
-    end
-
-    it "changes reputation for downvotes" do
-      answer.add_evaluation :downvotes, -1, user
-      expect(answer.reputation_for(:downvotes)).to eq(-1)
-    end
-
-    it "changes reputation for votes" do
-      answer.add_evaluation :upvotes, 5, user
-      answer.add_evaluation :downvotes, -2, user
-      expect(answer.reputation_for(:votes)).to eq(3)
+  describe "#downvote_by" do
+    it "changes votes count negatively" do
+      expect { answer.downvote_by(user) }.to change { answer.votes }.from(0).to(-1)
     end
   end
 end

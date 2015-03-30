@@ -54,10 +54,10 @@ RSpec.describe AnswersController, type: :controller do
     context "when signed in" do
       before { sign_in user }
 
-      it "updates answer reputation for upvotes and redirects to answer question" do
+      it "upvotes answer and redirects to answer question" do
         expect {
           post :upvote, id: answer.id
-        }.to change { answer.reputation_for(:upvotes) }.by(1)
+        }.to change { answer.reputation_for(:votes) }.by(1)
         expect(response).to redirect_to(answer.question)
       end
 
@@ -79,10 +79,10 @@ RSpec.describe AnswersController, type: :controller do
     context "when signed in" do
       before { sign_in user }
 
-      it "updates answer reputation for downvotes and redirects to answer question" do
+      it "downvotes answer and redirects to answer question" do
         expect {
           post :downvote, id: answer.id
-        }.to change { answer.reputation_for(:downvotes) }.by(-1)
+        }.to change { answer.reputation_for(:votes) }.by(-1)
         expect(response).to redirect_to(answer.question)
       end
 

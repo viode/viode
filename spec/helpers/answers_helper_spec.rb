@@ -30,7 +30,7 @@ RSpec.describe AnswersHelper, type: :helper do
 
       context "when user upvoted answer" do
         it "returns link to upvote answer with 'active' class" do
-          answer.add_evaluation :upvotes, 1, user
+          answer.upvote_by user
           upvote_link = helper.link_to_answer_upvote(answer)
           expect(upvote_link).to start_with('<a class="active js-answer-upvote-link" data-disable-with=')
           expect(upvote_link).to end_with('<span class="fa fa-arrow-up fa-lg"></span></a>')
@@ -64,7 +64,7 @@ RSpec.describe AnswersHelper, type: :helper do
 
       context "when user downvoted answer" do
         it "returns link to downvote answer with 'active' class" do
-          answer.add_evaluation :downvotes, -1, user
+          answer.downvote_by user
           downvote_link = helper.link_to_answer_downvote(answer)
           expect(downvote_link).to start_with('<a class="active js-answer-downvote-link" data-disable-with=')
           expect(downvote_link).to end_with('<span class="fa fa-arrow-down fa-lg"></span></a>')
