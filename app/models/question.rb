@@ -8,6 +8,9 @@ class Question < ActiveRecord::Base
   belongs_to :category
   has_many :answers, dependent: :destroy
 
+  has_reputation :votes, source: :user,
+    source_of: { reputation: :question_points, of: :author }
+
   validates :title, :category_id, :author_id, presence: true
   validates :title, length: { in: 10..140 }
   validate :amount_of_labels

@@ -11,16 +11,21 @@
     p = @user.bio
 
     .row
+      .col-md-2.counter
+        p
+          | Points
+          br
+          span.number = @user.reputation_for(:points).to_i
       .col-md-2
         = link_to '#', class: 'counter' do
           p
-            | answers
+            | Answers
             br
             span.number = @user.answers.size
       .col-md-2
         = link_to '#', class: 'counter' do
           p
-            | questions
+            | Questions
             br
             span.number = @user.questions.size
 

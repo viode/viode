@@ -4,10 +4,6 @@ module Votable
   UPVOTE_VALUE = 1
   DOWNVOTE_VALUE = -1
 
-  included do
-    has_reputation :votes, source: :user
-  end
-
   def votes
     reputation_for(:votes).to_i
   end
