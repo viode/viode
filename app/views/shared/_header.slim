@@ -15,7 +15,6 @@ header
             = link_to 'Questions', questions_path
           li class=('active' if controller_name == 'categories' && action_name == 'index')
             = link_to 'Categories', categories_path
-          li = link_to 'Users', '#'
         ul.nav.navbar-nav.navbar-right
           li class=('active' if controller_name == 'questions' && action_name == 'new')
             = link_to 'Ask question', new_question_path
