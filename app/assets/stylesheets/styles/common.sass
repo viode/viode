@@ -1,0 +1,77 @@
+.votes
+  .count
+    padding: 12px
+    text-align: center
+    color: #fff
+    background-color: $brand-color
+    font-weight: bold
+    font-size: 24px
+    border-radius: 3px
+    max-width: 90px
+  .vote-buttons
+    margin-top: 12px
+    a
+      padding: 8px 12px
+      border: 1px solid $brand-color
+      border-radius: 3px
+      color: $brand-color
+      background-color: #fff
+      &.active
+        color: #fff
+        background-color: $brand-color
+
+.answer
+  +box
+  padding: 10px 10px 5px 10px
+  margin-top: 20px
+  min-height: 120px
+  .details
+    margin-bottom: 5px
+    .author
+      font-weight: bold
+    .time
+      color: #AAB2BD
+
+.category
+  .box
+    +box
+    padding: 10px
+    margin-bottom: 10px
+  .title
+    margin-top: 0
+    margin-left: 15px
+    font-weight: 300
+    color: #AAB2BD
+
+.categories-list
+  .more
+    font-weight: bold
+  .box
+    +box
+    padding: 10px
+
+.labels-list
+  .box
+    +box
+    padding: 15px 10px 0 10px
+  .tag-list
+    +unstyled-list
+    li
+      margin-bottom: 12px
+
+.categories-list, .labels-list
+  margin-top: 20px
+  .title
+    margin: 10px 0
+    font-weight: 300
+    color: #AAB2BD
+
+.tag
+  padding: 4px 8px
+  background-color: $brand-color
+  color: #fff
+  border-radius: 3px
+  &:hover, &:focus
+    color: #fff
+    background-color: $brand-color-dark
+    text-decoration: none

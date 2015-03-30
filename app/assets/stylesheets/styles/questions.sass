@@ -1,0 +1,63 @@
+.question-list
+  background-color: #fff
+  padding: 0 15px
+  border: 3px solid #E6E9ED
+  border-radius: 3px
+  .question-summary
+    padding: 10px 0
+    border-top: 1px solid #E6E9ED
+    .title
+      margin-top: 0
+    .counter
+      text-align: center
+      padding-top: 10px
+      .number
+        font-weight: bold
+    &:first-child
+      border: none
+    &:nth-of-type(even)
+      background-color: #F5F7FA
+      .title
+        a
+          color: #656D78
+
+.question
+  +box
+  padding: 0 10px 5px 10px
+  .title
+    margin-top: 10px
+  .separator
+    border-top: 1px solid #CCD1D9
+    margin: 5px 0
+  .content
+    min-height: 102px
+
+.question, .question-summary
+  .tag-list
+    +unstyled-list
+    li
+      display: inline-block
+  .details
+    .author
+      font-weight: bold
+    .time
+      color: #AAB2BD
+
+.question-sidebar
+  .box
+    +box
+    padding: 10px 10px 0 10px
+  .title
+    margin: 10px 0
+    font-weight: 300
+    color: #AAB2BD
+
+.question-answers
+  .title
+    margin: 10px 0
+    font-weight: 300
+    color: #AAB2BD
+    margin: 10px 0 -10px 0
+
+.answer-form
+  margin-top: 20px
