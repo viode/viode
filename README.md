@@ -1,19 +1,18 @@
-# Viode
+# Viode [![Build Status](https://img.shields.io/travis/viode/viode.svg)](https://travis-ci.org/viode/viode) [![Code Climate](https://img.shields.io/codeclimate/github/viode/viode.svg)](https://codeclimate.com/github/viode/viode)
 
-[![Build Status](https://img.shields.io/travis/viode/viode.svg)](https://travis-ci.org/viode/viode)
-[![Code Climate](https://img.shields.io/codeclimate/github/viode/viode.svg)](https://codeclimate.com/github/viode/viode)
-
-Open source Q&A community platform built with Ruby on Rails.
+Open source Q&A _(question and answer)_ community platform built with Ruby on Rails.
 
 ## Features
 
 + Categories
 + Labels (tags)
++ Ask and answer questions
 + Anonymous questions and answers
 + Votes for questions and answers
 + User points (reputation)
 + SEO friendly
 + Can be used as a discussion board
++ And [many more](https://github.com/viode/viode/labels/feature).. Stay tuned.
 
 ## Installation
 
@@ -53,13 +52,15 @@ Open source Q&A community platform built with Ruby on Rails.
   bundle install
   ```
 
-6. Create and load the database:
+6. Create and seed the database:
 
   ```sh
-  rake db:create db:migrate
+  rake db:setup
   ```
 
-Now you can start the server.
+  This will create a user with username `admin` and password `12345678`.
+
+  Now you can start the server: `rails s`.
 
 ## License
 
