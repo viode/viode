@@ -1,5 +1,8 @@
 # Viode
 
+[![Build Status](https://img.shields.io/travis/viode/viode.svg)](https://travis-ci.org/viode/viode)
+[![Code Climate](https://img.shields.io/codeclimate/github/viode/viode.svg)](https://codeclimate.com/github/viode/viode)
+
 Open source Q&A community platform built with Ruby on Rails.
 
 ## Features
