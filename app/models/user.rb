@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  has_many :answers, foreign_key: :author_id, dependent: :destroy
-  has_many :questions, foreign_key: :author_id, dependent: :destroy
+  has_many :answers, -> { where(anonymous: false) }, foreign_key: :author_id, dependent: :destroy
+  has_many :questions, -> { where(anonymous: false) }, foreign_key: :author_id, dependent: :destroy
 
   has_reputation :answer_points, source: { reputation: :votes, of: :answers }
   has_reputation :question_points, source: { reputation: :votes, of: :questions }

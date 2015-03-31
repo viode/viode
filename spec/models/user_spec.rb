@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "relations" do
-    it { should have_many(:answers).dependent(:destroy) }
-    it { should have_many(:questions).dependent(:destroy) }
+    it { should have_many(:answers).conditions(anonymous: false).
+      with_foreign_key('author_id').dependent(:destroy) }
+    it { should have_many(:questions).conditions(anonymous: false).
+      with_foreign_key('author_id').dependent(:destroy) }
   end
 
   describe "validations" do
