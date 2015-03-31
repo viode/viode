@@ -1,4 +1,4 @@
-# Viode [![Build Status](https://img.shields.io/travis/viode/viode.svg)](https://travis-ci.org/viode/viode) [![Code Climate](https://img.shields.io/codeclimate/github/viode/viode.svg)](https://codeclimate.com/github/viode/viode)
+# Viode [![Build Status](https://img.shields.io/travis/viode/viode.svg)](https://travis-ci.org/viode/viode) [![Code Climate](https://img.shields.io/codeclimate/github/viode/viode.svg)](https://codeclimate.com/github/viode/viode) [![Join the chat at https://gitter.im/viode/viode](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/viode/viode)
 
 Open source Q&A _(question and answer)_ community platform built with Ruby on Rails.
 
