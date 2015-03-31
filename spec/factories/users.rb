@@ -3,7 +3,7 @@ FactoryGirl.define do
     fullname { Faker::Name.name }
     bio      { Faker::Name.title }
     email    { Faker::Internet.safe_email }
-    username { Faker::Internet.user_name.tr('.-', '_')[0, 20] }
+    username { Faker::Internet.user_name(3..20).tr('.-', '_') }
     password '12345678'
     avatar   { File.open('spec/fixtures/250.gif') }
 
