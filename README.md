@@ -16,45 +16,45 @@ Open source Q&A community platform built with Ruby on Rails.
 
 1. Clone the repo:
 
-```sh
-git clone https://github.com/viode/viode.git
-```
+  ```sh
+  git clone https://github.com/viode/viode.git
+  ```
 
-**Note**: master branch is always _stable_.
+  **Note**: master branch is always _stable_.
 
 2. Enter project folder:
 
-```sh
-cd viode
-```
+  ```sh
+  cd viode
+  ```
 
 3. Create the `database.yml` file:
 
-```sh
-cp config/database.yml.example config/database.yml
-```
+  ```sh
+  cp config/database.yml.example config/database.yml
+  ```
 
-Update it with your database credentials.
+  Update it with your database credentials.
 
 4. Create the `secrets.yml` file:
 
-```sh
-cp config/secrets.yml.example config/secrets.yml
-```
+  ```sh
+  cp config/secrets.yml.example config/secrets.yml
+  ```
 
-Adjust as you need.
+  Adjust as you need.
 
 5. Install dependencies:
 
-```sh
-bundle install
-```
+  ```sh
+  bundle install
+  ```
 
 6. Create and load the database:
 
-```sh
-rake db:create db:migrate
-```
+  ```sh
+  rake db:create db:migrate
+  ```
 
 Now you can start the server.
 
