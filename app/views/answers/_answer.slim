@@ -1,4 +1,4 @@
-.answer id=answer.id data-answer-id=answer.id
+.answer id="answer-#{answer.id}" data-answer-id=answer.id
   .row
     .col-md-2.votes
       .count.js-answer-votes = answer.votes
@@ -12,5 +12,5 @@
           span.author> = answer_author(answer)
           span.time = time_tag_for answer
         .pull-right
-          = link_to '#', "##{answer.id}", title: 'permalink'
+          = link_to '#', "#answer-#{answer.id}", title: 'permalink'
       = simple_format answer.body
