@@ -1,2 +1,8 @@
 language: ruby
 rvm: 2.2
+services: mysql
+
+before_script:
+  - "cp config/secrets.yml.example config/secrets.yml"
+  - "cp config/database.yml.example config/database.yml"
+  - "bundle exec rake db:setup"
