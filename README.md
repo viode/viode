@@ -33,8 +33,8 @@ for contribution guides.
 
 **Join the team!**
 
-We are looking for new team members. Regardless of where you are or how much you
-know about programming. If you are interested, please
+We are looking for new team members. Regardless of where you are and how much you
+know about programming, If you are interested, please
 [apply](https://docs.google.com/forms/d/19hvjOVyRD06blr2hmrKOVj6SGKwt8AkgBFqtFiP3nrI/viewform).
 
 ## License
