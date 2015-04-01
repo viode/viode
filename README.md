@@ -1,6 +1,7 @@
 # Viode [![Build Status](https://img.shields.io/travis/viode/viode.svg)](https://travis-ci.org/viode/viode) [![Code Climate](https://img.shields.io/codeclimate/github/viode/viode.svg)](https://codeclimate.com/github/viode/viode) [![Join the chat at https://gitter.im/viode/viode](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/viode/viode)
 
-Open source Q&A _(question and answer)_ community platform built with Ruby on Rails.
+Viode is an open source Q&A _(question and answer)_ community platform built
+with Ruby on Rails.
 
 ## Features
 
@@ -16,51 +17,24 @@ Open source Q&A _(question and answer)_ community platform built with Ruby on Ra
 
 ## Installation
 
-1. Clone the repo:
+Requirements: Ruby 1.9+, PostgreSQL, ImageMagick.  
+System requirements: In several installations, Viode performed well on 256MB
+Linux (CentOS) instance and 128MB FreeBSD instance. Your mileage may vary.
 
-  ```sh
-  git clone https://github.com/viode/viode.git
-  ```
+See [INSTALL.md](https://github.com/viode/viode/blob/master/INSTALL.md) for
+detailed installation guide.
 
-  **Note**: master branch is always _stable_.
+## Contributing
 
-2. Enter project folder:
+See
+[CONTRIBUTING.md](https://github.com/viode/viode/blob/master/CONTRIBUTING.md)
+for contribution guides.
 
-  ```sh
-  cd viode
-  ```
+**Join the team!**
 
-3. Create the `database.yml` file:
-
-  ```sh
-  cp config/database.yml.example config/database.yml
-  ```
-
-  Update it with your database credentials.
-
-4. Create the `secrets.yml` file:
-
-  ```sh
-  cp config/secrets.yml.example config/secrets.yml
-  ```
-
-  Adjust as you need.
-
-5. Install dependencies:
-
-  ```sh
-  bundle install
-  ```
-
-6. Create and seed the database:
-
-  ```sh
-  rake db:setup
-  ```
-
-  This will create a user with username `admin` and password `12345678`.
-
-  Now you can start the server: `rails s`.
+We are looking for new team members. Regardless of where you are or how much you
+know about programming. If you are interested, please
+[apply](https://docs.google.com/forms/d/19hvjOVyRD06blr2hmrKOVj6SGKwt8AkgBFqtFiP3nrI/viewform).
 
 ## License
 
