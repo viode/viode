@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
   end
   resources :questions, only: [:index, :new, :create], concerns: :votable do
+    post :star, on: :member
     resources :answers, only: [:new, :create]
   end
   resources :answers, only: [], concerns: :votable

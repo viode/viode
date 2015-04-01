@@ -5,6 +5,40 @@ RSpec.describe QuestionsHelper, type: :helper do
   let(:question) { create :question, author: user, id: 777 }
   let(:anonymous_question) { create :anonymous_question, author: user }
 
+  describe "#link_to_question_star" do
+    context "when not signed in" do
+      before { expect(helper).to receive(:user_signed_in?).and_return(false) }
+
+      it "returns empty string" do
+        expect(helper.link_to_question_star(question)).to eq('')
+      end
+    end
+
+    context "when signed in" do
+      before do
+        expect(helper).to receive(:user_signed_in?).and_return(true)
+        expect(helper).to receive(:current_user).and_return(user)
+      end
+
+      context "when user not starred question" do
+        it "returns link to star question" do
+          star_link = helper.link_to_question_star(question)
+          expect(star_link).to start_with('<a class="star" title="Star this question" data-remote="true"')
+          expect(star_link).to end_with('<span class="fa fa-star-o fa-2x"></span></a>')
+        end
+      end
+
+      context "when user starred question" do
+        it "returns link to unstar question" do
+          question.star_by user
+          star_link = helper.link_to_question_star(question)
+          expect(star_link).to start_with('<a class="star" title="Unstar this question" data-remote="true"')
+          expect(star_link).to end_with('<span class="fa fa-star fa-2x"></span></a>')
+        end
+      end
+    end
+  end
+
   describe "#link_to_question_upvote" do
     context "when not signed in" do
       before { expect(helper).to receive(:user_signed_in?).and_return(false) }

@@ -1,0 +1,4 @@
+var $question = $('div[data-question-id=<%= @question.id %>]'),
+    $questionStar = $question.find('.star');
+
+$questionStar.replaceWith('<%= escape_javascript(link_to_question_star @question) %>');

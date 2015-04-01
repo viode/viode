@@ -3,10 +3,14 @@
 .row
   .col-md-8
     .question data-question-id=@question.id
-      h3.title = @question.title
-      ul.tag-list
-        - @question.tag_list.each do |label|
-          li = link_to label, tag_path(label), class: 'tag'
+      .row
+        .col-md-11
+          h3.title = @question.title
+          ul.tag-list
+            - @question.tag_list.each do |label|
+              li = link_to label, tag_path(label), class: 'tag'
+        .col-md-1
+          = link_to_question_star(@question)
       .separator
 
       .row.content

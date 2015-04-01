@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
-  before_action :find_question, only: [:show, :upvote, :downvote]
+  before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote, :star]
+  before_action :find_question, only: [:show, :upvote, :downvote, :star]
 
   def index
     @top_categories = Category.popular.limit(5)
@@ -43,6 +43,15 @@ class QuestionsController < ApplicationController
 
   def downvote
     @question.downvote_by current_user
+
+    respond_to do |format|
+      format.html { redirect_to @question }
+      format.js
+    end
+  end
+
+  def star
+    @question.star_by current_user
 
     respond_to do |format|
       format.html { redirect_to @question }

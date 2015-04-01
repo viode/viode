@@ -8,6 +8,7 @@ class Question < ActiveRecord::Base
   belongs_to :category
   has_many :answers, dependent: :destroy
 
+  has_reputation :stars, source: :user
   has_reputation :votes, source: :user,
     source_of: { reputation: :question_points, of: :author }
 
@@ -23,6 +24,14 @@ class Question < ActiveRecord::Base
 
   def increment_views
     Question.where(id: id).update_all('views=views+1')
+  end
+
+  def star_by(user)
+    starred_by?(user) ? delete_evaluation(:stars, user) : add_evaluation(:stars, 1, user)
+  end
+
+  def starred_by?(user)
+    evaluation_by(:stars, user) == 1
   end
 
   private

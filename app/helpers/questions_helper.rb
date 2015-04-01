@@ -1,4 +1,20 @@
 module QuestionsHelper
+  def link_to_question_star(question)
+    return '' unless user_signed_in?
+
+    if question.starred_by?(current_user)
+      icon_klass = 'fa-star'
+      title = 'Unstar this question'
+    else
+      icon_klass = 'fa-star-o'
+      title = 'Star this question'
+    end
+
+    link_to star_question_path(question), method: :post, remote: true, class: 'star', title: title do
+      content_tag :span, nil, class: "fa #{icon_klass} fa-2x"
+    end
+  end
+
   def link_to_question_upvote(question)
     if user_signed_in?
       klass = question.upvoted_by?(current_user) ? 'active' : ''

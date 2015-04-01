@@ -131,4 +131,29 @@ RSpec.describe QuestionsController, type: :controller do
       end
     end
   end
+
+  describe "POST #star" do
+    context "when not signed in" do
+      it "redirects to sign in page" do
+        post :star, id: question.id
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "when signed in" do
+      before { sign_in user }
+
+      it "stars question and redirects to question" do
+        expect {
+          post :star, id: question.id
+        }.to change { question.reputation_for(:stars) }.by(1)
+        expect(response).to redirect_to(question)
+      end
+
+      it "returns http success for remote request" do
+        xhr :post, :star, id: question.id
+        expect(response).to be_success
+      end
+    end
+  end
 end

@@ -53,6 +53,30 @@ RSpec.describe Question, type: :model do
     end
   end
 
+  describe "#star_by" do
+    context "when starred" do
+      it "deletes stars evaluation" do
+        question.add_evaluation :stars, 1, user
+        expect { question.star_by(user) }.to change { question.reputation_for(:stars) }.from(1).to(0)
+      end
+    end
+
+    context "when not starred" do
+      it "adds stars evaluation" do
+        expect { question.star_by(user) }.to change { question.reputation_for(:stars) }.from(0).to(1)
+      end
+    end
+  end
+
+  describe "#starred_by?" do
+    it "checks if question starred by user" do
+      expect(question.starred_by?(user)).to be false
+
+      question.add_evaluation :stars, 1, user
+      expect(question.starred_by?(user)).to be true
+    end
+  end
+
   describe "#upvote_by" do
     it "changes votes count positively" do
       expect { question.upvote_by(user) }.to change { question.votes }.from(0).to(1)
