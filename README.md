@@ -11,6 +11,7 @@ with Ruby on Rails.
 + Anonymous questions and answers
 + Votes for questions and answers
 + User points (reputation)
++ Star questions (bookmark)
 + SEO friendly
 + Can be used as a discussion board
 + And [many more](https://github.com/viode/viode/labels/feature).. Stay tuned.
