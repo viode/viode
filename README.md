@@ -18,7 +18,7 @@ with Ruby on Rails.
 
 ## Installation
 
-Requirements: Ruby 1.9+, PostgreSQL, ImageMagick.  
+Requirements: Ruby 1.9+, PostgreSQL, ImageMagick, Elasticsearch.  
 System requirements: In several installations, Viode performed well on 256MB
 Linux (CentOS) instance and 128MB FreeBSD instance. Your mileage may vary.
 

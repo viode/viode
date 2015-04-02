@@ -3,6 +3,7 @@
 - Ruby 1.9
 - PostgreSQL
 - ImageMagick
+- Elasticsearch
 
 ## Installation
 
