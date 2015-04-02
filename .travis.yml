@@ -1,6 +1,9 @@
 language: ruby
 rvm: 2.2
-services: postgresql
+
+services:
+  - postgresql
+  - elasticsearch
 
 before_script:
   - "cp config/secrets.yml.example config/secrets.yml"
