@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   get '/q/:id', to: redirect('/questions/%{id}'), as: :question_short
   get '/settings', to: redirect('/settings/profile')
 
+  namespace :admin do
+    root 'dashboard#show', as: :dashboard
+  end
+
   namespace :settings do
     resource :account, only: [:show, :update]
     resource :profile, only: [:show, :update]
