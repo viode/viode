@@ -8,6 +8,7 @@ gem 'devise'
 gem 'pundit'
 gem 'kaminari'
 gem 'stringex'
+gem 'searchkick'
 gem 'slim-rails'
 gem 'carrierwave'
 gem 'mini_magick', require: false
