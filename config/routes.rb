@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/ask', to: redirect('/questions/new')
   get '/q/:id', to: redirect('/questions/%{id}'), as: :question_short
   get '/settings', to: redirect('/settings/profile')
+  get '/search', to: 'search#index', as: :search
 
   namespace :admin do
     root 'dashboard#show', as: :dashboard

@@ -15,6 +15,9 @@ header
             = link_to 'Questions', questions_path
           li class=('active' if controller_name == 'categories' && action_name == 'index')
             = link_to 'Categories', categories_path
+        = form_tag search_path, method: :get, class: 'navbar-form navbar-left' do
+          .form-group
+            = search_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search..'
         ul.nav.navbar-nav.navbar-right
           li class=('active' if controller_name == 'questions' && action_name == 'new')
             = link_to 'Ask question', new_question_path

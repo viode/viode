@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   include Votable
 
+  searchkick
   acts_as_taggable
   acts_as_url :title, url_attribute: :permalink
 
