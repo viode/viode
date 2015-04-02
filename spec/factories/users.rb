@@ -6,6 +6,7 @@ FactoryGirl.define do
     username { Faker::Internet.user_name(3..20).tr('.-', '_') }
     password '12345678'
     avatar   { File.open('spec/fixtures/250.gif') }
+    role 0
 
     factory :confirmed_user do
       confirmed_at Time.now

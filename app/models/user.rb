@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :login
+  enum role: [:user, :admin, :moderator, :banned]
 
   has_many :answers, -> { where(anonymous: false) }, foreign_key: :author_id, dependent: :destroy
   has_many :questions, -> { where(anonymous: false) }, foreign_key: :author_id, dependent: :destroy
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
     else
       where(conditions.to_h).first
     end
