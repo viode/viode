@@ -5,6 +5,7 @@ gem 'rails', '4.2.1'
 gem 'pg'
 
 gem 'devise'
+gem 'pundit'
 gem 'kaminari'
 gem 'stringex'
 gem 'slim-rails'
