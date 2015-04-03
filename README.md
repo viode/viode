@@ -10,6 +10,8 @@ with Ruby on Rails.
 + Ask and answer questions
 + Anonymous questions and answers
 + Votes for questions and answers
++ Search questions and labels
++ User access levels (groups)
 + User points (reputation)
 + Star questions (bookmark)
 + SEO friendly

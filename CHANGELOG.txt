@@ -1,5 +1,9 @@
 master (stable)
 
+  - FEATURE: search labels
+  - FEATURE: search questions
+  - FEATURE: control panel for admin
+  - FEATURE: user access groups (roles)
   - FEATURE: ability to star questions
   - FEATURE: add dynamic page titles
   - BUGFIX: don't count users anonymous posts
