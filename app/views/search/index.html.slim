@@ -2,13 +2,20 @@
 
 .row
   .col-md-12
-    - if @questions.any?
+    - if @tags.any? || @questions.any?
       h3 Search results
 
-      .question-list
-        = render @questions
+      - if @tags.any?
+        h3 Labels
+        ul.tag-list.list-inline
+          - @tags.each do |label|
+            li = link_to label.name, tag_path(label.name), class: 'tag'
 
-      = paginate @questions
+      - if @questions.any?
+        h3 Questions
+        .question-list
+          = render @questions
+        = paginate @questions
     - else
       = form_tag search_path, method: :get do
         .form-group
