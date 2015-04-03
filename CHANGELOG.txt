@@ -1,4 +1,4 @@
-master (stable)
+v1.1.0 (04.04.2015)
 
   - FEATURE: search labels
   - FEATURE: search questions
