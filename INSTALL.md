@@ -51,4 +51,10 @@
 
   This will create a user with username `admin` and password `12345678`.
 
+7. Add data to the search index:
+
+  ```sh
+  rake searchkick:reindex:all
+  ```
+
   Now you can start the server: `rails s`.
