@@ -17,7 +17,7 @@ header
             = link_to 'Categories', categories_path
         = form_tag search_path, method: :get, class: 'navbar-form navbar-left js-search-form' do
           .form-group
-            = search_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search..'
+            = search_field_tag :query, params[:query], class: 'form-control', id: 'js-search-input-header', autocomplete: 'off', placeholder: 'Search..'
         ul.nav.navbar-nav.navbar-right
           li class=('active' if controller_name == 'questions' && action_name == 'new')
             = link_to 'Ask question', new_question_path
