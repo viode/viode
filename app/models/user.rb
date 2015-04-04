@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :answers, -> { where(anonymous: false) }, foreign_key: :author_id, dependent: :destroy
   has_many :questions, -> { where(anonymous: false) }, foreign_key: :author_id, dependent: :destroy
+  has_many :subscriptions, foreign_key: :subscriber_id, dependent: :destroy
 
   has_reputation :answer_points, source: { reputation: :votes, of: :answers }
   has_reputation :question_points, source: { reputation: :votes, of: :questions }

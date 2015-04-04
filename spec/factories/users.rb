@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user, aliases: [:author] do
+  factory :user, aliases: [:author, :subscriber] do
     fullname { Faker::Name.name }
     bio      { Faker::Name.title }
     email    { Faker::Internet.safe_email }

@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
       with_foreign_key('author_id').dependent(:destroy) }
     it { should have_many(:questions).conditions(anonymous: false).
       with_foreign_key('author_id').dependent(:destroy) }
+    it { should have_many(:subscriptions).with_foreign_key('subscriber_id').dependent(:destroy) }
   end
 
   describe "validations" do
