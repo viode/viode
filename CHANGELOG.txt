@@ -1,3 +1,7 @@
+master (stable)
+
+  - FEATURE: subscribe to categories
+
 v1.1.0 (04.04.2015)
 
   - FEATURE: search labels

@@ -6,6 +6,7 @@ with Ruby on Rails.
 ## Features
 
 + Categories
++ Category subscriptions
 + Labels (tags)
 + Ask and answer questions
 + Anonymous questions and answers
