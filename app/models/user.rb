@@ -24,6 +24,24 @@ class User < ActiveRecord::Base
     username
   end
 
+  def subscribe_to(subscribable)
+    subscriptions.create(subscribable: subscribable) unless subscribed_to?(subscribable)
+  end
+
+  def unsubscribe_from(subscribable)
+    subscriptions.where(
+      subscribable_id: subscribable.id,
+      subscribable_type: subscribable.class
+    ).destroy_all if subscribed_to?(subscribable)
+  end
+
+  def subscribed_to?(subscribable)
+    subscriptions.where(
+      subscribable_id: subscribable.id,
+      subscribable_type: subscribable.class
+    ).any?
+  end
+
   private
 
   def self.find_for_database_authentication(warden_conditions)

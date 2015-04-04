@@ -6,9 +6,12 @@
       h2 = link_to @category.name, @category
       p No questions in this category.
     - else
-      h2
-        ' Recent questions in
-        = link_to @category.name, @category
+      .clearfix
+        h2.pull-left
+          ' Recent questions in
+          = link_to @category.name, @category
+        .pull-right
+          = link_to_category_subscription(@category)
 
       .question-list
         = render partial: 'questions/question', collection: @questions

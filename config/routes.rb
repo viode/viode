@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     end
   end
 
+  concern :subscribable do
+    member do
+      post :subscribe
+      post :unsubscribe
+    end
+  end
+
   get '/ask', to: redirect('/questions/new')
   get '/q/:id', to: redirect('/questions/%{id}'), as: :question_short
   get '/settings', to: redirect('/settings/profile')
@@ -33,7 +40,7 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: [:show], param: :name
-  resources :categories, only: [:index, :show], param: :permalink
+  resources :categories, only: [:index, :show], param: :permalink, concerns: :subscribable
   resources :users, only: [:show], param: :username do
     member do
       get :answers
