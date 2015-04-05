@@ -22,23 +22,25 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
+group :development do
+  gem 'letter_opener'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
+  gem 'guard-rspec', require: false
+  gem 'guard-livereload', require: false
+
+  gem 'spring'
+  gem 'spring-commands-rspec'
+end
+
 group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
 
-  gem 'letter_opener'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-
   gem 'pry-rails'
   gem 'pry-byebug'
-
-  gem 'spring'
-  gem 'spring-commands-rspec'
 end
 
 group :test do
