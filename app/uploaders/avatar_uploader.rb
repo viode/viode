@@ -13,10 +13,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   process :strip_data
-  process resize_to_fill: [250, 250]
+  process resize_to_fill_space: [250, 250]
 
   version :thumb do
-    process resize_to_fill: [80, 80]
+    process resize_to_fill_space: [80, 80]
   end
 
   def extension_white_list
@@ -33,6 +33,22 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def strip_data
     manipulate! do |image|
       image.strip
+      image
+    end
+  end
+
+  # resize to fill a given space
+  # https://gist.github.com/NARKOZ/4294977
+  def resize_to_fill_space(width, height)
+    manipulate! do |image|
+      MiniMagick::Tool::Convert.new do |convert|
+        convert << image.path
+        convert.resize "#{width}x#{height}^"
+        convert.gravity 'center'
+        convert.extent "#{width}x#{height}"
+        convert << image.path
+      end
+
       image
     end
   end
