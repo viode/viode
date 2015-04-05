@@ -27,6 +27,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
 
+  gem 'letter_opener'
   gem 'better_errors'
   gem 'binding_of_caller'
 
