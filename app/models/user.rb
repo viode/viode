@@ -12,13 +12,16 @@ class User < ActiveRecord::Base
 
   has_reputation :answer_points, source: { reputation: :votes, of: :answers }
   has_reputation :question_points, source: { reputation: :votes, of: :questions }
-  has_reputation :points, source: [{ reputation: :answer_points }, { reputation: :question_points }]
+  has_reputation :bonus_points, source: :user
+  has_reputation :points, source: [{ reputation: :answer_points }, { reputation: :question_points }, { reputation: :bonus_points }]
 
   validates :bio, length: { maximum: 400 }
   validates :fullname, length: { in: 2..90 }, allow_blank: true
   validates :username, length: { in: 3..20 },
             format: { with: /\A\w+\z/, message: 'can contain only letters, numbers and underscore' }
   validates :username, presence: true, uniqueness: { case_sensitive: false }
+
+  after_create :add_initial_points
 
   def to_param
     username
@@ -43,6 +46,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def add_initial_points
+    increase_evaluation(:bonus_points, Rails.application.secrets.votes['initial'], self)
+  end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

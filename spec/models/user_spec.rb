@@ -53,4 +53,13 @@ RSpec.describe User, type: :model do
       expect(user.subscribed_to?(category2)).to be false
     end
   end
+
+  describe ".add_initial_points" do
+    it "adds initial user points" do
+      new_user = create :confirmed_user
+
+      expect(new_user.reputation_for(:bonus_points)).to eq(100)
+      expect(new_user.reputation_for(:points)).to eq(100)
+    end
+  end
 end
