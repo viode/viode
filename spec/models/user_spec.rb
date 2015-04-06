@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user)     { create :confirmed_user }
   let(:category) { create :category }
+  let(:question) { create :question, author: user }
 
   describe "relations" do
     it { should have_many(:answers).conditions(anonymous: false).
@@ -51,6 +52,14 @@ RSpec.describe User, type: :model do
 
       expect(user.subscribed_to?(category)).to be true
       expect(user.subscribed_to?(category2)).to be false
+    end
+  end
+
+  describe "star_points reputation" do
+    it "changes when author's question is starred" do
+      expect {
+        question.add_evaluation :stars, 1, user
+      }.to change { user.reputation_for(:star_points) }.from(0).to(2)
     end
   end
 

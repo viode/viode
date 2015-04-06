@@ -9,7 +9,8 @@ class Question < ActiveRecord::Base
   belongs_to :category
   has_many :answers, dependent: :destroy
 
-  has_reputation :stars, source: :user
+  has_reputation :stars, source: :user,
+    source_of: { reputation: :star_points, of: :author }
   has_reputation :votes, source: :user,
     source_of: { reputation: :question_points, of: :author }
 

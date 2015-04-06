@@ -12,8 +12,14 @@ class User < ActiveRecord::Base
 
   has_reputation :answer_points, source: { reputation: :votes, of: :answers }
   has_reputation :question_points, source: { reputation: :votes, of: :questions }
+  has_reputation :star_points, source: { reputation: :stars, of: :questions, weight: 2 }
   has_reputation :bonus_points, source: :user
-  has_reputation :points, source: [{ reputation: :answer_points }, { reputation: :question_points }, { reputation: :bonus_points }]
+  has_reputation :points, source: [
+    { reputation: :answer_points },
+    { reputation: :question_points },
+    { reputation: :star_points },
+    { reputation: :bonus_points }
+  ]
 
   validates :bio, length: { maximum: 400 }
   validates :fullname, length: { in: 2..90 }, allow_blank: true
