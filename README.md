@@ -28,6 +28,18 @@ Linux (CentOS) instance and 128MB FreeBSD instance. Your mileage may vary.
 See [INSTALL.md](https://github.com/viode/viode/blob/master/INSTALL.md) for
 detailed installation guide.
 
+## Points
+
+Viode has a user points system (aka user reputation). You can configure it by
+editing `config/secrets.yml` file.  
+
+Here are the basics of the system:
+
+* Each new user gets 100 points
+* User gets 2 points when his question gets starred
+* User gets 10 points when his answer or question gets upvoted
+* User loses 10 points when his answer or question gets downvoted
+
 ## Contributing
 
 See
