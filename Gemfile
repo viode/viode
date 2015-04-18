@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# sets ruby version
+# ex: VIODE_RUBY_VERSION=2.2.2
+if ENV['VIODE_RUBY_VERSION']
+  ruby ENV['VIODE_RUBY_VERSION']
+end
+
 gem 'rails', '4.2.1'
 
 gem 'pg'
