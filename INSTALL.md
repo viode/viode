@@ -58,3 +58,56 @@
   ```
 
   Now you can start the server: `rails s`.
+
+## Installation on Heroku
+
+Create a new branch called `heroku`:
+
+```sh
+git checkout -b heroku
+```
+
+Copy and add `secrets.yml` file to git:
+
+```sh
+cp config/secrets.yml.example config/secrets.yml
+git add -f config/secrets.yml
+git commit -m "add secrets.yml for heroku"
+```
+
+Push `heroku` branch to heroku:
+
+```sh
+git push heroku heroku:master
+```
+
+Set ruby version:
+
+```sh
+heroku config:set VIODE_RUBY_VERSION=2.2.2
+```
+
+Set devise secret key:
+
+```sh
+heroku config:set DEVISE_SECRET_KEY=`rake secret`
+```
+
+Run database migrations:
+
+```sh
+heroku run rake db:migrate
+```
+
+Add Elasticsearch add-on and set `ENV["ELASTICSEARCH_URL"]`:
+
+```sh
+heroku addons:add bonsai:starter
+heroku config:add ELASTICSEARCH_URL=`heroku config:get BONSAI_URL`
+```
+
+Add data to the search index:
+
+```sh
+heroku run rake searchkick:reindex:all
+```
