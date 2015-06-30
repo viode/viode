@@ -14,3 +14,7 @@
 
 # Ignore uploads.
 /public/uploads
+
+# Ignore application configuration
+/config/database.yml
+/config/secrets.yml
