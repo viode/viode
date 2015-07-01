@@ -14,6 +14,16 @@ RSpec.describe Answer, type: :model do
     it { should validate_presence_of(:question_id) }
     it { should validate_presence_of(:author_id) }
     it { should validate_length_of(:body).is_at_least(2) }
+
+    describe "#question_not_expired" do 
+      let(:question)  { create :question, created_at: Date.today - 31.days}
+
+      it "validates question not older than 30" do 
+        answer = Answer.new(question: question)
+        answer.validate
+        expect(answer.errors[:question_expired].size).to eq(1)
+      end
+    end
   end
 
   describe "recent scope" do
