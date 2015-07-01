@@ -23,7 +23,7 @@
           .details
             span.avatar> = author_avatar(@question)
             span.author> = question_author(@question)
-            span.time = time_tag_for @question
+            span.time = timeago_tag @question.created_at
           = simple_format @question.body
 
     .question-answers

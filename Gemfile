@@ -29,6 +29,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks', github: 'rails/turbolinks'
 gem 'jquery-turbolinks'
+gem 'rails-timeago'
 
 group :development do
   gem 'letter_opener'
