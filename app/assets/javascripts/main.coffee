@@ -2,11 +2,6 @@ $ ->
   $(document).on 'click', '#question-shortlink', ->
     @select()
 
-  initPlugins = ->
-    $('.js-timeago').timeago();
-
-  initPlugins()
-
   searchInputExpand = ->
     $searchInput = $('#js-search-input-header')
 

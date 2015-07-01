@@ -16,4 +16,4 @@
     span.avatar> = author_avatar(question)
     span.author = question_author(question)
     br
-    span.time = time_tag_for question
+    span.time = timeago_tag question.created_at

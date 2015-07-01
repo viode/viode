@@ -19,6 +19,6 @@
             span.avatar> = author_avatar(answer)
             span.author = question_author(answer)
             br
-            span.time = time_tag_for answer
+            span.time = timeago_tag answer.created_at
 
     = paginate @answers
