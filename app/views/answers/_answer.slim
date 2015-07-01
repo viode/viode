@@ -12,5 +12,5 @@
           span.author> = answer_author(answer)
           span.time = timeago_tag answer.created_at
         .pull-right
-          = link_to '#', "#answer-#{answer.id}", title: 'permalink'
+          = link_to '#', "#answer-#{answer.id}", class: 'js-answer-permalink', title: 'permalink'
       = simple_format answer.body
