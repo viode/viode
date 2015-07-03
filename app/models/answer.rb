@@ -14,7 +14,7 @@ class Answer < ActiveRecord::Base
   scope :recent, -> { order('created_at DESC') }
 
   def question_not_expired
-    errors.add(:question_expired, "The question you were trying to answer was odler than 30 days") if
-      !question_id.blank? and question.created_at < Date.today - 30.days
+    errors.add(:question_expired, "The question you were trying to answer was older than 30 days") if
+      !question_id.blank? and question.expired?
   end
 end

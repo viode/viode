@@ -106,4 +106,16 @@ RSpec.describe Question, type: :model do
       expect(question.downvoted_by?(user)).to be true
     end
   end
+
+  describe "#expired?" do 
+    it "returns true if the question is older than 30 days" do 
+      expired_question = create :question, author: user, created_at: 31.days.ago
+
+      expect(expired_question.expired?).to be true
+    end
+
+    it "returns false if the question is not older than 30 days" do 
+      expect(question.expired?).to be false
+    end
+  end
 end

@@ -36,14 +36,18 @@ class Question < ActiveRecord::Base
     evaluation_by(:stars, user) == 1
   end
 
+  def expired?
+    created_at < 30.days.ago
+  end
+
   private
 
-  def self.related_to(question)
-    tagged_with(question.tag_list, any: true).where.not(id: question.id)
-  end
+    def self.related_to(question)
+      tagged_with(question.tag_list, any: true).where.not(id: question.id)
+    end
 
-  def amount_of_labels
-    tags_count = tag_list.size
-    errors.add(:labels, 'Please set labels (from 1 to 5)') if tags_count < 1 || tags_count > 5
-  end
-end
+    def amount_of_labels
+      tags_count = tag_list.size
+      errors.add(:labels, 'Please set labels (from 1 to 5)') if tags_count < 1 || tags_count > 5
+    end
+ end

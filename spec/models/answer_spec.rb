@@ -16,12 +16,19 @@ RSpec.describe Answer, type: :model do
     it { should validate_length_of(:body).is_at_least(2) }
 
     describe "#question_not_expired" do 
-      let(:question)  { create :question, created_at: Date.today - 31.days}
+      let(:expired_question)  { create :question, created_at: Date.today - 31.days}
+      let(:question)          { create :question }
 
       it "validates question not older than 30" do 
-        answer = Answer.new(question: question)
+        answer = Answer.new(question: expired_question)
         answer.validate
         expect(answer.errors[:question_expired].size).to eq(1)
+      end
+
+      it "does not return an error if the question is not expired" do 
+        answer = Answer.new(question: question)
+        answer.validate
+        expect(answer.errors[:question_expired].size).to eq(0)
       end
     end
   end
