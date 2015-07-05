@@ -21,3 +21,13 @@ $ ->
       if $searchQuery.trim().length <= 1 then false else true
 
   searchForm()
+
+  highlightAnswer = ->
+    $('.js-answer-permalink').on 'click', ->
+      $(@).parents('.answer').highlight()
+
+    anchor = location.hash
+    if anchor and anchor.match /#answer-\d/
+      $(anchor).highlight()
+
+  highlightAnswer()
