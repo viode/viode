@@ -33,7 +33,7 @@
         | )
       = render partial: 'answers/answer', collection: @question.answers
 
-    - if user_signed_in? && !@question.expired?
+    - if user_signed_in? && !@question.closed
       .answer-form
         = form_for [@question, Answer.new] do |f|
           = render partial: 'answers/form', locals: { f: f }

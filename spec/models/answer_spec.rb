@@ -15,20 +15,20 @@ RSpec.describe Answer, type: :model do
     it { should validate_presence_of(:author_id) }
     it { should validate_length_of(:body).is_at_least(2) }
 
-    describe "#question_not_expired" do 
-      let(:expired_question)  { create :question, created_at: Date.today - 31.days}
+    describe "#question_not_closed" do 
+      let(:closed_question)   { create :question, closed: true}
       let(:question)          { create :question }
 
-      it "validates question not older than 30" do 
-        answer = Answer.new(question: expired_question)
+      it "validates question is not closed" do 
+        answer = Answer.new(question: closed_question)
         answer.validate
-        expect(answer.errors[:question_expired].size).to eq(1)
+        expect(answer.errors[:question_closed].size).to eq(1)
       end
 
-      it "does not return an error if the question is not expired" do 
+      it "does not return an error if the question is not closed" do 
         answer = Answer.new(question: question)
         answer.validate
-        expect(answer.errors[:question_expired].size).to eq(0)
+        expect(answer.errors[:question_closed].size).to eq(0)
       end
     end
   end

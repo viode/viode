@@ -36,10 +36,6 @@ class Question < ActiveRecord::Base
     evaluation_by(:stars, user) == 1
   end
 
-  def expired?
-    created_at < 30.days.ago
-  end
-
   private
 
     def self.related_to(question)
