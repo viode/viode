@@ -18,7 +18,8 @@ class Question < ActiveRecord::Base
   validates :title, length: { in: 10..140 }
   validate :amount_of_labels
 
-  scope :recent, -> { order('created_at DESC') }
+  scope :recent,        -> { order('created_at DESC') }
+  scope :to_be_closed,  -> { where(['created_at < ? AND closed = ?', 31.days.ago, false]) }
 
   def to_param
     "#{id}/#{permalink}"
