@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  let(:user)   { create :confirmed_user }
-  let(:answer) { create :answer, author: user }
+  let(:user)        { create :confirmed_user }
+  let!(:question)   { create :question, closed: false }
+  let(:answer)      { create :answer, author: user, question: question }
 
   describe "relations" do
     it { should belong_to(:author).class_name('User') }
@@ -10,14 +11,16 @@ RSpec.describe Answer, type: :model do
   end
 
   describe "validations" do
+    let(:bad_answer) { build :answer, author_id: nil, question_id: question.id, body: '' }
+    subject { bad_answer }
+
     it { should validate_presence_of(:body) }
     it { should validate_presence_of(:question_id) }
     it { should validate_presence_of(:author_id) }
     it { should validate_length_of(:body).is_at_least(2) }
 
     describe "#question_not_closed" do 
-      let(:closed_question)   { create :question, closed: true}
-      let(:question)          { create :question }
+      let!(:closed_question)   { create :question, closed: true }
 
       it "validates question is not closed" do 
         answer = Answer.new(question: closed_question)
@@ -55,6 +58,20 @@ RSpec.describe Answer, type: :model do
     it "changes votes count positively" do
       expect { answer.upvote_by(user) }.to change { answer.votes }.from(0).to(1)
     end
+
+    context "upvoting an answer for a closed question" do 
+      let(:question)   { create :question }
+
+      it "changes the votes count positively" do 
+        answer.question = question 
+        answer.save
+        answer.reload
+        question.update_attributes(closed: true)
+        question.reload
+
+        expect { answer.upvote_by(user) }.to change { answer.votes }.from(0).to(1)
+      end
+    end 
   end
 
   describe "#upvoted_by?" do

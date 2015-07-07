@@ -81,6 +81,14 @@ RSpec.describe Question, type: :model do
     it "changes votes count positively" do
       expect { question.upvote_by(user) }.to change { question.votes }.from(0).to(1)
     end
+
+    context "a closed question" do 
+      let(:closed_question)   { create :question, closed: true}
+
+      it "changes votes count by one" do 
+        expect { closed_question.upvote_by(user) }.to change { closed_question.votes }.from(0).to(1)
+      end
+    end 
   end
 
   describe "#upvoted_by?" do
