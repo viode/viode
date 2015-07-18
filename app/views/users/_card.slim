@@ -1,5 +1,7 @@
 - if @user.avatar.present?
   p = image_tag @user.avatar.url, alt: @user.username, class: 'img-thumbnail avatar'
+- else
+  p = image_tag gravatar_url(@user, 250), alt: @user.username, class: 'img-thumbnail avatar'
 
 - if @user == current_user
   p = link_to 'edit', settings_profile_path, class: 'btn btn-primary btn-block'

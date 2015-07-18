@@ -10,9 +10,15 @@ module ApplicationHelper
   end
 
   def author_avatar(post)
-    unless post.anonymous? || post.author.avatar.blank?
+    if not post.anonymous? || post.author.avatar.blank?
       image_tag post.author.avatar.thumb.url, size: '18', alt: post.author.username
+    elsif not post.anonymous? && post.author.avatar.blank?
+      image_tag gravatar_url(post.author, 18), alt: post.author.username
     end
+  end
+
+  def gravatar_url(user, size)
+    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email.strip.downcase)}?s=#{size}"
   end
 
   # TODO: refactor
