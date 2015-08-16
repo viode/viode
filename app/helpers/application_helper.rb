@@ -10,9 +10,9 @@ module ApplicationHelper
   end
 
   def author_avatar(post)
-    if not post.anonymous? || post.author.avatar.blank?
+    if post.author.avatar.present? && !post.anonymous?
       image_tag post.author.avatar.thumb.url, size: '18', alt: post.author.username
-    elsif not post.anonymous? && post.author.avatar.blank?
+    elsif post.author.avatar.blank? && !post.anonymous? 
       image_tag gravatar_url(post.author, 18), alt: post.author.username
     end
   end
