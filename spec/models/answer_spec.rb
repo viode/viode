@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  let(:user)   { create :confirmed_user }
-  let(:answer) { create :answer, author: user }
+  let(:user)        { create :confirmed_user }
+  let!(:question)   { create :question, closed: false }
+  let(:answer)      { create :answer, author: user, question: question }
 
   describe "relations" do
     it { should belong_to(:author).class_name('User') }
@@ -10,10 +11,29 @@ RSpec.describe Answer, type: :model do
   end
 
   describe "validations" do
+    let(:bad_answer) { build :answer, author_id: nil, question_id: question.id, body: '' }
+    subject { bad_answer }
+
     it { should validate_presence_of(:body) }
     it { should validate_presence_of(:question_id) }
     it { should validate_presence_of(:author_id) }
     it { should validate_length_of(:body).is_at_least(2) }
+
+    describe "#question_not_closed" do 
+      let!(:closed_question)   { create :question, closed: true }
+
+      it "validates question is not closed" do 
+        answer = Answer.new(question: closed_question)
+        answer.validate
+        expect(answer.errors[:question_closed].size).to eq(1)
+      end
+
+      it "does not return an error if the question is not closed" do 
+        answer = Answer.new(question: question)
+        answer.validate
+        expect(answer.errors[:question_closed].size).to eq(0)
+      end
+    end
   end
 
   describe "recent scope" do

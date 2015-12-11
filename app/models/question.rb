@@ -18,7 +18,8 @@ class Question < ActiveRecord::Base
   validates :title, length: { in: 10..140 }
   validate :amount_of_labels
 
-  scope :recent, -> { order('created_at DESC') }
+  scope :recent,        -> { order('created_at DESC') }
+  scope :to_be_closed,  -> { where(['created_at < ? AND closed = ?', 31.days.ago, false]) }
 
   def to_param
     "#{id}/#{permalink}"
@@ -38,12 +39,12 @@ class Question < ActiveRecord::Base
 
   private
 
-  def self.related_to(question)
-    tagged_with(question.tag_list, any: true).where.not(id: question.id)
-  end
+    def self.related_to(question)
+      tagged_with(question.tag_list, any: true).where.not(id: question.id)
+    end
 
-  def amount_of_labels
-    tags_count = tag_list.size
-    errors.add(:labels, 'Please set labels (from 1 to 5)') if tags_count < 1 || tags_count > 5
-  end
-end
+    def amount_of_labels
+      tags_count = tag_list.size
+      errors.add(:labels, 'Please set labels (from 1 to 5)') if tags_count < 1 || tags_count > 5
+    end
+ end

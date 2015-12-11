@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'turbolinks', github: 'rails/turbolinks'
 gem 'jquery-turbolinks'
 gem 'rails-timeago'
+gem 'whenever', :require => false
 
 group :development do
   gem 'letter_opener'
