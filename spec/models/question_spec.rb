@@ -36,30 +36,6 @@ RSpec.describe Question, type: :model do
     end
   end
 
-  describe "#with_intended_respondent" do 
-    context "when intended_respondent is present" do 
-      context "and the intended respondent exists" do 
-        it "returns a question with an intended respondent" do 
-          question = Question.with_intended_respondent(intended_respondent: user.id)
-          expect(question.intended_respondent).to eql(user.id)
-        end
-      end
-      context "and the intended respondent does not exist" do 
-        it "returns a question without an intended respondent" do 
-          bad_id = user.id + 1234
-          question = Question.with_intended_respondent(intended_respondent: bad_id)
-          expect(question.intended_respondent).to be_nil
-        end
-      end
-    end
-    context "when intended_respondent is not present" do 
-      it "returns a question without an intended respondent" do 
-        question = Question.with_intended_respondent(controller: "questions", action: "new")
-        expect(question.intended_respondent).to be_nil
-      end
-    end
-  end
-
   describe "#increment_views" do
     it "increments question views" do
       views = question.views
