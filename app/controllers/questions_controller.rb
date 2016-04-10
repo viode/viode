@@ -19,13 +19,16 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    @question = Question.with_intended_respondent(params)
   end
 
   def create
     @question = current_user.questions.new(question_params)
 
     if @question.save
+      if @question.intended_respondent
+        QuestionMailer.specified_user(@question).deliver_later
+      end
       redirect_to @question
     else
       render :new
@@ -62,7 +65,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :body, :category_id, :tag_list, :anonymous)
+    params.require(:question).permit(:title, :body, :category_id, :tag_list, :anonymous, :intended_respondent)
   end
 
   def find_question
