@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.with_intended_respondent(params)
+    @question = Question.new(intended_respondent: params[:intended_respondent])
   end
 
   def create
