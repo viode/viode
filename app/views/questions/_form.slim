@@ -8,6 +8,11 @@
   = f.text_area :body, rows: 5, class: 'form-control'
 
 .form-group
+  = f.label :intended_respondent, 'Ask Someone'
+  = f.select :intended_respondent, User.order(:username).map {|c| [c.username, c.id] }, { prompt: true }, class: 'form-control'
+  p.help-block Is there someone you would like to ask? Select their name from the drop down above and they will be notified.
+
+.form-group
   = f.label :category_id, 'Category'
   = f.select :category_id, Category.order(:name).map {|c| [c.name, c.id] }, { prompt: true }, class: 'form-control'
 
