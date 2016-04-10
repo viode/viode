@@ -21,6 +21,15 @@ class Question < ActiveRecord::Base
   scope :recent,        -> { order('created_at DESC') }
   scope :to_be_closed,  -> { where(['created_at < ? AND closed = ?', 31.days.ago, false]) }
 
+  def self.with_intended_respondent(params)
+    intended_respondent = params[:intended_respondent] ? User.where(id: params[:intended_respondent].to_i).take : nil
+    if intended_respondent
+      Question.new(intended_respondent: intended_respondent.id)
+    else
+      Question.new
+    end
+  end
+
   def to_param
     "#{id}/#{permalink}"
   end
