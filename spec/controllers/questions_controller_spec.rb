@@ -59,11 +59,6 @@ RSpec.describe QuestionsController, type: :controller do
         get :new
         expect(response).to be_success
       end
-      
-      it "calls the with_intended_respondent constructor" do 
-        expect(Question).to receive(:with_intended_respondent).with({intended_respondent: "#{user.id}", controller: "questions", action: "new"})
-        get :new, intended_respondent: user.id 
-      end
     end
   end
 
