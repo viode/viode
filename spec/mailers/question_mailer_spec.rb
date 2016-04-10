@@ -27,7 +27,6 @@ RSpec.describe QuestionMailer, type: :mailer do
   end
 
   it 'links to the question' do 
-    #Matching against rails generated links causes the test to fail because the double quotes are escaped in the output
     expect(mail.body.encoded).to match(question.permalink)
   end
 end
