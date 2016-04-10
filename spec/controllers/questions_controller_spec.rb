@@ -53,11 +53,16 @@ RSpec.describe QuestionsController, type: :controller do
     end
 
     context "when signed in" do
-      it "returns http success" do
-        sign_in user
+      before { sign_in user }
 
+      it "returns http success" do
         get :new
         expect(response).to be_success
+      end
+      
+      it "calls the with_intended_respondent constructor" do 
+        expect(Question).to receive(:with_intended_respondent).with({intended_respondent: "#{user.id}", controller: "questions", action: "new"})
+        get :new, intended_respondent: user.id 
       end
     end
   end
@@ -78,6 +83,38 @@ RSpec.describe QuestionsController, type: :controller do
           post :create, question: attributes_for(:question, category_id: category.id)
         }.to change(Question, :count).by(1)
         expect(response).to redirect_to(Question.last)
+      end
+
+      context "when there is an intended respondent" do 
+        include ActiveJob::TestHelper
+        let!(:bob) { create :confirmed_user, username: "bob"}
+
+        it "assigns an intended respondent" do 
+          sign_in user
+
+          post :create, question: attributes_for(:question, category_id: category.id, intended_respondent: bob.id)
+          expect(Question.last.intended_respondent).to eql(bob.id)
+        end
+
+        it "enqueues the email to be sent later" do 
+          sign_in user
+          
+          expect {
+            post :create, question: attributes_for(:question, category_id: category.id, intended_respondent: bob.id)
+          }.to change{enqueued_jobs.size}.by(1)
+        end
+      end
+
+      context "when there isn't an intended respondent" do 
+        include ActiveJob::TestHelper
+
+        it "does not enqueue an email to be sent later" do 
+          sign_in user
+          
+          expect {
+            post :create, question: attributes_for(:question, category_id: category.id)
+          }. to change{enqueued_jobs.size}.by(0)
+        end
       end
     end
   end
