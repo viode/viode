@@ -4,7 +4,9 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
+require 'sidekiq/testing'
 
+Sidekiq::Testing.fake!
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
