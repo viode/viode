@@ -14,3 +14,5 @@
       li
         ' Question points:
         = @user.reputation_for(:question_points).to_i
+
+    = link_to 'Ask me a question', new_question_path(intended_respondent: @user.id), class: 'btn btn-primary'
