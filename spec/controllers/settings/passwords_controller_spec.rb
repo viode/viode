@@ -16,7 +16,7 @@ RSpec.describe Settings::PasswordsController, type: :controller do
 
       it "returns http success" do
         get :show
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe Settings::PasswordsController, type: :controller do
   describe "PATCH #update" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        patch :update, user: { current_password: '12345678', password: 'new pass', password_confirmation: 'new pass' }
+        patch :update, params: { user: { current_password: '12345678', password: 'new pass', password_confirmation: 'new pass' } }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe Settings::PasswordsController, type: :controller do
       before { sign_in user }
 
       it "updates password and redirects to password settings page" do
-        patch :update, user: { current_password: '12345678', password: 'new pass', password_confirmation: 'new pass' }
+        patch :update, params: { user: { current_password: '12345678', password: 'new pass', password_confirmation: 'new pass' } }
         expect(user.reload.valid_password?('new pass')).to be_truthy
         expect(response).to redirect_to(settings_password_path)
       end

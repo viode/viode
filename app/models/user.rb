@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
   has_many :questions, -> { where(anonymous: false) }, foreign_key: :author_id, dependent: :destroy
   has_many :subscriptions, foreign_key: :subscriber_id, dependent: :destroy
 
-  has_reputation :answer_points, source: { reputation: :votes, of: :answers, weight: Rails.application.secrets.points['answer'] }
-  has_reputation :question_points, source: { reputation: :votes, of: :questions, weight: Rails.application.secrets.points['question'] }
-  has_reputation :star_points, source: { reputation: :stars, of: :questions, weight: Rails.application.secrets.points['star'] }
+  has_reputation :answer_points, source: { reputation: :votes, of: :answers, weight: Rails.application.secrets.points[:answer] }
+  has_reputation :question_points, source: { reputation: :votes, of: :questions, weight: Rails.application.secrets.points[:question] }
+  has_reputation :star_points, source: { reputation: :stars, of: :questions, weight: Rails.application.secrets.points[:star] }
   has_reputation :bonus_points, source: :user
   has_reputation :points, source: [
     { reputation: :answer_points },
@@ -40,21 +40,21 @@ class User < ActiveRecord::Base
   def unsubscribe_from(subscribable)
     subscriptions.where(
       subscribable_id: subscribable.id,
-      subscribable_type: subscribable.class
+      subscribable_type: subscribable.class.name
     ).destroy_all if subscribed_to?(subscribable)
   end
 
   def subscribed_to?(subscribable)
     subscriptions.where(
       subscribable_id: subscribable.id,
-      subscribable_type: subscribable.class
+      subscribable_type: subscribable.class.name
     ).any?
   end
 
   private
 
   def add_initial_points
-    increase_evaluation(:bonus_points, Rails.application.secrets.points['initial'], self)
+    increase_evaluation(:bonus_points, Rails.application.secrets.points[:initial], self)
   end
 
   def self.find_for_database_authentication(warden_conditions)

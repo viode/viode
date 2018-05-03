@@ -8,7 +8,7 @@ RSpec.describe AnswersController, type: :controller do
   describe "GET #new" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        get :new, question_id: question.id
+        get :new, params: { question_id: question.id }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -17,8 +17,8 @@ RSpec.describe AnswersController, type: :controller do
       it "returns http success" do
         sign_in user
 
-        get :new, question_id: question.id
-        expect(response).to be_success
+        get :new, params: {question_id: question.id}
+        expect(response).to be_successful
       end
     end
   end
@@ -26,7 +26,7 @@ RSpec.describe AnswersController, type: :controller do
   describe "POST #create" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :create, question_id: question.id
+        post :create, params: {question_id: question.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -36,7 +36,7 @@ RSpec.describe AnswersController, type: :controller do
         sign_in user
 
         expect {
-          post :create, question_id: question.id, answer: attributes_for(:answer)
+          post :create, params: {question_id: question.id, answer: attributes_for(:answer)}
         }.to change(Answer, :count).by(1)
         expect(response).to redirect_to(question)
       end
@@ -46,7 +46,7 @@ RSpec.describe AnswersController, type: :controller do
   describe "POST #upvote" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :upvote, id: answer.id
+        post :upvote, params: {id: answer.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -56,14 +56,14 @@ RSpec.describe AnswersController, type: :controller do
 
       it "upvotes answer and redirects to answer question" do
         expect {
-          post :upvote, id: answer.id
+          post :upvote, params: {id: answer.id}
         }.to change { answer.reputation_for(:votes) }.by(1)
         expect(response).to redirect_to(answer.question)
       end
 
       it "returns http success for remote request" do
-        xhr :post, :upvote, id: answer.id
-        expect(response).to be_success
+        post :upvote, params: {id: answer.id}, xhr: true
+        expect(response).to be_successful
       end
     end
   end
@@ -71,7 +71,7 @@ RSpec.describe AnswersController, type: :controller do
   describe "POST #downvote" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :downvote, id: answer.id
+        post :downvote, params: {id: answer.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -81,14 +81,14 @@ RSpec.describe AnswersController, type: :controller do
 
       it "downvotes answer and redirects to answer question" do
         expect {
-          post :downvote, id: answer.id
+          post :downvote, params: { id: answer.id}
         }.to change { answer.reputation_for(:votes) }.by(-1)
         expect(response).to redirect_to(answer.question)
       end
 
       it "returns http success for remote request" do
-        xhr :post, :downvote, id: answer.id
-        expect(response).to be_success
+        post :downvote, params: {id: answer.id}, xhr: true
+        expect(response).to be_successful
       end
     end
   end

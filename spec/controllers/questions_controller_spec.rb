@@ -8,21 +8,21 @@ RSpec.describe QuestionsController, type: :controller do
   describe "GET #index" do
     it "returns http success" do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(response).to be_successful
     end
   end
 
   describe "GET #show" do
     context "when id and permalink present" do
       it "returns http success" do
-        get :show, id: question.id, permalink: question.permalink
-        expect(response).to be_success
+        get :show, params: { id: question.id, permalink: question.permalink}
+        expect(response).to be_successful
       end
     end
 
     context "when permalink not present" do
       it "redirects with status 301" do
-        get :show, id: question.id
+        get :show, params: { id: question.id}
         expect(response).to redirect_to(question)
         expect(response.status).to eq(301)
       end
@@ -30,7 +30,7 @@ RSpec.describe QuestionsController, type: :controller do
 
     context "when permalink not valid" do
       it "redirects with status 301" do
-        get :show, id: question.id, permalink: 'test'
+        get :show, params: { id: question.id, permalink: 'test'}
         expect(response).to redirect_to(question)
         expect(response.status).to eq(301)
       end
@@ -39,7 +39,7 @@ RSpec.describe QuestionsController, type: :controller do
     it "updates views count" do
       views_before = question.views
 
-      get :show, id: question.id
+      get :show, params: { id: question.id}
       expect(question.reload.views).to eq(views_before + 1)
     end
   end
@@ -57,7 +57,7 @@ RSpec.describe QuestionsController, type: :controller do
         sign_in user
 
         get :new
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end
@@ -75,7 +75,7 @@ RSpec.describe QuestionsController, type: :controller do
         sign_in user
 
         expect {
-          post :create, question: attributes_for(:question, category_id: category.id)
+          post :create, params: { question: attributes_for(:question, category_id: category.id)}
         }.to change(Question, :count).by(1)
         expect(response).to redirect_to(Question.last)
       end
@@ -85,7 +85,7 @@ RSpec.describe QuestionsController, type: :controller do
   describe "POST #upvote" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :upvote, id: question.id
+        post :upvote, params: { id: question.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -95,14 +95,14 @@ RSpec.describe QuestionsController, type: :controller do
 
       it "upvotes question and redirects to question" do
         expect {
-          post :upvote, id: question.id
+          post :upvote, params: { id: question.id}
         }.to change { question.reputation_for(:votes) }.by(1)
         expect(response).to redirect_to(question)
       end
 
       it "returns http success for remote request" do
-        xhr :post, :upvote, id: question.id
-        expect(response).to be_success
+        post :upvote, params: { id: question.id},xhr: true
+        expect(response).to be_successful
       end
     end
   end
@@ -110,7 +110,7 @@ RSpec.describe QuestionsController, type: :controller do
   describe "POST #downvote" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :downvote, id: question.id
+        post :downvote, params: { id: question.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -120,14 +120,14 @@ RSpec.describe QuestionsController, type: :controller do
 
       it "downvotes question and redirects to question" do
         expect {
-          post :downvote, id: question.id
+          post :downvote, params: { id: question.id}
         }.to change { question.reputation_for(:votes) }.by(-1)
         expect(response).to redirect_to(question)
       end
 
       it "returns http success for remote request" do
-        xhr :post, :downvote, id: question.id
-        expect(response).to be_success
+        post :downvote, params: { id: question.id}, xhr: true
+        expect(response).to be_successful
       end
     end
   end
@@ -135,7 +135,7 @@ RSpec.describe QuestionsController, type: :controller do
   describe "POST #star" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :star, id: question.id
+        post :star, params: { id: question.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -145,14 +145,14 @@ RSpec.describe QuestionsController, type: :controller do
 
       it "stars question and redirects to question" do
         expect {
-          post :star, id: question.id
+          post :star, params: { id: question.id}
         }.to change { question.reputation_for(:stars) }.by(1)
         expect(response).to redirect_to(question)
       end
 
       it "returns http success for remote request" do
-        xhr :post, :star, id: question.id
-        expect(response).to be_success
+        post :star, params: { id: question.id}, xhr: true
+        expect(response).to be_successful
       end
     end
   end

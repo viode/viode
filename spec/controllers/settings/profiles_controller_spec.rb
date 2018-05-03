@@ -16,7 +16,7 @@ RSpec.describe Settings::ProfilesController, type: :controller do
 
       it "returns http success" do
         get :show
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe Settings::ProfilesController, type: :controller do
   describe "PATCH #update" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        patch :update, user: { fullname: 'New name' }
+        patch :update, params: { user: { fullname: 'New name' }}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe Settings::ProfilesController, type: :controller do
       before { sign_in user }
 
       it "updates profile settings and redirects to profile settings page" do
-        patch :update, user: { fullname: 'New name' }
+        patch :update, params: { user: { fullname: 'New name' }}
         expect(user.reload.fullname).to eq('New name')
         expect(response).to redirect_to(settings_profile_path)
       end

@@ -7,8 +7,8 @@ RSpec.describe TagsController, type: :controller do
   describe "GET #show" do
     it "returns http success" do
       tag = question.tags.sample
-      get :show, name: tag.name
-      expect(response).to be_success
+      get :show, params: { name: tag.name}
+      expect(response).to be_successful
     end
   end
 end

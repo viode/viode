@@ -14,8 +14,8 @@ RSpec.feature "User Auth", type: :feature do
     click_button 'Sign up'
 
     expect(page).to have_content(
-      'A message with a confirmation link has been sent to your email address.
-      Please follow the link to activate your account.'
+      "A message with a confirmation link has been sent to your email address.
+      Please follow the link to activate your account.".squish
     )
   end
 

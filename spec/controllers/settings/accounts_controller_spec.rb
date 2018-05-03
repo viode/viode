@@ -16,7 +16,7 @@ RSpec.describe Settings::AccountsController, type: :controller do
 
       it "returns http success" do
         get :show
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe Settings::AccountsController, type: :controller do
   describe "PATCH #update" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        patch :update, user: { email: 'edited@mail.example.net', current_password: '12345678' }
+        patch :update, params: { user: { email: 'edited@mail.example.net', current_password: '12345678' } }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe Settings::AccountsController, type: :controller do
       before { sign_in user }
 
       it "updates email and redirects to account settings page" do
-        patch :update, user: { email: 'edited@mail.example.net', current_password: '12345678' }
+        patch :update, params: { user: { email: 'edited@mail.example.net', current_password: '12345678' } }
         expect(user.reload.unconfirmed_email).to eq('edited@mail.example.net')
         expect(response).to redirect_to(settings_account_path)
       end

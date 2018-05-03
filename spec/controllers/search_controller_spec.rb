@@ -7,14 +7,14 @@ RSpec.describe SearchController, type: :controller do
     context "without query params" do
       it "returns http success" do
         get :index
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
     end
 
     context "with query params" do
       it "returns http success" do
-        get :index, query: 'test'
-        expect(response).to have_http_status(:success)
+        get :index, params: { query: 'test'}
+        expect(response).to be_successful
       end
     end
   end

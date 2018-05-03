@@ -28,7 +28,7 @@ RSpec.describe Admin::DashboardController, type: :controller do
 
       it "returns http success" do
         get :show
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
     end
   end

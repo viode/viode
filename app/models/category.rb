@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true
 
-  scope :popular, -> { joins(:questions).group('categories.id').order('COUNT(questions.id) DESC') }
+  scope :popular, -> { joins(:questions).group('categories.id').order(Arel.sql('COUNT(questions.id) DESC')) }
 
   def to_param
     permalink

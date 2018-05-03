@@ -1,8 +1,8 @@
 module Votable
   extend ActiveSupport::Concern
 
-  UPVOTE_VALUE   = Rails.application.secrets.votes['upvote_value']
-  DOWNVOTE_VALUE = Rails.application.secrets.votes['downvote_value']
+  UPVOTE_VALUE   = Rails.application.secrets.votes[:upvote_value]
+  DOWNVOTE_VALUE = Rails.application.secrets.votes[:downvote_value]
 
   def votes
     reputation_for(:votes).to_i

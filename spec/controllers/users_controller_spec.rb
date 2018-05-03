@@ -5,22 +5,22 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, username: user.username
-      expect(response).to have_http_status(:success)
+      get :show, params: { username: user.username}
+      expect(response).to be_successful
     end
   end
 
   describe "GET #answers" do
     it "returns http success" do
-      get :answers, username: user.username
-      expect(response).to have_http_status(:success)
+      get :answers, params: { username: user.username}
+      expect(response).to be_successful
     end
   end
 
   describe "GET #questions" do
     it "returns http success" do
-      get :questions, username: user.username
-      expect(response).to have_http_status(:success)
+      get :questions, params: { username: user.username}
+      expect(response).to be_successful
     end
   end
 end

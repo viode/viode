@@ -1,5 +1,5 @@
 class Settings::PasswordsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def show
   end
@@ -8,7 +8,7 @@ class Settings::PasswordsController < ApplicationController
     # TODO: validate password confirmation
     if current_user.valid_password? params[:user][:current_password]
       if current_user.update(user_params)
-        sign_in current_user, bypass: true
+        bypass_sign_in current_user
         flash[:success] = 'Password successfully updated.'
         redirect_to settings_password_path
       else

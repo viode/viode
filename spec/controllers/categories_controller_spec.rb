@@ -7,21 +7,21 @@ RSpec.describe CategoriesController, type: :controller do
   describe "GET #index" do
     it "returns http success" do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, permalink: category.permalink
-      expect(response).to be_success
+      get :show, params: {permalink: category.permalink}
+      expect(response).to be_successful
     end
   end
 
   describe "POST #subscribe" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :subscribe, permalink: category.permalink
+        post :subscribe, params: { permalink: category.permalink}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -31,14 +31,14 @@ RSpec.describe CategoriesController, type: :controller do
 
       it "subscribes user to category and redirects to category page" do
         expect {
-          post :subscribe, permalink: category.permalink
+          post :subscribe, params: { permalink: category.permalink}
         }.to change(category.subscriptions, :count).by(1)
         expect(response).to redirect_to(category)
       end
 
       it "returns http success for remote request" do
-        xhr :post, :subscribe, permalink: category.permalink
-        expect(response).to be_success
+        post :subscribe, params: { permalink: category.permalink}, xhr: true
+        expect(response).to be_successful
       end
     end
   end
@@ -46,7 +46,7 @@ RSpec.describe CategoriesController, type: :controller do
   describe "POST #unsubscribe" do
     context "when not signed in" do
       it "redirects to sign in page" do
-        post :unsubscribe, permalink: category.permalink
+        post :unsubscribe, params: { permalink: category.permalink}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -59,14 +59,14 @@ RSpec.describe CategoriesController, type: :controller do
 
       it "unsubscribes user from category and redirects to category page" do
         expect {
-          post :unsubscribe, permalink: category.permalink
+          post :unsubscribe, params: { permalink: category.permalink}
         }.to change(category.subscriptions, :count).by(-1)
         expect(response).to redirect_to(category)
       end
 
       it "returns http success for remote request" do
-        xhr :post, :unsubscribe, permalink: category.permalink
-        expect(response).to be_success
+        post :unsubscribe, params: { permalink: category.permalink}, xhr: true
+        expect(response).to be_successful
       end
     end
   end
