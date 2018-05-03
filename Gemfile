@@ -6,7 +6,7 @@ if ENV['VIODE_RUBY_VERSION']
   ruby ENV['VIODE_RUBY_VERSION']
 end
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.10'
 
 gem 'pg'
 
@@ -45,6 +45,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rake', '< 11.0'
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
