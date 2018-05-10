@@ -1,7 +1,6 @@
 class Question < ActiveRecord::Base
   include Votable
 
-  searchkick
   acts_as_taggable
   acts_as_url :title, url_attribute: :permalink
 
@@ -20,6 +19,10 @@ class Question < ActiveRecord::Base
 
   scope :recent,        -> { order('created_at DESC') }
   scope :to_be_closed,  -> { where(['created_at < ? AND closed = ?', 31.days.ago, false]) }
+
+  def self.search(query)
+    where('title ILIKE ?', "%#{query}%")
+  end
 
   def to_param
     "#{id}/#{permalink}"
