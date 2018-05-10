@@ -1,7 +1,8 @@
+---
 box: ruby:2.5
 
 services:
-  - id: postgresql:10.1
+  - id: postgres:10.1
     env:
       POSTGRES_PASSWORD: ourlittlesecret
 
