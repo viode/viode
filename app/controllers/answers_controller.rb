@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_answer, only: [:upvote, :downvote]
+  before_action :find_answer, only: %i[upvote downvote]
 
   def new
     @answer = Answer.new

@@ -1,0 +1,41 @@
+---
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - 'bin/bundle'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Guardfile'
+    - 'config/routes.rb'
+    - 'config/environments/*'
+    - 'spec/**/*'
+    - 'lib/tasks/**/*'
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/setup'
+    - 'bin/update'
+    - 'db/seeds.rb'
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - 'config/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Style/DateTime:
+  Enabled: false

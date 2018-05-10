@@ -1,10 +1,13 @@
-class Admin::BaseController < ApplicationController
-  before_action :authenticate_user!
-  before_action :check_admin_rights
+# frozen_string_literal: true
 
-  private
+module Admin
+  class BaseController < ApplicationController
+    before_action :authenticate_user!, :check_admin_rights
 
-  def check_admin_rights
-    render status: 404 unless current_user.admin?
+    private
+
+    def check_admin_rights
+      render status: :not_found unless current_user.admin?
+    end
   end
 end

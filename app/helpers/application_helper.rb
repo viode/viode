@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def flash_class(type)
     case type
@@ -12,7 +14,7 @@ module ApplicationHelper
   def author_avatar(post)
     if post.author.avatar.present? && !post.anonymous?
       image_tag post.author.avatar.thumb.url, size: '18', alt: post.author.username
-    elsif post.author.avatar.blank? && !post.anonymous? 
+    elsif post.author.avatar.blank? && !post.anonymous?
       image_tag gravatar_url(post.author, 18), alt: post.author.username
     end
   end

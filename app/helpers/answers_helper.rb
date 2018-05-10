@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module AnswersHelper
   def link_to_answer_upvote(answer)
     if user_signed_in?
       klass = answer.upvoted_by?(current_user) ? 'active' : ''
 
       link_to upvote_answer_path(answer), method: :post, remote: true,
-          class: "#{klass} js-answer-upvote-link",
-          data: { disable_with: '<span class="fa fa-spinner fa-pulse fa-lg"></span>' } do
+                                          class: "#{klass} js-answer-upvote-link",
+                                          data: { disable_with: '<span class="fa fa-spinner fa-pulse fa-lg"></span>' } do
         content_tag :span, nil, class: 'fa fa-arrow-up fa-lg'
       end
     else
@@ -20,8 +22,8 @@ module AnswersHelper
       klass = answer.downvoted_by?(current_user) ? 'active' : ''
 
       link_to downvote_answer_path(answer), method: :post, remote: true,
-          class: "#{klass} js-answer-downvote-link",
-          data: { disable_with: '<span class="fa fa-spinner fa-pulse fa-lg"></span>' } do
+                                            class: "#{klass} js-answer-downvote-link",
+                                            data: { disable_with: '<span class="fa fa-spinner fa-pulse fa-lg"></span>' } do
         content_tag :span, nil, class: 'fa fa-arrow-down fa-lg'
       end
     else

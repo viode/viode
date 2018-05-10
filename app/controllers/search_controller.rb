@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchController < ApplicationController
   def index
     if params[:query] && params[:query].size > 1

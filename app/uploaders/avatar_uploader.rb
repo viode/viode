@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'carrierwave/processing/mini_magick'
 
 class AvatarUploader < CarrierWave::Uploader::Base
@@ -19,7 +21,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   def filename
@@ -55,6 +57,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # timestamp for use in file names
   def timestamp
     var = :"@#{mounted_as}_timestamp"
-    model.instance_variable_get(var) or model.instance_variable_set(var, Time.current.to_i)
+    model.instance_variable_get(var) || model.instance_variable_set(var, Time.current.to_i)
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
@@ -18,6 +20,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every :day, at: '2:30 am' do 
+every :day, at: '2:30 am' do
   rake 'close_old_questions'
 end

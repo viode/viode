@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module QuestionsHelper
   def link_to_question_star(question)
     return '' unless user_signed_in?
@@ -20,8 +22,8 @@ module QuestionsHelper
       klass = question.upvoted_by?(current_user) ? 'active' : ''
 
       link_to upvote_question_path(question), method: :post, remote: true,
-          class: "#{klass} js-question-upvote-link",
-          data: { disable_with: '<span class="fa fa-spinner fa-pulse fa-lg"></span>' } do
+                                              class: "#{klass} js-question-upvote-link",
+                                              data: { disable_with: '<span class="fa fa-spinner fa-pulse fa-lg"></span>' } do
         content_tag :span, nil, class: 'fa fa-arrow-up fa-lg'
       end
     else
@@ -36,8 +38,8 @@ module QuestionsHelper
       klass = question.downvoted_by?(current_user) ? 'active' : ''
 
       link_to downvote_question_path(question), method: :post, remote: true,
-          class: "#{klass} js-question-downvote-link",
-          data: { disable_with: '<span class="fa fa-spinner fa-pulse fa-lg"></span>' } do
+                                                class: "#{klass} js-question-downvote-link",
+                                                data: { disable_with: '<span class="fa fa-spinner fa-pulse fa-lg"></span>' } do
         content_tag :span, nil, class: 'fa fa-arrow-down fa-lg'
       end
     else

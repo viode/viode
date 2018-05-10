@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.feature "User Auth", type: :feature do
+RSpec.feature 'User Auth', type: :feature do
   let(:user) { create :confirmed_user }
 
-  scenario "User sign up" do
+  scenario 'User sign up' do
     visit new_user_registration_path
     expect(current_path).to eq '/register'
 
@@ -19,12 +21,12 @@ RSpec.feature "User Auth", type: :feature do
     )
   end
 
-  scenario "User sign in" do
+  scenario 'User sign in' do
     visit new_user_session_path
     expect(current_path).to eq '/login'
 
     fill_in 'Login', with: user.username
-    fill_in 'Password', with: '12345678'
+    fill_in 'Password', with: user.password
     click_button 'Log in'
 
     expect(page).to have_content 'Signed in successfully.'

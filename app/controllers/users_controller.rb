@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :find_user
 
-  def show
-  end
+  def show; end
 
   def answers
     @answers = @user.answers.recent.page(params[:page]).per(20)
@@ -15,6 +16,6 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by_username! params[:username]
+    @user = User.find_by! username: params[:username]
   end
 end

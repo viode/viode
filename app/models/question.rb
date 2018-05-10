@@ -1,4 +1,6 @@
-class Question < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Question < ApplicationRecord
   include Votable
 
   acts_as_taggable
@@ -9,15 +11,15 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
 
   has_reputation :stars, source: :user,
-    source_of: { reputation: :star_points, of: :author }
+                         source_of: { reputation: :star_points, of: :author }
   has_reputation :votes, source: :user,
-    source_of: { reputation: :question_points, of: :author }
+                         source_of: { reputation: :question_points, of: :author }
 
   validates :title, :category_id, :author_id, presence: true
   validates :title, length: { in: 10..140 }
   validate :amount_of_labels
 
-  scope :recent,        -> { order('created_at DESC') }
+  scope :recent,        -> { order(created_at: :desc) }
   scope :to_be_closed,  -> { where(['created_at < ? AND closed = ?', 31.days.ago, false]) }
 
   def self.search(query)
@@ -40,14 +42,14 @@ class Question < ActiveRecord::Base
     evaluation_by(:stars, user) == 1
   end
 
+  def self.related_to(question)
+    tagged_with(question.tag_list, any: true).where.not(id: question.id)
+  end
+
   private
 
-    def self.related_to(question)
-      tagged_with(question.tag_list, any: true).where.not(id: question.id)
-    end
-
-    def amount_of_labels
-      tags_count = tag_list.size
-      errors.add(:labels, 'Please set labels (from 1 to 5)') if tags_count < 1 || tags_count > 5
-    end
- end
+  def amount_of_labels
+    tags_count = tag_list.size
+    errors.add(:labels, 'Please set labels (from 1 to 5)') if tags_count < 1 || tags_count > 5
+  end
+end

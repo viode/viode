@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, only: [:subscribe, :unsubscribe]
-  before_action :find_category, only: [:show, :subscribe, :unsubscribe]
+  before_action :authenticate_user!, only: %i[subscribe unsubscribe]
+  before_action :find_category, only: %i[show subscribe unsubscribe]
 
   def index
     @categories = Category.order(:name)
@@ -31,6 +33,6 @@ class CategoriesController < ApplicationController
   private
 
   def find_category
-    @category = Category.find_by_permalink! params[:permalink]
+    @category = Category.find_by! permalink: params[:permalink]
   end
 end

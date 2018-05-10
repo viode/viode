@@ -1,9 +1,11 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-# sets ruby version
-# ex: VIODE_RUBY_VERSION=2.2.2
-if ENV['VIODE_RUBY_VERSION']
-  ruby ENV['VIODE_RUBY_VERSION']
+source 'https://rubygems.org'
+ruby '>= 2.3.0', '< 2.6.0'
+
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  "https://github.com/#{repo_name}.git"
 end
 
 gem 'rails', '5.2.0'
@@ -29,8 +31,8 @@ gem 'jquery-rails'
 gem 'turbolinks', github: 'rails/turbolinks'
 gem 'jquery-turbolinks'
 gem 'rails-timeago'
-gem 'whenever', :require => false
-gem 'bootsnap', :require => false
+gem 'whenever', require: false
+gem 'bootsnap', require: false
 
 group :development do
   gem 'letter_opener'

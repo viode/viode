@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
-  factory :user, aliases: [:author, :subscriber] do
+  factory :user, aliases: %i[author subscriber] do
     fullname { Faker::Name.name }
     bio      { Faker::Name.title }
     email    { Faker::Internet.safe_email }
     username { Faker::Internet.user_name(3..20).tr('.-', '_') }
-    password '12345678'
+    password 'mysecret'
     avatar   { File.open('spec/fixtures/250.gif') }
     role 0
 
     factory :confirmed_user do
-      confirmed_at Time.now
+      confirmed_at { Time.current }
     end
   end
 end

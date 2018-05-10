@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :category do
     name { Faker::Commerce.department(2) }

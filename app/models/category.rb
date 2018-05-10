@@ -1,4 +1,6 @@
-class Category < ActiveRecord::Base
+# frozen_string_literal: true
+
+class Category < ApplicationRecord
   acts_as_url :name, url_attribute: :permalink
 
   has_many :questions, dependent: :destroy
@@ -6,7 +8,11 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true
 
-  scope :popular, -> { joins(:questions).group('categories.id').order(Arel.sql('COUNT(questions.id) DESC')) }
+  def self.popular
+    joins(:questions)
+      .group('categories.id')
+      .order(Arel.sql('COUNT(questions.id) DESC'))
+  end
 
   def to_param
     permalink

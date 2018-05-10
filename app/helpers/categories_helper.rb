@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CategoriesHelper
   def link_to_category_subscription(category)
     return link_to('subscribe', new_user_session_path) unless user_signed_in?

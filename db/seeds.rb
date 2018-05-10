@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include FactoryGirl::Syntax::Methods
 
 AvatarUploader.enable_processing = false

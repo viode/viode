@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/Fodoj/acts-as-taggable-on.git
+  remote: https://github.com/Fodoj/acts-as-taggable-on.git
   revision: 3160a13506bcb93fde95c9b77424c32afbcb6385
   branch: rails-5.2
   specs:
@@ -8,14 +8,14 @@ GIT
       rake
 
 GIT
-  remote: git://github.com/rails/turbolinks.git
+  remote: https://github.com/rails/turbolinks.git
   revision: 80216ce9d89920bf073709405e3fce6d0a3ccd9a
   specs:
     turbolinks (3.0.0)
       coffee-rails
 
 GIT
-  remote: git://github.com/twitter/activerecord-reputation-system.git
+  remote: https://github.com/twitter/activerecord-reputation-system.git
   revision: df77666a5d61ce74781b11a84c1a8944cff10779
   specs:
     activerecord-reputation-system (3.0.1)
@@ -370,6 +370,9 @@ DEPENDENCIES
   turbolinks!
   uglifier (>= 1.3.0)
   whenever
+
+RUBY VERSION
+   ruby 2.5.0p0
 
 BUNDLED WITH
    1.16.1

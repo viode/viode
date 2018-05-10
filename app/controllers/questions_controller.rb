@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote, :star]
-  before_action :find_question, only: [:show, :upvote, :downvote, :star]
+  before_action :authenticate_user!, only: %i[new create upvote downvote star]
+  before_action :find_question, only: %i[show upvote downvote star]
 
   def index
     @top_categories = Category.popular.limit(5)
@@ -10,7 +12,7 @@ class QuestionsController < ApplicationController
 
   def show
     if params[:permalink].blank? || params[:permalink] != @question.permalink
-      redirect_to(@question, status: 301)
+      redirect_to(@question, status: :moved_permanently)
     end
 
     @category_questions = @question.category.questions.limit(5)
