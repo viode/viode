@@ -18,7 +18,7 @@ gem 'slim-rails'
 gem 'carrierwave'
 gem 'mini_magick', require: false
 gem 'bootstrap-sass', '~> 3.3.3'
-gem 'font-awesome-sass', '~> 4.3.0'
+gem 'font-awesome-sass', '~> 5.0.9'
 gem 'acts-as-taggable-on', '~> 5.0', github: 'Fodoj/acts-as-taggable-on', branch: 'rails-5.2'
 gem 'activerecord-reputation-system', github: 'twitter/activerecord-reputation-system'
 
