@@ -16,5 +16,8 @@ build:
     - bundle-install
     - rails-database-yml
     - script:
+        name: Setup database
+        code: bundle exec rake db:schema:load --trace
+    - script:
         name: Run tests
         code: bundle exec rspec
