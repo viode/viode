@@ -8,6 +8,7 @@ services:
 
 build:
   steps:
+    - bundle-install
     - rails-database-yml
     - script:
         name: Run tests
