@@ -1,0 +1,23 @@
+---
+box: ruby:2.5
+
+services:
+  - id: postgres:10.1
+    env:
+      POSTGRES_PASSWORD: ourlittlesecret
+
+build:
+  steps:
+    - script:
+        name: Install nodejs
+        code: |
+          curl -sL https://deb.nodesource.com/setup_10.x | bash -
+          sudo apt-get install -y nodejs
+    - bundle-install
+    - rails-database-yml
+    - script:
+        name: Setup database
+        code: bundle exec rake db:schema:load --trace
+    - script:
+        name: Run tests
+        code: bundle exec rspec
