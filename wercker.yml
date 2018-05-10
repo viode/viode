@@ -1,0 +1,13 @@
+box: ruby:2.5
+
+services:
+  - id: postgresql:10.1
+    env:
+      POSTGRES_PASSWORD: ourlittlesecret
+
+build:
+  steps:
+    - rails-database-yml
+    - script:
+        name: Run tests
+        code: bundle exec rspec
