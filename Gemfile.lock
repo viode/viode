@@ -218,6 +218,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.2)
+    puma (3.11.4)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.5)
@@ -354,11 +355,12 @@ DEPENDENCIES
   kaminari
   letter_opener
   mini_magick
-  pg
+  pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails
+  puma (~> 3.7)
   pundit
-  rails (= 5.2.0)
+  rails (~> 5.2.0)
   rails-timeago
   rspec-rails (~> 3.7)
   sass-rails (~> 5.0)
