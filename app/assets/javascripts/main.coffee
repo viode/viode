@@ -1,4 +1,4 @@
-$ ->
+$(document).on 'turbolinks:load', ->
   $(document).on 'click', '#question-shortlink', ->
     @select()
 
