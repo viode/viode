@@ -13,5 +13,12 @@ FactoryGirl.define do
     factory :confirmed_user do
       confirmed_at { Time.current }
     end
+
+    factory :admin do
+      email 'user@example.com'
+      username 'admin'
+      confirmed_at { Time.current }
+      role 1
+    end
   end
 end

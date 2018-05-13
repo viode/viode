@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+
+development:
+  <<: *default
+  database: viode_development
+
+test:
+  <<: *default
+  database: viode_test
+
+production:
+  <<: *default
+  database: viode_production
+  username: viode
+  password: <%= ENV['VIODE_DATABASE_PASSWORD'] %>

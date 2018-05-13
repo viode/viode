@@ -35,6 +35,7 @@ gem 'whenever', require: false
 gem 'bootsnap', require: false
 
 group :development do
+  gem 'pgreset'
   gem 'letter_opener'
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -3,6 +3,12 @@
 Viode is an open source Q&A _(question and answer)_ community platform built
 with Ruby on Rails.
 
+## Requirements
+
+- Ruby 2.3+
+- PostgreSQL 9.3+
+- ImageMagick (or GraphicsMagick)
+
 ## Features
 
 + Categories
@@ -21,16 +27,31 @@ with Ruby on Rails.
 
 ## Installation
 
-Requirements: Ruby 1.9+, PostgreSQL, GraphicsMagick (or ImageMagick).  
-System requirements: In several installations, Viode performs well on 512MB
-Linux (CentOS) instance and 128MB FreeBSD instance. Your mileage may vary.
+1. Clone the repository from GitHub:
 
-See [INSTALL.md](https://github.com/viode/viode/blob/master/INSTALL.md) for
-detailed installation guide.
+  ```sh
+  git clone https://github.com/viode/viode.git
+  ```
+
+  **Note**: master branch is always _stable_.
+
+2. Enter the project directory:
+
+  ```sh
+  cd viode
+  ```
+
+3. Run the setup command:
+
+  ```sh
+  bin/setup
+  ```
+
+  Follow the instructions.
 
 ## Points
 
-Viode has a user points system (aka user reputation). You can configure it by
+Viode has a points system for user (aka reputation). You can configure it by
 editing `config/secrets.yml` file.  
 
 Here are the basics of the system:

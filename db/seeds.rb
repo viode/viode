@@ -5,7 +5,8 @@ include FactoryGirl::Syntax::Methods
 AvatarUploader.enable_processing = false
 
 unless User.exists?(username: 'admin')
-  create :confirmed_user, email: 'user@example.com', username: 'admin', role: 1
+  admin = create :admin
+  puts "\nCreated a user with credentials: #{admin.username}/#{admin.password}"
 end
 
 5.times { create :confirmed_user }
