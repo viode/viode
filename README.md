@@ -3,12 +3,6 @@
 Viode is an open source Q&A _(question and answer)_ community platform built
 with Ruby on Rails.
 
-## Requirements
-
-- Ruby 2.3+
-- PostgreSQL 9.3+
-- ImageMagick (or GraphicsMagick)
-
 ## Features
 
 + Categories
@@ -24,6 +18,12 @@ with Ruby on Rails.
 + SEO friendly
 + Can be used as a discussion board
 + And [many more](https://github.com/viode/viode/labels/feature).. Stay tuned.
+
+## Requirements
+
+- Ruby 2.3+
+- PostgreSQL 9.3+
+- ImageMagick (or GraphicsMagick)
 
 ## Installation
 
@@ -52,7 +52,7 @@ with Ruby on Rails.
 ## Points
 
 Viode has a points system for user (aka reputation). You can configure it by
-editing `config/secrets.yml` file.  
+editing `config/settings.yml` file.  
 
 Here are the basics of the system:
 
