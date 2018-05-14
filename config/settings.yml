@@ -1,0 +1,30 @@
+---
+default: &default
+  site_name: Viode
+  email_from: 'viode-noreply@example.net'
+  image_processor: GraphicsMagick
+
+  # Question and answer votes
+  votes:
+    upvote_value: 1
+    downvote_value: -1
+
+  # User points
+  points:
+    # when a new user registers
+    initial: 100
+    # when user's question gets starred
+    star: 2
+    # when user's answer gets voted
+    answer: 10
+    # when user's question gets voted
+    question: 10
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
