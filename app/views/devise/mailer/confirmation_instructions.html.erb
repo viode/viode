@@ -31,7 +31,7 @@ You can confirm your account email <%= @email %> through the link below:
                 </tr>
                 <tr style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                   <td style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-&mdash; <%= Rails.application.secrets.site_name %>
+&mdash; <%= ViodeSettings.site_name %>
                   </td>
                 </tr>
               </table>
@@ -42,7 +42,7 @@ You can confirm your account email <%= @email %> through the link below:
           <table width="100%" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
             <tr style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
               <td style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">
-<%= link_to Rails.application.secrets.site_name, root_url, style: "font-family:
+<%= link_to ViodeSettings.site_name, root_url, style: "font-family:
 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box;
 font-size: 12px; color: #999; text-decoration: underline; margin: 0;" %>
               </td>

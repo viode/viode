@@ -5,7 +5,7 @@ require 'carrierwave/processing/mini_magick'
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  MiniMagick.processor = :gm if Rails.application.secrets.image_processor == 'GraphicsMagick'
+  MiniMagick.processor = :gm if ViodeSettings.image_processor == 'GraphicsMagick'
 
   storage :file
 

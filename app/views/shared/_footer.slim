@@ -2,7 +2,7 @@ footer
   .container
     .pull-left
       ' &copy;
-      = Rails.application.secrets.site_name
+      = ViodeSettings.site_name
     .pull-right
       ul.list-inline
         li = link_to 'Home', root_path
