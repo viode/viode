@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Question closed', type: :feature do
+RSpec.describe 'Question closed', type: :system do
   let(:user)      { create :confirmed_user }
   let(:question)  { create :question, author: user }
 

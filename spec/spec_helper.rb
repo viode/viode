@@ -12,4 +12,7 @@ RSpec.configure do |config|
   config.color = true
   config.order = :random
   config.disable_monkey_patching!
+  config.default_formatter = 'doc' if config.files_to_run.one?
+
+  Kernel.srand config.seed
 end

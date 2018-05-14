@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'User Auth', type: :feature do
+RSpec.describe 'User Auth', type: :system do
   let(:user) { create :confirmed_user }
 
   scenario 'User sign up' do
