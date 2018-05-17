@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe QuestionMailer, type: :mailer do
   let(:user)                { create :confirmed_user }
   let(:intended_respondent) { create :confirmed_user}
-  let(:question)            { create :question, author: user, intended_respondent: intended_respondent.id }
+  let(:question)            { create :question, author: user, intended_respondent_id: intended_respondent.id }
   let(:mail)                { QuestionMailer.specified_user(question).deliver_now }
 
   it 'renders the subject' do
@@ -22,11 +22,11 @@ RSpec.describe QuestionMailer, type: :mailer do
     expect(mail.body.encoded).to match(intended_respondent.username)
   end
 
-  it 'assigns @question' do 
+  it 'assigns @question' do
     expect(mail.body.encoded).to match(question.author.username)
   end
 
-  it 'links to the question' do 
+  it 'links to the question' do
     expect(mail.body.encoded).to match(question.permalink)
   end
 end

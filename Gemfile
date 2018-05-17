@@ -11,7 +11,6 @@ gem 'rails', '4.2.3'
 gem 'pg'
 
 gem 'devise'
-gem "devise-async"
 gem 'pundit'
 gem 'kaminari'
 gem 'stringex'
@@ -32,7 +31,7 @@ gem 'turbolinks', github: 'rails/turbolinks'
 gem 'jquery-turbolinks'
 gem 'rails-timeago'
 gem 'whenever', :require => false
-gem 'sidekiq'
+gem 'que'
 
 group :development do
   gem 'letter_opener'

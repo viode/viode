@@ -80,32 +80,32 @@ RSpec.describe QuestionsController, type: :controller do
         expect(response).to redirect_to(Question.last)
       end
 
-      context "when there is an intended respondent" do 
+      context "when there is an intended respondent" do
         include ActiveJob::TestHelper
         let!(:bob) { create :confirmed_user, username: "bob"}
 
-        it "assigns an intended respondent" do 
+        it "assigns an intended respondent" do
           sign_in user
 
-          post :create, question: attributes_for(:question, category_id: category.id, intended_respondent: bob.id)
-          expect(Question.last.intended_respondent).to eql(bob.id)
+          post :create, question: attributes_for(:question, category_id: category.id, intended_respondent_id: bob.id)
+          expect(Question.last.intended_respondent_id).to eql(bob.id)
         end
 
-        it "enqueues the email to be sent later" do 
+        it "enqueues the email to be sent later" do
           sign_in user
-          
+
           expect {
-            post :create, question: attributes_for(:question, category_id: category.id, intended_respondent: bob.id)
+            post :create, question: attributes_for(:question, category_id: category.id, intended_respondent_id: bob.id)
           }.to change{enqueued_jobs.size}.by(1)
         end
       end
 
-      context "when there isn't an intended respondent" do 
+      context "when there isn't an intended respondent" do
         include ActiveJob::TestHelper
 
-        it "does not enqueue an email to be sent later" do 
+        it "does not enqueue an email to be sent later" do
           sign_in user
-          
+
           expect {
             post :create, question: attributes_for(:question, category_id: category.id)
           }. to change{enqueued_jobs.size}.by(0)

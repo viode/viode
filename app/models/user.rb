@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :async
+         :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :login
   enum role: [:user, :admin, :moderator, :banned]

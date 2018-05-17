@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160101162146) do
+ActiveRecord::Schema.define(version: 20180517010020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,20 +42,20 @@ ActiveRecord::Schema.define(version: 20160101162146) do
     t.string   "title"
     t.text     "body"
     t.integer  "author_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "category_id"
-    t.integer  "views",               default: 0
-    t.boolean  "anonymous",           default: false
-    t.integer  "answers_count",       default: 0
+    t.integer  "views",                  default: 0
+    t.boolean  "anonymous",              default: false
+    t.integer  "answers_count",          default: 0
     t.string   "permalink"
-    t.boolean  "closed",              default: false, null: false
-    t.integer  "intended_respondent"
+    t.boolean  "closed",                 default: false, null: false
+    t.integer  "intended_respondent_id"
   end
 
   add_index "questions", ["author_id"], name: "index_questions_on_author_id", using: :btree
   add_index "questions", ["category_id"], name: "index_questions_on_category_id", using: :btree
-  add_index "questions", ["intended_respondent"], name: "index_questions_on_intended_respondent", using: :btree
+  add_index "questions", ["intended_respondent_id"], name: "index_questions_on_intended_respondent_id", using: :btree
   add_index "questions", ["permalink"], name: "index_questions_on_permalink", using: :btree
 
   create_table "rs_evaluations", force: :cascade do |t|
