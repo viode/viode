@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Fodoj/acts-as-taggable-on.git
-  revision: 3160a13506bcb93fde95c9b77424c32afbcb6385
+  revision: eee01af2fa01563f353627fa2e775cdab8026164
   branch: rails-5.2
   specs:
     acts-as-taggable-on (5.0.0)
