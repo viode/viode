@@ -1,11 +1,9 @@
 GIT
-  remote: https://github.com/Fodoj/acts-as-taggable-on.git
-  revision: 3160a13506bcb93fde95c9b77424c32afbcb6385
-  branch: rails-5.2
+  remote: https://github.com/mbleigh/acts-as-taggable-on.git
+  revision: a1d0d30bf5d545e3b639a0a43336e341a9a17167
   specs:
     acts-as-taggable-on (5.0.0)
-      activerecord (>= 5.0)
-      rake
+      activerecord (~> 5.0)
 
 GIT
   remote: https://github.com/twitter/activerecord-reputation-system.git
@@ -330,7 +328,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-reputation-system!
-  acts-as-taggable-on (~> 5.0)!
+  acts-as-taggable-on!
   better_errors
   binding_of_caller
   bootsnap
@@ -371,4 +369,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
