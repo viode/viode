@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :user, aliases: %i[author subscriber] do
     fullname { Faker::Name.name }
-    bio      { Faker::Name.title }
+    bio      { Faker::Job.title }
     email    { Faker::Internet.safe_email }
     username { Faker::Internet.user_name(3..20).tr('.-', '_') }
     password 'mysecret'

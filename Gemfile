@@ -19,14 +19,14 @@ gem 'carrierwave'
 gem 'mini_magick', require: false
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'font-awesome-sass', '~> 4.3.0'
-gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
+gem 'acts-as-taggable-on', '~> 6.0.0'
 gem 'activerecord-reputation-system', github: 'twitter/activerecord-reputation-system'
 
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5.1.0'
+gem 'turbolinks', '~> 5.2.0'
 gem 'rails-timeago'
 gem 'whenever', require: false
 gem 'bootsnap', require: false
@@ -47,7 +47,7 @@ end
 group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 3.7'
+  gem 'rspec-rails', '~> 3.8'
 
   gem 'pry-rails'
   gem 'pry-byebug'
