@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  let(:user) { create :confirmed_user }
+  let(:user) { Fabricate :confirmed_user }
 
   describe 'relations' do
     it { is_expected.to have_many(:questions).dependent(:destroy) }
@@ -15,12 +15,12 @@ RSpec.describe Category, type: :model do
 
   describe 'popular scope' do
     it 'orders by questions count in descending order' do
-      create :category
-      c2 = create :category
-      c3 = create :category
+      Fabricate :category
+      c2 = Fabricate :category
+      c3 = Fabricate :category
 
-      create_list :question, 2, author: user, category: c2
-      create_list :question, 3, author: user, category: c3
+      Fabricate.times(2, :question, author: user, category: c2)
+      Fabricate.times(3, :question, author: user, category: c3)
 
       expect(Category.popular).to eq([c3, c2])
     end

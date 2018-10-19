@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
-  let(:user)     { create :confirmed_user }
-  let(:question) { create :question, author: user }
-  let(:answer)   { create :answer, question: question, author: user }
+  let(:user)     { Fabricate :confirmed_user }
+  let(:question) { Fabricate :question, author: user }
+  let(:answer)   { Fabricate :answer, question: question, author: user }
 
   describe 'GET #new' do
     context 'when not signed in' do
@@ -38,7 +38,7 @@ RSpec.describe AnswersController, type: :controller do
         sign_in user
 
         expect do
-          post :create, params: { question_id: question.id, answer: attributes_for(:answer) }
+          post :create, params: { question_id: question.id, answer: Fabricate.attributes_for(:answer) }
         end.to change(Answer, :count).by(1)
         expect(response).to redirect_to(question)
       end

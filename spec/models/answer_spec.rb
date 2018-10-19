@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  let(:user)        { create :confirmed_user }
-  let!(:question)   { create :question, closed: false }
-  let(:answer)      { create :answer, author: user, question: question }
+  let(:user)        { Fabricate :confirmed_user }
+  let!(:question)   { Fabricate :question, closed: false }
+  let(:answer)      { Fabricate :answer, author: user, question: question }
 
   describe 'relations' do
     it { is_expected.to belong_to(:author).class_name('User') }
@@ -15,7 +15,7 @@ RSpec.describe Answer, type: :model do
   describe 'validations' do
     subject { bad_answer }
 
-    let(:bad_answer) { build :answer, author_id: nil, question_id: question.id, body: '' }
+    let(:bad_answer) { Fabricate.build :answer, author_id: nil, question_id: question.id, body: '' }
 
     it { is_expected.to validate_presence_of(:body) }
     it { is_expected.to validate_presence_of(:question_id) }
@@ -23,7 +23,7 @@ RSpec.describe Answer, type: :model do
     it { is_expected.to validate_length_of(:body).is_at_least(2) }
 
     describe '#question_not_closed' do
-      let!(:closed_question) { create :question, closed: true }
+      let!(:closed_question) { Fabricate :question, closed: true }
 
       it 'validates question is not closed' do
         answer = Answer.new(question: closed_question)
@@ -41,8 +41,8 @@ RSpec.describe Answer, type: :model do
 
   describe 'recent scope' do
     it 'orders by created_at date in descending order' do
-      a1 = create :answer, author: user, created_at: 1.day.ago
-      a2 = create :answer, author: user
+      a1 = Fabricate :answer, author: user, created_at: 1.day.ago
+      a2 = Fabricate :answer, author: user
 
       expect(Answer.recent).to eq([a2, a1])
     end

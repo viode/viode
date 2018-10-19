@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Settings::ProfilesController, type: :controller do
-  let(:user) { create :confirmed_user }
+  let(:user) { Fabricate :confirmed_user }
 
   describe 'GET #show' do
     context 'when not signed in' do
