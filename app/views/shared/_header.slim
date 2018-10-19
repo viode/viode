@@ -1,37 +1,34 @@
 header
-  nav.navbar.navbar-default
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .container
-      .navbar-header
-        button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar-collapse"
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        = link_to ViodeSettings.site_name, root_path, class: 'navbar-brand'
+      = link_to ViodeSettings.site_name, root_path, class: 'navbar-brand'
+
+      button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbar-collapse"
+        span.navbar-toggler-icon
 
       .collapse.navbar-collapse#navbar-collapse
-        ul.nav.navbar-nav
-          li class=('active' if controller_name == 'questions' && action_name == 'index')
-            = link_to 'Questions', questions_path
-          li class=('active' if controller_name == 'categories' && action_name == 'index')
-            = link_to 'Categories', categories_path
-        = form_tag search_path, method: :get, class: 'navbar-form navbar-left js-search-form' do
-          .form-group
-            = search_field_tag :query, params[:query], class: 'form-control', id: 'js-search-input-header', autocomplete: 'off', placeholder: 'Search..'
-        ul.nav.navbar-nav.navbar-right
-          li class=('active' if controller_name == 'questions' && action_name == 'new')
-            = link_to 'Ask question', new_question_path
+        ul.navbar-nav.mr-auto
+          li.nav-item class=('active' if controller_name == 'questions' && action_name == 'index')
+            = link_to 'Questions', questions_path, class: 'nav-link'
+          li.nav-item class=('active' if controller_name == 'categories' && action_name == 'index')
+            = link_to 'Categories', categories_path, class: 'nav-link'
+
+        = form_tag search_path, method: :get, class: 'form-inline js-search-form' do
+          = search_field_tag :query, params[:query], class: 'form-control', id: 'js-search-input-header', autocomplete: 'off', placeholder: 'Search..'
+
+        ul.navbar-nav
+          li.nav-item class=('active' if controller_name == 'questions' && action_name == 'new')
+            = link_to 'Ask question', new_question_path, class: 'nav-link'
           - if user_signed_in?
-            li.dropdown
-              = link_to current_user.username, current_user, class: 'dropdown-toggle', data: { toggle: 'dropdown' }
-              ul.dropdown-menu
-                li = link_to 'Profile', current_user
-                li = link_to 'Settings', settings_profile_path
+            li.nav-item.dropdown
+              = link_to current_user.username, current_user, class: 'nav-link dropdown-toggle', data: { toggle: 'dropdown' }
+              .dropdown-menu
+                = link_to 'Profile', current_user, class: 'dropdown-item'
+                = link_to 'Settings', settings_profile_path, class: 'dropdown-item'
                 - if current_user.admin?
-                  li.divider
-                  li class=(controller_name == 'dashboard' ? 'active' : '')
-                    = link_to 'Dashboard', admin_dashboard_path, title: 'Control Panel'
-                li.divider
-                li = link_to 'Sign out', destroy_user_session_path, method: :delete
+                  .dropdown-divider
+                  = link_to 'Dashboard', admin_dashboard_path, title: 'Control Panel', class: 'dropdown-item'
+                .dropdown-divider
+                = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
           - else
-            li = link_to 'Sign in', new_user_session_path
+            li = link_to 'Sign in', new_user_session_path, class: 'nav-link'

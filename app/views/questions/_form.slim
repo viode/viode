@@ -1,7 +1,7 @@
 .form-group
   = f.label :title
   = f.text_field :title, class: 'form-control'
-  p.help-block Example: "Why is the sky blue?"
+  small.form-text.text-muted Example: "Why is the sky blue?"
 
 .form-group
   = f.label :body, 'Description (optional)'
@@ -9,14 +9,14 @@
 
 .form-group
   = f.label :category_id, 'Category'
-  = f.select :category_id, Category.order(:name).map {|c| [c.name, c.id] }, { prompt: true }, class: 'form-control'
+  = f.select :category_id, Category.order(:name).map { |c| [c.name, c.id] }, { prompt: true }, class: 'form-control'
 
 .form-group
   = f.label :tag_list, 'Labels'
   = f.text_field :tag_list, class: 'form-control'
 
-.checkbox
-  = f.check_box :anonymous, class: 'no-offset'
-  = f.label :anonymous, 'Make anonymous'
+.form-group.form-check
+  = f.check_box :anonymous, class: 'form-check-input'
+  = f.label :anonymous, 'Make anonymous', class: 'form-check-label'
 
 = f.submit 'Add question', class: 'btn btn-primary'

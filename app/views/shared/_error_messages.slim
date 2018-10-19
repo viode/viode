@@ -1,8 +1,7 @@
 - if target.errors.any?
-  .panel.panel-danger
-    .panel-heading
-      h3.panel-title Errors
-    .panel-body
-      ul
+  .card.border-danger.mb-3
+    .card-header.bg-danger.text-white Errors
+    .card-body.text-danger
+      ul.card-text
         - target.errors.full_messages.each do |message|
           li = message

@@ -10,7 +10,7 @@
         = f.email_field :email, class: 'form-control'
 
         - if current_user.unconfirmed_email
-          p.help-block
+          small.form-text.text-muted
             ' Please confirm email:
             = current_user.unconfirmed_email
 

@@ -11,12 +11,13 @@
             p = image_tag current_user.avatar.url, size: '80', title: 'avatar'
 
         .col-md-9
-          .form-group
-            - if current_user.avatar.present?
-              => f.label :remove_avatar
-              = f.check_box :remove_avatar
-              p.help-block Remove current avatar to upload a new one.
-            - else
+          - if current_user.avatar.present?
+            .form-group.form-check
+              = f.check_box :remove_avatar, class: 'form-check-input'
+              = f.label :remove_avatar, class: 'form-check-label'
+              small.form-text.text-muted Remove current avatar to upload a new one.
+          - else
+            .form-group
               = f.label :avatar
               = f.file_field :avatar
 

@@ -1,8 +1,8 @@
-.col-md-3.col-md-offset-3
-  ul.nav.nav-pills.nav-stacked
-    li class=('active' if controller_name == 'accounts')
-      = link_to 'Account', settings_account_path
-    li class=('active' if controller_name == 'profiles')
-      = link_to 'Profile', settings_profile_path
-    li class=('active' if controller_name == 'passwords')
-      = link_to 'Password', settings_password_path
+.col-md-6
+  ul.nav.nav-pills.nav-fill
+    li.nav-item
+      = link_to 'Account', settings_account_path, class: "nav-link#{' active' if controller_name == 'accounts'}"
+    li.nav-item
+      = link_to 'Profile', settings_profile_path, class: "nav-link#{' active' if controller_name == 'profiles'}"
+    li.nav-item
+      = link_to 'Password', settings_password_path, class: "nav-link#{' active' if controller_name == 'passwords'}"

@@ -1,12 +1,12 @@
 - title @tag.name, 'Labels'
 
+h2
+  ' Recent questions with
+  => link_to @tag.name, tag_path(@tag.name)
+  | tag
+
 .row
   .col-md-12
-    h2
-      ' Recent questions with
-      => link_to @tag.name, tag_path(@tag.name)
-      | tag
-
     .question-list
       = render partial: 'questions/question', collection: @questions
 

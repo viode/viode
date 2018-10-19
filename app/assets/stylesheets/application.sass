@@ -1,10 +1,12 @@
+//= require_self
+
 @import font-awesome-sprockets
 @import font-awesome
 
 @import base/variables
 @import base/mixins
 
-@import bootstrap-sprockets
+@import bootstrap
 @import base/twbs
 
 @import styles/common
@@ -44,22 +46,6 @@ footer
     &:hover, &:focus
       color: #AAB2BD
 
-.checkbox
-  .no-offset
-    margin-left: 0 !important
-
-.alert
-  .close
-    opacity: 1
-    padding: 0px 5px
-    background-color: rgba(0, 0, 0, 0.2)
-    border: 1px solid rgba(255, 255, 255, 0.1)
-    border-radius: 3px
-    text-shadow: none
-    font-weight: 300
-    &:hover, &:focus
-      opacity: 1
-
-.col-center
-  float: none
-  margin: 0 auto
+.navbar
+  margin-bottom: 20px
+  border-bottom: 1px solid $brand-color
