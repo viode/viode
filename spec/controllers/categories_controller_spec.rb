@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
-  let(:category) { create :category }
-  let(:user)     { create :confirmed_user }
+  let(:category) { Fabricate :category }
+  let(:user)     { Fabricate :confirmed_user }
 
   describe 'GET #index' do
     it 'returns http success' do

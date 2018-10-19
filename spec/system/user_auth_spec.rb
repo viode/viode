@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User Auth', type: :system do
-  let(:user) { create :confirmed_user }
+  let(:user) { Fabricate :confirmed_user }
 
   scenario 'User sign up' do
     visit new_user_registration_path

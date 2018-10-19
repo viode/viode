@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe QuestionsHelper, type: :helper do
-  let(:user)     { create :confirmed_user }
-  let(:question) { create :question, author: user, id: 777 }
-  let(:anonymous_question) { create :anonymous_question, author: user }
+  let(:user)     { Fabricate :confirmed_user }
+  let(:question) { Fabricate :question, author: user, id: 777 }
+  let(:anonymous_question) { Fabricate :anonymous_question, author: user }
 
   describe '#link_to_question_star' do
     context 'when not signed in' do

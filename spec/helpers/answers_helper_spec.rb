@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe AnswersHelper, type: :helper do
-  let(:user)   { create :confirmed_user }
-  let(:answer) { create :answer, author: user, id: 777 }
-  let(:anonymous_answer) { create :anonymous_answer, author: user }
+  let(:user)   { Fabricate :confirmed_user }
+  let(:answer) { Fabricate :answer, author: user, id: 777 }
+  let(:anonymous_answer) { Fabricate :anonymous_answer, author: user }
 
   describe '#link_to_answer_upvote' do
     context 'when not signed in' do

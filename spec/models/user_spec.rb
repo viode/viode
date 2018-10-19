@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user)     { create :confirmed_user }
-  let(:category) { create :category }
-  let(:question) { create :question, author: user }
+  let(:user)     { Fabricate :confirmed_user }
+  let(:category) { Fabricate :category }
+  let(:question) { Fabricate :question, author: user }
 
   describe 'relations' do
     it {
@@ -47,7 +47,7 @@ RSpec.describe User, type: :model do
   describe '#unsubscribe_from' do
     it 'unsubscribes user from subscribable' do
       subscribable = category
-      create :subscription, subscribable: subscribable, subscriber: user
+      Fabricate :subscription, subscribable: subscribable, subscriber: user
 
       expect { user.unsubscribe_from(subscribable) }.to change(user.subscriptions, :count).by(-1)
     end
@@ -55,8 +55,8 @@ RSpec.describe User, type: :model do
 
   describe '#subscribed_to?' do
     it 'checks if user subscribed to subscribable' do
-      create :subscription, subscribable: category, subscriber: user
-      category2 = create :category
+      Fabricate :subscription, subscribable: category, subscriber: user
+      category2 = Fabricate :category
 
       expect(user.subscribed_to?(category)).to be true
       expect(user.subscribed_to?(category2)).to be false
@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
 
   describe '.add_initial_points' do
     it 'adds initial user points' do
-      new_user = create :confirmed_user
+      new_user = Fabricate :confirmed_user
 
       expect(new_user.reputation_for(:bonus_points)).to eq(100)
       expect(new_user.reputation_for(:points)).to eq(100)

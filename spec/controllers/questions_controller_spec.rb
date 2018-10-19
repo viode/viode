@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe QuestionsController, type: :controller do
-  let(:user)     { create :confirmed_user }
-  let(:category) { create :category }
-  let(:question) { create :question, author: user }
+  let(:user)     { Fabricate :confirmed_user }
+  let(:category) { Fabricate :category }
+  let(:question) { Fabricate :question, author: user }
 
   describe 'GET #index' do
     it 'returns http success' do
@@ -77,7 +77,7 @@ RSpec.describe QuestionsController, type: :controller do
         sign_in user
 
         expect do
-          post :create, params: { question: attributes_for(:question, category_id: category.id) }
+          post :create, params: { question: Fabricate.attributes_for(:question, category_id: category.id) }
         end.to change(Question, :count).by(1)
         expect(response).to redirect_to(Question.last)
       end

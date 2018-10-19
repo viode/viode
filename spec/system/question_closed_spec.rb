@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Question closed', type: :system do
-  let(:user)      { create :confirmed_user }
-  let(:question)  { create :question, author: user }
+  let(:user)      { Fabricate :confirmed_user }
+  let(:question)  { Fabricate :question, author: user }
 
   scenario 'A question that is not closed' do
     visit new_user_session_path
@@ -17,7 +17,7 @@ RSpec.describe 'Question closed', type: :system do
   end
 
   scenario 'A question that is closed' do
-    closed_question = create :question, author: user, closed: true
+    closed_question = Fabricate :question, author: user, closed: true
 
     visit new_user_session_path
     fill_in 'Login', with: user.username

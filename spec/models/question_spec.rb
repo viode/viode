@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
-  let(:user)     { create :confirmed_user }
-  let(:question) { create :question, author: user }
+  let(:user)     { Fabricate :confirmed_user }
+  let(:question) { Fabricate :question, author: user }
 
   describe 'relations' do
     it { is_expected.to belong_to(:author).class_name('User') }
@@ -31,8 +31,8 @@ RSpec.describe Question, type: :model do
 
   describe 'recent scope' do
     it 'orders by created_at date in descending order' do
-      q1 = create :question, author: user, created_at: 1.day.ago
-      q2 = create :question, author: user
+      q1 = Fabricate :question, author: user, created_at: 1.day.ago
+      q2 = Fabricate :question, author: user
 
       expect(Question.recent).to eq([q2, q1])
     end
@@ -85,7 +85,7 @@ RSpec.describe Question, type: :model do
     end
 
     context 'a closed question' do
-      let(:closed_question)   { create :question, closed: true }
+      let(:closed_question) { Fabricate :question, closed: true }
 
       it 'changes votes count by one' do
         expect { closed_question.upvote_by(user) }.to change(closed_question, :votes).from(0).to(1)
