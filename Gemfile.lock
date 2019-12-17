@@ -89,7 +89,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.5)
     crass (1.0.4)
     debug_inspector (0.0.3)
     devise (4.5.0)
@@ -106,8 +106,8 @@ GEM
     eventmachine (1.2.7)
     execjs (2.7.0)
     fabrication (2.20.1)
-    faker (1.9.1)
-      i18n (>= 0.7)
+    faker (2.9.0)
+      i18n (>= 1.6, < 1.8)
     ffi (1.9.25)
     font-awesome-sass (4.3.2.1)
       sass (~> 3.2)
@@ -134,7 +134,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     http_parser.rb (0.6.0)
-    i18n (1.1.1)
+    i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
